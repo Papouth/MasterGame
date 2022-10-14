@@ -128,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Modifier en a =< 1 ?
-        if (a == raycastsGrounds.Length)
+        if (a > 0)
         { 
             return true; 
         }
