@@ -6,43 +6,42 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Movement")]
-
-
     public float speed = 3f;
     private Vector2 moveInput;
     private Vector3 playerVelocity;
+
 
     [Header("Player Jump")]
     public float jumpForce = 2f;
     private bool canJump;
     public float airDrag = .5f;
-    private Vector3 _playerJump;
+    private Vector3 playerJump;
+
 
     [Header("Player Ground")]
     public RaycastGrounded[] raycastsGrounds;
     public LayerMask layersGround;
     public float rangeMaxGrounded;
 
+
     [Header("Crouch")]
     public float crouchSpeed = .3f;
     public float standHeight = 2.0f;
     public float crouchHeight = 1.0f;
-
     private bool crouching;
-    private bool canCrouch;
 
 
     [Header("Player Component")]
     private Rigidbody playerRb;
-
     public Transform playerMesh;
-    public CapsuleCollider collider;
+    public CapsuleCollider capsuleCollider;
+
 
 
     private void Awake()
     {
-        //playerRb = GetComponent<Rigidbody>();
         playerRb = GetComponentInChildren<Rigidbody>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
 
         foreach (RaycastGrounded raycast in raycastsGrounds)
         {
@@ -77,7 +76,9 @@ public class PlayerMovement : MonoBehaviour
     {
         // Rotation du joueur pour qu'il regarde dans la direction où il marche
         Vector3 playerRotation = new Vector3(moveInput.x, 0, moveInput.y);
-        playerRb.gameObject.transform.rotation = Quaternion.Slerp(playerRb.gameObject.transform.rotation, Quaternion.LookRotation(playerRotation), 0.15f);
+
+        if (playerRotation != Vector3.zero)
+            playerRb.gameObject.transform.rotation = Quaternion.Slerp(playerRb.gameObject.transform.rotation, Quaternion.LookRotation(playerRotation), 0.15f);
 
         // Déplacement du joueur
         playerVelocity = new Vector3(moveInput.x * speed, playerRb.velocity.y, moveInput.y * speed);
@@ -103,9 +104,8 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     public void OnJump()
     {
-        //Recuperation de l'input
+        //Récupèration de l'input
         canJump = true;
-
     }
 
     /// <summary>
@@ -113,14 +113,11 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Jump()
     {
-        _playerJump = new Vector3(0, jumpForce, 0);
-        playerRb.velocity = _playerJump;
+        playerJump = new Vector3(0, jumpForce, 0);
+        playerRb.velocity = playerJump;
         canJump = false;
-        _playerJump = Vector3.zero;
-
+        playerJump = Vector3.zero;
     }
-
-
 
     private bool isGrounded()
     {
@@ -130,11 +127,18 @@ public class PlayerMovement : MonoBehaviour
             if (raycast.RaycastTest()) a++;
         }
 
-        if (a == raycastsGrounds.Length) return true;
-        else return false;
-
+        // Modifier en a =< 1 ?
+        if (a == raycastsGrounds.Length)
+        { 
+            return true; 
+        }
+        else
+        {
+            // On empêche le joueur de resauter instantanément au contact du sol ?
+            canJump = false;
+            return false;
+        }
     }
-
 
     #endregion
 
@@ -150,37 +154,24 @@ public class PlayerMovement : MonoBehaviour
     private void Crounching()
     {
         float desiredHeight = crouching ? crouchHeight : standHeight;
-    
-        if(collider.height != desiredHeight)
+
+        if (capsuleCollider.height != desiredHeight)
         {
             AdjustHeight(desiredHeight);
-
         }
     }
 
     private void AdjustHeight(float height)
     {
         float center = height / 2;
-        
-
-        collider.height = Mathf.Lerp(collider.height, height
-            , crouchSpeed);
-        collider.center = Vector3.Lerp(collider.center, new Vector3(0, center, 0), crouchSpeed);
-
-        playerMesh.localScale = new Vector3(
-            playerMesh.localScale.x,
-            Mathf.Lerp(playerMesh.localScale.y, height / 2, crouchSpeed),
-            playerMesh.localScale.z);
 
 
-        playerMesh.localPosition = Vector3.Lerp(
-            collider.center,
-            new Vector3(
-                playerMesh.localPosition.x,
-                center/2,
-                playerMesh.localPosition.z),
-            crouchSpeed /2);
+        capsuleCollider.height = Mathf.Lerp(capsuleCollider.height, height, crouchSpeed);
+        capsuleCollider.center = Vector3.Lerp(capsuleCollider.center, new Vector3(0, center, 0), crouchSpeed);
 
+        playerMesh.localScale = new Vector3(playerMesh.localScale.x, Mathf.Lerp(playerMesh.localScale.y, height / 2, crouchSpeed), playerMesh.localScale.z);
+
+        playerMesh.localPosition = Vector3.Lerp(capsuleCollider.center, new Vector3(playerMesh.localPosition.x, center / 2, playerMesh.localPosition.z), crouchSpeed / 2);
     }
 
     #endregion
