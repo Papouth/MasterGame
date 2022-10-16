@@ -1,25 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    #region Variables
+
     [Header("Player Movement")]
     public float speed = 3f;
-    private Vector2 moveInput;
     private Vector3 playerVelocity;
 
 
     [Header("Player Jump")]
     public float jumpForce = 2f;
-    private bool canJump;
     public float airDrag = .5f;
     private Vector3 playerJump;
 
+    private float coyoteTime = 0;
+    [SerializeField] private float coyoteTimer = .5f;
+
 
     [Header("Player Ground")]
-    public RaycastGrounded[] raycastsGrounds;
+    public RaycastCheck[] raycastsGrounds;
     public LayerMask layersGround;
     public float rangeMaxGrounded;
 
@@ -28,85 +31,69 @@ public class PlayerMovement : MonoBehaviour
     public float crouchSpeed = .3f;
     public float standHeight = 2.0f;
     public float crouchHeight = 1.0f;
-    private bool crouching;
-
 
     [Header("Player Component")]
     private Rigidbody playerRb;
     public Transform playerMesh;
     public CapsuleCollider capsuleCollider;
 
+    private PlayerInput playerInput;
 
+    #endregion
 
     private void Awake()
     {
         playerRb = GetComponentInChildren<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
+        playerInput = GetComponent<PlayerInput>();
 
-        foreach (RaycastGrounded raycast in raycastsGrounds)
+        foreach (RaycastCheck raycast in raycastsGrounds)
         {
             raycast.layer = layersGround;
-            raycast.rangeMaxGrounded = rangeMaxGrounded;
+            raycast.rangeMax = rangeMaxGrounded;
+            raycast.directionRaycast = Vector3.down;
         }
     }
 
     private void FixedUpdate()
     {
         PlayerMove();
-
-        if (isGrounded() && canJump)
-        {
-            Jump();
-        }
-
-        Crounching();
+        Crouching();
     }
 
     private void Update()
     {
-
+        if (isGrounded() && playerInput.CanJump)
+        {
+            Jump();
+        }
     }
 
     #region PlayerMove
 
     /// <summary>
-    /// Gère le player movement
+    /// Gï¿½re le player movement
     /// </summary>
     private void PlayerMove()
     {
-        // Rotation du joueur pour qu'il regarde dans la direction où il marche
-        Vector3 playerRotation = new Vector3(moveInput.x, 0, moveInput.y);
+        // Rotation du joueur pour qu'il regarde dans la direction oï¿½ il marche
+        Vector3 playerRotation = new Vector3(playerInput.MoveInput.x, 0, playerInput.MoveInput.y);
 
         if (playerRotation != Vector3.zero)
             playerRb.gameObject.transform.rotation = Quaternion.Slerp(playerRb.gameObject.transform.rotation, Quaternion.LookRotation(playerRotation), 0.15f);
 
-        // Déplacement du joueur
-        playerVelocity = new Vector3(moveInput.x * speed, playerRb.velocity.y, moveInput.y * speed);
+        // Dï¿½placement du joueur
+        playerVelocity = new Vector3(playerInput.MoveInput.x * speed, playerRb.velocity.y, playerInput.MoveInput.y * speed);
         playerRb.velocity = playerVelocity;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="value"></param>
-    public void OnMovement(InputValue value)
-    {
-        // On récupère la valeur du mouvement qu'on stock dans un Vector2
-        moveInput = value.Get<Vector2>();
-    }
+
 
     #endregion
 
     #region PlayerJump
 
-    /// <summary>
-    /// Imput Du jump
-    /// </summary>
-    public void OnJump()
-    {
-        //Récupèration de l'input
-        canJump = true;
-    }
+
 
     /// <summary>
     /// activation du jump
@@ -115,28 +102,42 @@ public class PlayerMovement : MonoBehaviour
     {
         playerJump = new Vector3(0, jumpForce, 0);
         playerRb.velocity = playerJump;
-        canJump = false;
+        playerInput.CanJump = false;
         playerJump = Vector3.zero;
+        coyoteTime = coyoteTimer;
     }
 
+    /// <summary>
+    /// Check si le joueur est au sol
+    /// </summary>
+    /// <returns></returns>
     private bool isGrounded()
     {
-        int a = 0;
-        foreach (RaycastGrounded raycast in raycastsGrounds)
+        int raycastGood = 0;
+        foreach (RaycastCheck raycast in raycastsGrounds)
         {
-            if (raycast.RaycastTest()) a++;
+            if (raycast.RaycastTest()) raycastGood++;
         }
 
-        
-        if (a > 0)
-        { 
-            return true; 
-        }
-        else
+
+        if (raycastGood > 0) //La je touche le sol
         {
-            // On empêche le joueur de re-sauter instantanément au contact du sol
-            canJump = false;
-            return false;
+            coyoteTime = 0;
+            return true;
+        }
+        else  //La je touche plus le sol
+        {
+            coyoteTime += Time.deltaTime;
+
+            if (coyoteTime >= coyoteTimer) //Temps Ã©coulÃ©
+            {
+                // On empï¿½che le joueur de re-sauter instantanï¿½ment au contact du sol
+                playerInput.CanJump = false;
+                return false;
+            }
+            else return true; //Encore le temps de sautÃ©
+
+
         }
     }
 
@@ -145,15 +146,12 @@ public class PlayerMovement : MonoBehaviour
 
     #region PlayerCrouched
 
-    public void OnCrouch()
+    /// <summary>
+    /// Adjuste la taille du joueur selon l'input
+    /// </summary>
+    private void Crouching()
     {
-        if (crouching == true) crouching = false;
-        else crouching = true;
-    }
-
-    private void Crounching()
-    {
-        float desiredHeight = crouching ? crouchHeight : standHeight;
+        float desiredHeight = playerInput.Crouching ? crouchHeight : standHeight;
 
         if (capsuleCollider.height != desiredHeight)
         {
@@ -161,6 +159,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adjuste la taille du joueur, la collider, le scale (animation)
+    /// </summary>
+    /// <param name="height"></param>
     private void AdjustHeight(float height)
     {
         float center = height / 2;
