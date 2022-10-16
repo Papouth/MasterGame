@@ -127,14 +127,14 @@ public class PlayerMovement : MonoBehaviour
             if (raycast.RaycastTest()) a++;
         }
 
-        // Modifier en a =< 1 ?
+        
         if (a > 0)
         { 
             return true; 
         }
         else
         {
-            // On empêche le joueur de resauter instantanément au contact du sol ?
+            // On empêche le joueur de re-sauter instantanément au contact du sol
             canJump = false;
             return false;
         }
