@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -852,7 +852,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 793547370}
-  m_LocalRotation: {x: 0.4501544, y: 0.13694364, z: 0.0367062, w: 0.8816235}
+  m_LocalRotation: {x: 0.4501544, y: 0.13694365, z: 0.036706205, w: 0.8816235}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1008,7 +1008,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1122305136}
-  m_LocalRotation: {x: 0.4660743, y: 0.137587, z: 0.034215804, w: 0.873312}
+  m_LocalRotation: {x: 0.4660743, y: 0.13758703, z: 0.03421581, w: 0.873312}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1639,7 +1639,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327120515}
-  m_LocalRotation: {x: 0.12169205, y: 0.14070226, z: -0.017429275, w: 0.98239005}
+  m_LocalRotation: {x: 0.12169205, y: 0.14070229, z: -0.017429277, w: 0.98239005}
   m_LocalPosition: {x: -0.8420731, y: 2.5, z: -39.159393}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1853,7 +1853,7 @@ MonoBehaviour:
   standHeight: 2
   crouchHeight: 1
   playerMesh: {fileID: 2138017600}
-  collider: {fileID: 1971256969}
+  capsuleCollider: {fileID: 0}
 --- !u!4 &1971256972
 Transform:
   m_ObjectHideFlags: 0

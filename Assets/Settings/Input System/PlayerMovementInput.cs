@@ -53,6 +53,15 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""ce767d4c-387a-441b-a15c-46bc1ccab678"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                     ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""19f21dca-3652-4235-9db6-b9e9e0c3230b"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +163,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         m_PlayerMap_Movement = m_PlayerMap.FindAction("Movement", throwIfNotFound: true);
         m_PlayerMap_Jump = m_PlayerMap.FindAction("Jump", throwIfNotFound: true);
         m_PlayerMap_Crouch = m_PlayerMap.FindAction("Crouch", throwIfNotFound: true);
+        m_PlayerMap_Interact = m_PlayerMap.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -205,6 +226,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMap_Movement;
     private readonly InputAction m_PlayerMap_Jump;
     private readonly InputAction m_PlayerMap_Crouch;
+    private readonly InputAction m_PlayerMap_Interact;
     public struct PlayerMapActions
     {
         private @PlayerMovementInput m_Wrapper;
@@ -212,6 +234,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_PlayerMap_Movement;
         public InputAction @Jump => m_Wrapper.m_PlayerMap_Jump;
         public InputAction @Crouch => m_Wrapper.m_PlayerMap_Crouch;
+        public InputAction @Interact => m_Wrapper.m_PlayerMap_Interact;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -230,6 +253,9 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                 @Crouch.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnCrouch;
                 @Crouch.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnCrouch;
                 @Crouch.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnCrouch;
+                @Interact.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -243,6 +269,9 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                 @Crouch.started += instance.OnCrouch;
                 @Crouch.performed += instance.OnCrouch;
                 @Crouch.canceled += instance.OnCrouch;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -252,5 +281,6 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }
