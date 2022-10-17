@@ -31,6 +31,10 @@ public class PlayerMovement : MonoBehaviour
     public float crouchSpeed = .3f;
     public float standHeight = 2.0f;
     public float crouchHeight = 1.0f;
+    public RaycastCheck[] raycastCanStandUp;
+    public LayerMask layersCanStandUp;
+    public float rangeMaxStandUp = 1.05f;
+
 
     [Header("Player Component")]
     private Rigidbody playerRb;
@@ -53,12 +57,20 @@ public class PlayerMovement : MonoBehaviour
             raycast.rangeMax = rangeMaxGrounded;
             raycast.directionRaycast = Vector3.down;
         }
+
+        foreach (RaycastCheck raycast in raycastCanStandUp)
+        {
+            raycast.layer = layersCanStandUp;
+            raycast.rangeMax = rangeMaxStandUp;
+            raycast.directionRaycast = Vector3.up;
+        }
+
+
     }
 
     private void FixedUpdate()
     {
         PlayerMove();
-        Crouching();
     }
 
     private void Update()
@@ -67,6 +79,8 @@ public class PlayerMovement : MonoBehaviour
         {
             Jump();
         }
+
+        Crouching();
     }
 
     #region PlayerMove
@@ -143,7 +157,6 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
-
     #region PlayerCrouched
 
     /// <summary>
@@ -153,9 +166,39 @@ public class PlayerMovement : MonoBehaviour
     {
         float desiredHeight = playerInput.Crouching ? crouchHeight : standHeight;
 
-        if (capsuleCollider.height != desiredHeight)
+
+        if (capsuleCollider.height != desiredHeight && CanStandUp())
         {
             AdjustHeight(desiredHeight);
+        }
+    }
+
+    private bool CanStandUp()
+    {
+        if (capsuleCollider.height == standHeight)
+        {
+            // Sinon on autorise a s'accroupir
+            return true;
+        }
+        else
+        {
+            int raycastGood = 0;
+            // On check si le joueur est accroupis
+            // raycast vers le haut 1.05f
+            foreach (RaycastCheck raycast in raycastCanStandUp)
+            {
+                if (raycast.RaycastTest())
+                {
+                    raycastGood++;
+                }
+            }
+
+            if (raycastGood > 0)
+            {
+                //Debug.Log("hit smthing");
+                return false;
+            }
+            else return true;
         }
     }
 
@@ -177,4 +220,25 @@ public class PlayerMovement : MonoBehaviour
     }
 
     #endregion
+
+
+
+
+    private void OnDrawGizmos()
+    {
+        foreach (RaycastCheck raycast in raycastsGrounds)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(raycast.transform.position, raycast.transform.position + Vector3.down * rangeMaxGrounded);
+        }
+
+        foreach (RaycastCheck raycast in raycastCanStandUp)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(raycast.transform.position, raycast.transform.position + Vector3.up * rangeMaxStandUp);
+        }
+
+
+    }
+
 }

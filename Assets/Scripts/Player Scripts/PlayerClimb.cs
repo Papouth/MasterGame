@@ -22,20 +22,14 @@ public class PlayerClimb : MonoBehaviour
         {
             raycastCheck.layer = layerCanClimb;
             raycastCheck.rangeMax = rangeMaxClimb;
-            raycastCheck.directionRaycast = Vector3.forward;
+            raycastCheck.directionRaycast = transform.forward;
         }
         foreach (RaycastCheck raycastCheck in raycastClimbsDown)
         {
             raycastCheck.layer = layerCanClimb;
             raycastCheck.rangeMax = rangeMaxClimb;
-            raycastCheck.directionRaycast = Vector3.forward;
+            raycastCheck.directionRaycast = transform.forward;
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
     }
 
     // Update is called once per frame
@@ -95,6 +89,4 @@ public class PlayerClimb : MonoBehaviour
         rb.AddForce(forceToAdd, ForceMode.Impulse);
         Debug.Log("Here lets go");
     }
-
-
 }
