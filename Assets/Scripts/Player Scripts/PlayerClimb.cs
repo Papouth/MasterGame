@@ -32,7 +32,6 @@ public class PlayerClimb : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (CheckCanClimb())
@@ -55,11 +54,15 @@ public class PlayerClimb : MonoBehaviour
 
         foreach (RaycastCheck raycast in raycastClimbsUp)
         {
+            // On repositionne le raycast lorsque le joueur se déplace
+            raycast.directionRaycast = transform.forward;
             if (raycast.RaycastTest()) raycastUpGood++;
         }
 
         foreach (RaycastCheck raycast in raycastClimbsDown)
         {
+            // On repositionne le raycast lorsque le joueur se déplace
+            raycast.directionRaycast = transform.forward;
             if (raycast.RaycastTest()) raycastDownGood++;
         }
 
@@ -77,9 +80,11 @@ public class PlayerClimb : MonoBehaviour
         else //La je touche pas le mur en bas
             return false;
 
-
     }
 
+    /// <summary>
+    /// Le joueur se fait propulser vers le haut lorsqu'il tente de grimper un mur
+    /// </summary>
     private void Climb()
     {
         Rigidbody rb = GetComponent<Rigidbody>();

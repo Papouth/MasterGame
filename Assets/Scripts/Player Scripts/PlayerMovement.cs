@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     #region Variables
 
     [Header("Player Movement")]
@@ -64,8 +63,6 @@ public class PlayerMovement : MonoBehaviour
             raycast.rangeMax = rangeMaxStandUp;
             raycast.directionRaycast = Vector3.up;
         }
-
-
     }
 
     private void FixedUpdate()
@@ -182,22 +179,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            int raycastGood = 0;
             // On check si le joueur est accroupis
-            // raycast vers le haut 1.05f
-            foreach (RaycastCheck raycast in raycastCanStandUp)
-            {
-                if (raycast.RaycastTest())
-                {
-                    raycastGood++;
-                }
-            }
+            int raycastGood = 0;
 
-            if (raycastGood > 0)
-            {
-                //Debug.Log("hit smthing");
-                return false;
-            }
+            foreach (RaycastCheck raycast in raycastCanStandUp)
+                if (raycast.RaycastTest()) raycastGood++;
+            
+
+            if (raycastGood > 0) return false;
             else return true;
         }
     }
@@ -222,8 +211,6 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
 
-
-
     private void OnDrawGizmos()
     {
         foreach (RaycastCheck raycast in raycastsGrounds)
@@ -237,8 +224,5 @@ public class PlayerMovement : MonoBehaviour
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(raycast.transform.position, raycast.transform.position + Vector3.up * rangeMaxStandUp);
         }
-
-
     }
-
 }
