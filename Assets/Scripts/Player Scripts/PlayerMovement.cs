@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 3f;
     private Vector3 playerVelocity;
 
+    private float yVel = 0f;
+
 
     [Header("Player Jump")]
     public float jumpForce = 2f;
@@ -83,17 +85,32 @@ public class PlayerMovement : MonoBehaviour
     #region PlayerMove
 
     /// <summary>
-    /// G�re le player movement
+    /// Gère le player movement
     /// </summary>
     private void PlayerMove()
     {
-        // Rotation du joueur pour qu'il regarde dans la direction o� il marche
+        // Rotation du joueur pour qu'il regarde dans la direction où il marche
         Vector3 playerRotation = new Vector3(playerInput.MoveInput.x, 0, playerInput.MoveInput.y);
 
         if (playerRotation != Vector3.zero)
             playerRb.gameObject.transform.rotation = Quaternion.Slerp(playerRb.gameObject.transform.rotation, Quaternion.LookRotation(playerRotation), 0.15f);
 
-        // D�placement du joueur
+
+        /*
+        float targetAngle = Mathf.Atan2(playerInput.MoveInput.x, playerInput.MoveInput.y) * Mathf.Rad2Deg +
+                Camera.main.transform.eulerAngles.y;
+        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref yVel, .3f);
+
+        var direction = playerInput.MoveInput;
+        if (playerInput.MoveInput.magnitude > 0)
+        {
+            direction = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        }
+
+        playerRb.velocity = direction.normalized * (speed * Time.deltaTime);
+        */
+
+        // Déplacement du joueur
         playerVelocity = new Vector3(playerInput.MoveInput.x * speed, playerRb.velocity.y, playerInput.MoveInput.y * speed);
         playerRb.velocity = playerVelocity;
     }
