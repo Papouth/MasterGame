@@ -54,14 +54,14 @@ public class PlayerClimb : MonoBehaviour
 
         foreach (RaycastCheck raycast in raycastClimbsUp)
         {
-            // On repositionne le raycast lorsque le joueur se déplace
+            // On repositionne le raycast lorsque le joueur se dï¿½place
             raycast.directionRaycast = transform.forward;
             if (raycast.RaycastTest()) raycastUpGood++;
         }
 
         foreach (RaycastCheck raycast in raycastClimbsDown)
         {
-            // On repositionne le raycast lorsque le joueur se déplace
+            // On repositionne le raycast lorsque le joueur se dï¿½place
             raycast.directionRaycast = transform.forward;
             if (raycast.RaycastTest()) raycastDownGood++;
         }
@@ -87,11 +87,12 @@ public class PlayerClimb : MonoBehaviour
     /// </summary>
     private void Climb()
     {
-        Rigidbody rb = GetComponent<Rigidbody>();
+        CharacterController cc = GetComponent<CharacterController>();
+        if(cc == null) return;
 
         Vector3 forceToAdd = (Vector3.forward + Vector3.up) * forceClimb;
 
-        rb.AddForce(forceToAdd, ForceMode.Impulse);
+        cc.attachedRigidbody.AddForce(forceToAdd, ForceMode.Impulse);
         Debug.Log("Here lets go");
     }
 }

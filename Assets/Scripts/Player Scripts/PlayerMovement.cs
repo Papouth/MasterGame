@@ -7,17 +7,21 @@ public class PlayerMovement : MonoBehaviour
     #region Variables
 
     [Header("Player Movement")]
-    public float speed = 3f;
+    public float moveSpeed = 3f;
     private Vector3 playerVelocity;
+    private Vector3 directionInput;
+    private Vector3 movement;
+    [SerializeField] private float turnSmoothTime = 0.1f;
 
-    private float yVel = 0f;
+    [SerializeField] private float turnSmoothVelocity = 0.1f;
+
 
 
     [Header("Player Jump")]
     public float jumpForce = 2f;
     public float airDrag = .5f;
-    private Vector3 playerJump;
 
+    private float ySpeed = 0;
     private float coyoteTime = 0;
     [SerializeField] private float coyoteTimer = .5f;
 
@@ -37,19 +41,16 @@ public class PlayerMovement : MonoBehaviour
     public float rangeMaxStandUp = 1.05f;
 
 
+    private CharacterController cc;
     [Header("Player Component")]
-    private Rigidbody playerRb;
-    public Transform playerMesh;
-    public CapsuleCollider capsuleCollider;
-
+    [SerializeField] public Camera cam;
     private PlayerInput playerInput;
 
     #endregion
 
     private void Awake()
     {
-        playerRb = GetComponentInChildren<Rigidbody>();
-        capsuleCollider = GetComponent<CapsuleCollider>();
+        cc = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
 
         foreach (RaycastCheck raycast in raycastsGrounds)
@@ -67,23 +68,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        PlayerMove();
-    }
-
     private void Update()
     {
-        if (isGrounded() && playerInput.CanJump)
-        {
-            Jump();
-        }
+
+        Jump();
+
+        Locomotion();
 
         Crouching();
     }
 
     #region PlayerMove
 
+    /*
     /// <summary>
     /// Gère le player movement
     /// </summary>
@@ -93,10 +90,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 playerRotation = new Vector3(playerInput.MoveInput.x, 0, playerInput.MoveInput.y);
 
         if (playerRotation != Vector3.zero)
-            playerRb.gameObject.transform.rotation = Quaternion.Slerp(playerRb.gameObject.transform.rotation, Quaternion.LookRotation(playerRotation), 0.15f);
+            transform.rotation = Quaternion.Slerp(
+               transform.rotation, Quaternion.LookRotation(playerRotation), 0.15f);
 
 
-        /*
+    
         float targetAngle = Mathf.Atan2(playerInput.MoveInput.x, playerInput.MoveInput.y) * Mathf.Rad2Deg +
                 Camera.main.transform.eulerAngles.y;
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref yVel, .3f);
@@ -107,32 +105,68 @@ public class PlayerMovement : MonoBehaviour
             direction = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         }
 
-        playerRb.velocity = direction.normalized * (speed * Time.deltaTime);
-        */
+        cc.velocity = direction.normalized * (speed * Time.deltaTime);
+
 
         // Déplacement du joueur
-        playerVelocity = new Vector3(playerInput.MoveInput.x * speed, playerRb.velocity.y, playerInput.MoveInput.y * speed);
+        playerVelocity = new Vector3(playerInput.MoveInput.x * speed, cc.velocity.y, playerInput.MoveInput.y * speed);
         playerRb.velocity = playerVelocity;
-    }
+    }*/
 
+    /// <summary>
+    /// Gere le deplacement du personnage avec le character controller
+    /// </summary>
+    void Locomotion()
+    {
+        if (!playerInput) return;
+
+        directionInput.Set(playerInput.MoveInput.x, 0, playerInput.MoveInput.y);
+
+        if (directionInput.magnitude >= 0.1f)
+        {
+            float targetAngle = Mathf.Atan2(directionInput.x, directionInput.z) * Mathf.Rad2Deg +
+                cam.transform.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle,
+                ref turnSmoothVelocity, turnSmoothTime);
+
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            directionInput = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+
+        }
+        movement = directionInput.normalized * (moveSpeed * Time.deltaTime);
+
+        cc.Move(movement);
+    }
 
 
     #endregion
 
     #region PlayerJump
 
-
-
     /// <summary>
     /// activation du jump
     /// </summary>
     private void Jump()
     {
-        playerJump = new Vector3(0, jumpForce, 0);
-        playerRb.velocity = playerJump;
-        playerInput.CanJump = false;
-        playerJump = Vector3.zero;
-        coyoteTime = coyoteTimer;
+        ySpeed += Physics.gravity.y * Time.deltaTime;
+
+        if (isGrounded())
+        {
+            if (ySpeed <= 0)
+            {
+                ySpeed = 0;
+            }
+
+            if (playerInput.CanJump)
+            {
+                ySpeed = jumpForce;
+                coyoteTime = coyoteTimer;
+            }
+        }
+        movement.y = ySpeed * Time.deltaTime;
+
+        cc.Move(movement);
     }
 
     /// <summary>
@@ -181,7 +215,7 @@ public class PlayerMovement : MonoBehaviour
         float desiredHeight = playerInput.Crouching ? crouchHeight : standHeight;
 
 
-        if (capsuleCollider.height != desiredHeight && CanStandUp())
+        if (cc.height != desiredHeight && CanStandUp())
         {
             AdjustHeight(desiredHeight);
         }
@@ -189,7 +223,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool CanStandUp()
     {
-        if (capsuleCollider.height == standHeight)
+        if (cc.height == standHeight)
         {
             // Sinon on autorise a s'accroupir
             return true;
@@ -201,7 +235,7 @@ public class PlayerMovement : MonoBehaviour
 
             foreach (RaycastCheck raycast in raycastCanStandUp)
                 if (raycast.RaycastTest()) raycastGood++;
-            
+
 
             if (raycastGood > 0) return false;
             else return true;
@@ -217,12 +251,9 @@ public class PlayerMovement : MonoBehaviour
         float center = height / 2;
 
 
-        capsuleCollider.height = Mathf.Lerp(capsuleCollider.height, height, crouchSpeed);
-        capsuleCollider.center = Vector3.Lerp(capsuleCollider.center, new Vector3(0, center, 0), crouchSpeed);
+        cc.height = Mathf.Lerp(cc.height, height, crouchSpeed);
+        cc.center = Vector3.Lerp(cc.center, new Vector3(0, center, 0), crouchSpeed);
 
-        playerMesh.localScale = new Vector3(playerMesh.localScale.x, Mathf.Lerp(playerMesh.localScale.y, height / 2, crouchSpeed), playerMesh.localScale.z);
-
-        playerMesh.localPosition = Vector3.Lerp(capsuleCollider.center, new Vector3(playerMesh.localPosition.x, center / 2, playerMesh.localPosition.z), crouchSpeed / 2);
     }
 
     #endregion
