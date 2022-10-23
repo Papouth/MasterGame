@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Player Movement")]
     public float moveSpeed = 3f;
-    private Vector3 playerVelocity;
     private Vector3 directionInput;
     private Vector3 movement;
     [SerializeField] private float turnSmoothTime = 0.1f;
@@ -24,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private float ySpeed = 0;
     private float coyoteTime = 0;
     [SerializeField] private float coyoteTimer = .5f;
+
 
 
     [Header("Player Ground")]
