@@ -71,9 +71,9 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
 
-        Jump();
 
         Locomotion();
+        Jump();
 
         Crouching();
     }
@@ -136,7 +136,6 @@ public class PlayerMovement : MonoBehaviour
         }
         movement = directionInput.normalized * (moveSpeed * Time.deltaTime);
 
-        cc.Move(movement);
     }
 
 

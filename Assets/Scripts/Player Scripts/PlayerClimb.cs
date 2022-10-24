@@ -10,9 +10,9 @@ public class PlayerClimb : MonoBehaviour
     public float forceClimb = 1.5f;
 
     [Header("Component")]
-    private CharacterController cc;
     public RaycastCheck[] raycastClimbsUp;
     public RaycastCheck[] raycastClimbsDown;
+    private PlayerMovement playerMovement;
 
 
 
@@ -34,7 +34,7 @@ public class PlayerClimb : MonoBehaviour
             raycastCheck.directionRaycast = transform.forward;
         }
 
-        cc = GetComponent<CharacterController>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -92,12 +92,8 @@ public class PlayerClimb : MonoBehaviour
     /// </summary>
     private void Climb()
     {
-        if(cc == null) return;
+        if(playerMovement == null) return;
 
         Vector3 forceToAdd = (Vector3.forward + Vector3.up) * forceClimb;
-
-        Debug.Log(cc.attachedRigidbody);
-        cc.Move(forceToAdd);
-        Debug.Log("Here lets go");
     }
 }
