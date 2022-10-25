@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (OnSteepSlope())
         {
-            Debug.Log("Here");
+            //Debug.Log("Here");
             SteepSlopeMovement();
         }
 
@@ -147,21 +147,25 @@ public class PlayerMovement : MonoBehaviour
 
     private bool OnSteepSlope()
     {
-        if (!isGrounded()) return false;
+        //if (!isGrounded()) return false;
 
         float indicRaycastCheck = 0;
         foreach (RaycastCheck raycast in raycastsGrounds)
         {
             if (Physics.Raycast(raycast.transform.position, Vector3.down, out slopeHit, raycastLenghtCheck, layersGround))
             {
+                Debug.DrawLine(raycast.transform.position, Vector3.down * raycastLenghtCheck + raycast.transform.position, Color.blue);
+                float slopeAngle = Vector3.Angle(slopeHit.normal, Vector3.up);
+
+                if (slopeAngle > cc.slopeLimit) 
+
                 indicRaycastCheck++;
             }
         }
 
         if(indicRaycastCheck > 0)
         {
-            float slopeAngle = Vector3.Angle(slopeHit.normal, Vector3.up);
-            if (slopeAngle > cc.slopeLimit) return true;
+            return true;
         }
         return false;
     }
@@ -173,6 +177,7 @@ public class PlayerMovement : MonoBehaviour
 
         movement = slopeDirection * -slideSpeed;
         movement.y = movement.y - slopeHit.point.y;
+
         cc.Move(movement * Time.deltaTime);
     }
 
@@ -192,6 +197,7 @@ public class PlayerMovement : MonoBehaviour
             //Fonction Check Step Slope ground Return bool
             //=> Fonction Check step slope void 
 
+
             if (ySpeed <= stepGround)
             {
                 ySpeed = -0.2f;
@@ -205,6 +211,7 @@ public class PlayerMovement : MonoBehaviour
         }
         movement.y = ySpeed * Time.deltaTime;
 
+        //Debug.Log("jumpbug");
         cc.Move(movement);
     }
 

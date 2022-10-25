@@ -5,10 +5,12 @@ using UnityEngine;
 public abstract class Interactable : MonoBehaviour
 {
     [SerializeField] protected string interactText;
+    [SerializeField] protected string onInteractText;
 
 
     public virtual bool Interact()
     {
+        Debug.Log(onInteractText);
         return true;
     }
 
@@ -23,6 +25,6 @@ public abstract class Interactable : MonoBehaviour
     /// <param name="other">The other Collider involved in this collision.</param>
     public virtual void OnTriggerEnter(Collider other)
     {
-        
+        TextInfo();
     }
 }
