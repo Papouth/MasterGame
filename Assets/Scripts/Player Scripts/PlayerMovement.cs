@@ -15,21 +15,22 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float turnSmoothVelocity = 0.1f;
 
 
-
-    [Header("Player Jump")]
-    public float jumpForce = 2f;
-    public float airDrag = .5f;
-
-    private float ySpeed = 0;
-    private float coyoteTime = 0;
-    [SerializeField] private float coyoteTimer = .5f;
-
-
-
     [Header("Player Ground")]
     public RaycastCheck[] raycastsGrounds;
     public LayerMask layersGround;
     public float rangeMaxGrounded;
+    public float stepGround = -.1f;
+
+    [Header("SteepSlopeCheck")]
+    public float raycastLenghtCheck;
+    RaycastHit slopeHit;
+
+    [Header("Player Jump")]
+    public float jumpForce = 2f;
+    public float airDrag = .5f;
+    private float ySpeed = 0;
+    private float coyoteTime = 0;
+    [SerializeField] private float coyoteTimer = .5f;
 
 
     [Header("Crouch")]
@@ -41,9 +42,9 @@ public class PlayerMovement : MonoBehaviour
     public float rangeMaxStandUp = 1.05f;
 
 
-    private CharacterController cc;
     [Header("Player Component")]
-    [SerializeField] public Camera cam;
+    public Camera cam;
+    private CharacterController cc;
     private PlayerInput playerInput;
 
     #endregion
@@ -74,6 +75,12 @@ public class PlayerMovement : MonoBehaviour
 
         Locomotion();
         Jump();
+
+        if (OnSteepSlope())
+        {
+            Debug.Log("Here");
+            SteepSlopeMovement();
+        }
 
         Crouching();
     }
@@ -138,6 +145,36 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private bool OnSteepSlope()
+    {
+        if (!isGrounded()) return false;
+
+        float indicRaycastCheck = 0;
+        foreach (RaycastCheck raycast in raycastsGrounds)
+        {
+            if (Physics.Raycast(raycast.transform.position, Vector3.down, out slopeHit, raycastLenghtCheck, layersGround))
+            {
+                indicRaycastCheck++;
+            }
+        }
+
+        if(indicRaycastCheck > 0)
+        {
+            float slopeAngle = Vector3.Angle(slopeHit.normal, Vector3.up);
+            if (slopeAngle > cc.slopeLimit) return true;
+        }
+        return false;
+    }
+
+    private void SteepSlopeMovement()
+    {
+        Vector3 slopeDirection = Vector3.up - slopeHit.normal * Vector3.Dot(Vector3.up, slopeHit.normal);
+        float slideSpeed = moveSpeed + Time.deltaTime;
+
+        movement = slopeDirection * -slideSpeed;
+        movement.y = movement.y - slopeHit.point.y;
+        cc.Move(movement * Time.deltaTime);
+    }
 
     #endregion
 
@@ -152,9 +189,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded())
         {
-            if (ySpeed <= 0)
+            //Fonction Check Step Slope ground Return bool
+            //=> Fonction Check step slope void 
+
+            if (ySpeed <= stepGround)
             {
-                ySpeed = 0;
+                ySpeed = -0.2f;
             }
 
             if (playerInput.CanJump)
@@ -197,12 +237,11 @@ public class PlayerMovement : MonoBehaviour
                 return false;
             }
             else return true; //Encore le temps de sauté
-
-
         }
     }
 
     #endregion
+
 
     #region PlayerCrouched
 

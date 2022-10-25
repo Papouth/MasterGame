@@ -1321,7 +1321,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4839972090209269724}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1453,7 +1453,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4839972090450566221}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.752, z: 0}
+  m_LocalPosition: {x: 0, y: 0.971, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1622,9 +1622,6 @@ MonoBehaviour:
   moveSpeed: 3
   turnSmoothTime: 0.1
   turnSmoothVelocity: 0.1
-  jumpForce: 5
-  airDrag: 0.5
-  coyoteTimer: 0.1
   raycastsGrounds:
   - {fileID: 4839972090209269726}
   - {fileID: 4839972092034292039}
@@ -1635,6 +1632,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 65
   rangeMaxGrounded: 0.1
+  stepGround: -0.1
+  raycastLenghtCheck: 1
+  jumpForce: 5
+  airDrag: 0.5
+  coyoteTimer: 0.1
   crouchSpeed: 0.3
   standHeight: 2
   crouchHeight: 1
@@ -1647,7 +1649,7 @@ MonoBehaviour:
   layersCanStandUp:
     serializedVersion: 2
     m_Bits: 375
-  rangeMaxStandUp: 1.02
+  rangeMaxStandUp: 0.9
   cam: {fileID: 0}
 --- !u!114 &4839972090948213069
 MonoBehaviour:
@@ -1682,7 +1684,7 @@ MonoBehaviour:
   layerCanClimb:
     serializedVersion: 2
     m_Bits: 321
-  rangeMaxClimb: 1
+  rangeMaxClimb: 0.25
   forceClimb: 1.5
   raycastClimbsUp:
   - {fileID: 4839972091509062215}
@@ -1796,7 +1798,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4839972091060060276}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2, y: 0.2, z: 0}
+  m_LocalPosition: {x: -0.1, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1894,7 +1896,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4839972091172341094}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0.1, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2250,7 +2252,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4839972092034292037}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: -0.2}
+  m_LocalPosition: {x: 0, y: 0.2, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
