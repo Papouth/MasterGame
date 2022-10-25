@@ -78,7 +78,7 @@ public class PlayerClimb : MonoBehaviour
                 return false;
             else    //La je touche pas le mur en haut
             {
-                Debug.Log("Good here");
+                //Debug.Log("Good here");
                 return true;
             }
         }

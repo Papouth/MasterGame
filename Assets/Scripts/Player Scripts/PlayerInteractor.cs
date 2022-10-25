@@ -24,7 +24,9 @@ public class PlayerInteractor : MonoBehaviour
     private void Update()
     {
         if (playerInput.CanInteract)
+        {
             Detector();
+        }
     }
 
     /// <summary>
@@ -39,9 +41,9 @@ public class PlayerInteractor : MonoBehaviour
         {
             interactable = NearestCollider(colliders);
 
-            if (!interactable) //Sécurité au cas ou
+
+            if (interactable) //Sécurité au cas ou
             {
-                interactable.TextInfo();
                 interactable.Interact();
             }
         }
