@@ -25,6 +25,7 @@ public abstract class Interactable : MonoBehaviour
     /// <param name="other">The other Collider involved in this collision.</param>
     public virtual void OnTriggerEnter(Collider other)
     {
-        TextInfo();
+        if (other.CompareTag("Player"))
+            TextInfo();
     }
 }
