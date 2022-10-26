@@ -46,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     public Camera cam;
     private CharacterController cc;
     private PlayerInput playerInput;
+    private Animator animator;
 
     #endregion
 
@@ -53,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
     {
         cc = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
+        animator = GetComponent<Animator>();
 
         foreach (RaycastCheck raycast in raycastsGrounds)
         {
@@ -83,42 +85,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Crouching();
+
+        SetAnimator();
     }
 
     #region PlayerMove
-
-    /*
-    /// <summary>
-    /// Gère le player movement
-    /// </summary>
-    private void PlayerMove()
-    {
-        // Rotation du joueur pour qu'il regarde dans la direction où il marche
-        Vector3 playerRotation = new Vector3(playerInput.MoveInput.x, 0, playerInput.MoveInput.y);
-
-        if (playerRotation != Vector3.zero)
-            transform.rotation = Quaternion.Slerp(
-               transform.rotation, Quaternion.LookRotation(playerRotation), 0.15f);
-
-
-    
-        float targetAngle = Mathf.Atan2(playerInput.MoveInput.x, playerInput.MoveInput.y) * Mathf.Rad2Deg +
-                Camera.main.transform.eulerAngles.y;
-        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref yVel, .3f);
-
-        var direction = playerInput.MoveInput;
-        if (playerInput.MoveInput.magnitude > 0)
-        {
-            direction = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-        }
-
-        cc.velocity = direction.normalized * (speed * Time.deltaTime);
-
-
-        // Déplacement du joueur
-        playerVelocity = new Vector3(playerInput.MoveInput.x * speed, cc.velocity.y, playerInput.MoveInput.y * speed);
-        playerRb.velocity = playerVelocity;
-    }*/
 
     /// <summary>
     /// Gere le deplacement du personnage avec le character controller
@@ -140,6 +111,12 @@ public class PlayerMovement : MonoBehaviour
 
             directionInput = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
+            // Animator Walk
+            //animator.SetBool("Walk", true);
+        }
+        else if (directionInput.magnitude == 0f)
+        {
+            //animator.SetBool("Walk", false);
         }
         movement = directionInput.normalized * (moveSpeed * Time.deltaTime);
 
@@ -205,6 +182,9 @@ public class PlayerMovement : MonoBehaviour
 
             if (playerInput.CanJump)
             {
+                // Animator Jump
+                animator.SetTrigger("TrJump");
+
                 ySpeed = jumpForce;
                 coyoteTime = coyoteTimer;
             }
@@ -259,6 +239,12 @@ public class PlayerMovement : MonoBehaviour
     {
         float desiredHeight = playerInput.Crouching ? crouchHeight : standHeight;
 
+        if (playerInput.Crouching)
+            animator.SetBool("Crouch", true);
+        
+        else if (!playerInput.Crouching)
+            animator.SetBool("Crouch", false);
+        
 
         if (cc.height != desiredHeight && CanStandUp())
         {
@@ -298,10 +284,14 @@ public class PlayerMovement : MonoBehaviour
 
         cc.height = Mathf.Lerp(cc.height, height, crouchSpeed);
         cc.center = Vector3.Lerp(cc.center, new Vector3(0, center, 0), crouchSpeed);
-
     }
 
     #endregion
+
+    private void SetAnimator()
+    {
+        animator.SetFloat("Movement", directionInput.magnitude);
+    }
 
 
     private void OnDrawGizmos()
