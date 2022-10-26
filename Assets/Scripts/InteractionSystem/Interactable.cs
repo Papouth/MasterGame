@@ -7,6 +7,8 @@ public abstract class Interactable : MonoBehaviour
     [SerializeField] protected string interactText;
     [SerializeField] protected string onInteractText;
 
+    [SerializeField] protected bool state;
+
 
     public virtual bool Interact()
     {
@@ -27,5 +29,22 @@ public abstract class Interactable : MonoBehaviour
     {
         if (other.CompareTag("Player"))
             TextInfo();
+    }
+
+    public virtual void GoToHand(GameObject hands, PlayerInput playerInput)
+    {
+        if (playerInput.CanInteract && hands.transform.childCount == 0)
+        {
+
+            gameObject.transform.SetParent(hands.transform, false);
+            gameObject.transform.position = hands.transform.position;
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
+        }
+        else if (playerInput.CanInteract && hands.transform.childCount > 0)
+        {
+            gameObject.transform.SetParent(null);
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        }
     }
 }

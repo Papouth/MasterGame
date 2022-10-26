@@ -41,4 +41,9 @@ public class Npc : Interactable
         if (other.CompareTag("Player"))
             topCube.SetActive(false);
     }
+
+    public override void GoToHand(GameObject hands, PlayerInput playerInput)
+    {
+
+    }
 }
