@@ -6,12 +6,16 @@ public class Npc : Interactable
 {
     public GameObject cube;
     public Transform spawnPos;
+    public GameObject topCube;
 
+    public void Awake()
+    {
+        topCube.SetActive(false);
+    }
 
     public override bool Interact()
     {
         //Debug.Log("Comment puis-je vous aider ?");
-        //return true;
         base.Interact();
         Instantiate(cube, spawnPos.position, spawnPos.rotation);
 
@@ -26,6 +30,15 @@ public class Npc : Interactable
     public override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
+        if (other.CompareTag("Player"))
+            topCube.SetActive(true);
+
         //Action sur UI
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            topCube.SetActive(false);
     }
 }

@@ -1685,7 +1685,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 321
   rangeMaxClimb: 0.25
-  forceClimb: 1.5
+  forceClimb: 2
   raycastClimbsUp:
   - {fileID: 4839972091509062215}
   - {fileID: 4839972091916585368}
