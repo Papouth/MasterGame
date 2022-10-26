@@ -15,6 +15,7 @@ public class PlayerInteractor : MonoBehaviour
     private Interactable interactable;
 
     private PlayerInput playerInput;
+    public GameObject hands;
 
     private void Awake()
     {
@@ -45,6 +46,7 @@ public class PlayerInteractor : MonoBehaviour
             if (interactable) //Sécurité au cas ou
             {
                 interactable.Interact();
+                interactable.GoToHand(hands, playerInput);
             }
         }
 
