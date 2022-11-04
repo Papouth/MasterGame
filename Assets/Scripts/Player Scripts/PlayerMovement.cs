@@ -48,6 +48,9 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInput playerInput;
     private Animator animator;
 
+    private PlayerClimb playerClimb;
+
+
     #endregion
 
     private void Awake()
@@ -55,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
         cc = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         animator = GetComponent<Animator>();
+        playerClimb = GetComponent<PlayerClimb>();
 
         foreach (RaycastCheck raycast in raycastsGrounds)
         {
@@ -73,10 +77,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-
+        Jump();
 
         Locomotion();
-        Jump();
+
 
         if (OnSteepSlope())
         {
@@ -94,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// Gere le deplacement du personnage avec le character controller
     /// </summary>
-    void Locomotion()
+    public void Locomotion()
     {
         if (!playerInput) return;
 
@@ -120,6 +124,16 @@ public class PlayerMovement : MonoBehaviour
         }
         movement = directionInput.normalized * (moveSpeed * Time.deltaTime);
 
+
+
+        // Si j'appuie sur ma touche de saut et que je peux grimper
+        if (playerInput.CanJump && playerClimb.askToClimb)
+        {
+            Debug.Log("je demande de grimper");
+            // On grimpe
+            playerClimb.Climb();
+        }
+
     }
 
     private bool OnSteepSlope()
@@ -134,13 +148,13 @@ public class PlayerMovement : MonoBehaviour
                 Debug.DrawLine(raycast.transform.position, Vector3.down * raycastLenghtCheck + raycast.transform.position, Color.blue);
                 float slopeAngle = Vector3.Angle(slopeHit.normal, Vector3.up);
 
-                if (slopeAngle > cc.slopeLimit) 
+                if (slopeAngle > cc.slopeLimit)
 
-                indicRaycastCheck++;
+                    indicRaycastCheck++;
             }
         }
 
-        if(indicRaycastCheck > 0)
+        if (indicRaycastCheck > 0)
         {
             return true;
         }
@@ -165,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// activation du jump
     /// </summary>
-    private void Jump()
+    public void Jump()
     {
         ySpeed += Physics.gravity.y * Time.deltaTime;
 
@@ -241,10 +255,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (playerInput.Crouching)
             animator.SetBool("Crouch", true);
-        
+
         else if (!playerInput.Crouching)
             animator.SetBool("Crouch", false);
-        
+
 
         if (cc.height != desiredHeight && CanStandUp())
         {
