@@ -5,7 +5,6 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public Plaque[] plaques;
-    private int validCheck = 0;
     private Animator doorAnimator;
 
 
