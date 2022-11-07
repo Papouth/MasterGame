@@ -125,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
         movement = directionInput.normalized * (moveSpeed * Time.deltaTime);
 
 
-        /*
+
         // Si j'appuie sur ma touche de saut et que je peux grimper
         if (playerInput.CanJump && playerClimb.askToClimb)
         {
@@ -133,7 +133,6 @@ public class PlayerMovement : MonoBehaviour
             // On grimpe
             playerClimb.Climb();
         }
-        */
 
     }
 

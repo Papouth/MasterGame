@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Cube : Interactable
 {
-    public override void Awake()
-    {
-        base.Awake();
-    }
-
     public override bool Interact()
     {
         //Debug.Log("cube");

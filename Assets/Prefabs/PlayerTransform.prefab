@@ -1630,7 +1630,7 @@ MonoBehaviour:
   - {fileID: 4839972091949608616}
   layersGround:
     serializedVersion: 2
-    m_Bits: 3649
+    m_Bits: 65
   rangeMaxGrounded: 0.1
   stepGround: -0.1
   raycastLenghtCheck: 1
@@ -1669,7 +1669,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   interactableCount: 0
-  hands: {fileID: 0}
 --- !u!114 &4839972090948213068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1677,20 +1676,22 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4839972090948213078}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bcc492b4f50f284ca54a448efc1ab2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canClimb: 0
-  askToClimb: 0
-  canGrip: 0
-  raycastGood: 0
-  raycastsClimb:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  layerCanClimb:
+    serializedVersion: 2
+    m_Bits: 321
+  rangeMaxClimb: 0.25
+  forceClimb: 2
+  raycastClimbsUp:
+  - {fileID: 4839972091509062215}
+  - {fileID: 4839972091916585368}
+  raycastClimbsDown:
+  - {fileID: 4839972090785097777}
+  - {fileID: 4839972091161147629}
 --- !u!114 &4839972090948213067
 MonoBehaviour:
   m_ObjectHideFlags: 0
