@@ -8,7 +8,18 @@ public abstract class Interactable : MonoBehaviour
     [SerializeField] protected string onInteractText;
 
     [SerializeField] protected bool state;
+    [SerializeField] protected float weight;
+    [SerializeField] protected Rigidbody rb;
 
+    
+    public virtual void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+
+        if (rb == null) return;
+
+        weight = rb.mass;
+    }
 
     public virtual bool Interact()
     {
