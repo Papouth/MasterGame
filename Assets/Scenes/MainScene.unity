@@ -1341,7 +1341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &144701099
 Transform:
   m_ObjectHideFlags: 0
@@ -1593,6 +1593,8 @@ MonoBehaviour:
   interactText: Npc 1
   onInteractText: Je suis le num1
   state: 0
+  weight: 0
+  rb: {fileID: 0}
   cube: {fileID: 4685609807112040223, guid: 6e24c86fbf4cd074c87bad4478a373b1, type: 3}
   spawnPos: {fileID: 941654030}
   topCube: {fileID: 353575362}
@@ -2018,7 +2020,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259475071}
-  m_LocalRotation: {x: 0.0000000122426, y: 0.7022637, z: -0.711917, w: -0.000000052049863}
+  m_LocalRotation: {x: 0.000000020121773, y: 0.7022637, z: -0.7119169, w: -0.00000008554848}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2076,6 +2078,8 @@ MonoBehaviour:
   interactText: Npc 3
   onInteractText: Je suis le num3
   state: 0
+  weight: 0
+  rb: {fileID: 0}
   cube: {fileID: 5574854370575994575, guid: d5058d445039b764f8898f3e8c96c24e, type: 3}
   spawnPos: {fileID: 388577223}
   topCube: {fileID: 1242591347}
@@ -2575,8 +2579,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400666681}
-  m_LocalRotation: {x: -0.000000012478894, y: 0.9608875, z: -0.27693903, w: -0.000000043297668}
-  m_LocalPosition: {x: 17.030003, y: 8.16, z: 37.65}
+  m_LocalRotation: {x: -0.000000026774245, y: 0.96088755, z: -0.276939, w: -0.00000009289787}
+  m_LocalPosition: {x: 17.030003, y: 8.16, z: 7.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2834,7 +2838,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 529062784}
-  m_LocalRotation: {x: 0.000000011544355, y: 0.6926654, z: -0.7212591, w: -0.000000052209174}
+  m_LocalRotation: {x: 0.000000015259248, y: 0.6926654, z: -0.7212591, w: -0.00000006900975}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3326,7 +3330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &613852920
 Transform:
   m_ObjectHideFlags: 0
@@ -3395,6 +3399,8 @@ MonoBehaviour:
   interactText: Npc 4
   onInteractText: Je suis le num4
   state: 0
+  weight: 0
+  rb: {fileID: 0}
   cube: {fileID: 7459339983721684244, guid: 59da2e9d81744b64eb8afcd022a4b7ad, type: 3}
   spawnPos: {fileID: 597180650}
   topCube: {fileID: 436863109}
@@ -4614,11 +4620,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4839972090948213068, guid: 7504c171e29102f4da2897b560aac698,
         type: 3}
-      propertyPath: raycastsClimb.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4839972090948213068, guid: 7504c171e29102f4da2897b560aac698,
-        type: 3}
       propertyPath: raycastsClimb.Array.data[0]
       value: 
       objectReference: {fileID: 196465454}
@@ -4680,7 +4681,7 @@ PrefabInstance:
     - target: {fileID: 4839972090948213079, guid: 7504c171e29102f4da2897b560aac698,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.65
+      value: -4.06
       objectReference: {fileID: 0}
     - target: {fileID: 4839972090948213079, guid: 7504c171e29102f4da2897b560aac698,
         type: 3}
@@ -7217,6 +7218,8 @@ MonoBehaviour:
   interactText: Npc 2
   onInteractText: Je suis le num2
   state: 0
+  weight: 0
+  rb: {fileID: 0}
   cube: {fileID: 7544750868876853655, guid: 0c53ed91f59143440a48bce2cb0b7913, type: 3}
   spawnPos: {fileID: 2116973178}
   topCube: {fileID: 268669972}
@@ -7952,6 +7955,8 @@ MonoBehaviour:
   interactText: Npc 5
   onInteractText: Je suis le num5
   state: 0
+  weight: 0
+  rb: {fileID: 0}
   cube: {fileID: 7851100072269075750, guid: b5407df4dbd1f204d87b6acdd11df1c1, type: 3}
   spawnPos: {fileID: 1659143573}
   topCube: {fileID: 293765876}
@@ -8130,7 +8135,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143089977}
   m_LocalRotation: {x: 0.4895879, y: 0.0000000076698825, z: -0.0000000043065156, w: 0.87195396}
-  m_LocalPosition: {x: 17.030003, y: 8.16, z: 37.65}
+  m_LocalPosition: {x: 17.030003, y: 8.16, z: 7.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8329,7 +8334,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143555526}
-  m_LocalRotation: {x: 0.000000017100902, y: 0.71172255, z: -0.7024607, w: -0.00000006857658}
+  m_LocalRotation: {x: 0.00000002126415, y: 0.71172255, z: -0.70246077, w: -0.000000085271694}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

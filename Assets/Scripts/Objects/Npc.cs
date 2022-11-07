@@ -8,7 +8,7 @@ public class Npc : Interactable
     public Transform spawnPos;
     public GameObject topCube;
 
-    public void Awake()
+    public override void Awake()
     {
         topCube.SetActive(false);
     }
