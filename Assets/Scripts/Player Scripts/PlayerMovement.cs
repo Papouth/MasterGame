@@ -124,17 +124,6 @@ public class PlayerMovement : MonoBehaviour
         }
         movement = directionInput.normalized * (moveSpeed * Time.deltaTime);
 
-
-        /*
-        // Si j'appuie sur ma touche de saut et que je peux grimper
-        if (playerInput.CanJump && playerClimb.askToClimb)
-        {
-            Debug.Log("je demande de grimper");
-            // On grimpe
-            playerClimb.Climb();
-        }
-        */
-
     }
 
     private bool OnSteepSlope()
@@ -202,6 +191,11 @@ public class PlayerMovement : MonoBehaviour
 
                 ySpeed = jumpForce;
                 coyoteTime = coyoteTimer;
+
+
+                //Debug.Log("je demande de grimper");
+                // On grimpe
+                //playerClimb.Climb();
             }
         }
         movement.y = ySpeed * Time.deltaTime;
