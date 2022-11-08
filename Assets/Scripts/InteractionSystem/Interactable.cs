@@ -8,8 +8,8 @@ public abstract class Interactable : MonoBehaviour
     [SerializeField] protected string onInteractText;
 
     [SerializeField] protected bool state;
-    protected float weight;
-    protected Rigidbody rb;
+    [SerializeField] protected float weight;
+    [SerializeField] protected Rigidbody rb;
 
     
     public virtual void Awake()
@@ -46,6 +46,7 @@ public abstract class Interactable : MonoBehaviour
     {
         if (playerInput.CanInteract && hands.transform.childCount == 0)
         {
+
             gameObject.transform.SetParent(hands.transform, false);
             gameObject.transform.position = hands.transform.position;
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
