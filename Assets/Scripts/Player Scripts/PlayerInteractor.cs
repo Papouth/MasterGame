@@ -78,6 +78,16 @@ public class PlayerInteractor : MonoBehaviour
         return nearestCol.GetComponent<Interactable>();
     }
 
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject == interactable.gameObject)
+        {
+            
+        }
+    }
+
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
