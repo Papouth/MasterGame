@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Project
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 59
+  controlID: 70
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 1
-  controlID: 92
+  controlID: 67
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 93
+  controlID: 68
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 94
+  controlID: 69
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -361,14 +361,14 @@ MonoBehaviour:
     - {fileID: 8028591163730116215, guid: 3a966c1fcf6409a4782ccf424b026533, type: 2}
     - {fileID: 8620978893666057933, guid: 26d863a88134554469fb97f00f171932, type: 2}
     m_ValueSerializationHelper:
-    - e00: 0.19405198
+    - e00: 0.32639232
       e01: 0
       e02: 0
-      e03: 30.101871
+      e03: 76.025795
       e10: 0
-      e11: 0.19405198
+      e11: 0.32639232
       e12: 0
-      e13: 169.37845
+      e13: 328.6527
       e20: 0
       e21: 0
       e22: 1
@@ -637,9 +637,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -59.79078, y: 3.23968, z: -49.438274}
+    m_Target: {x: 20.699263, y: 1.9020174, z: -6.991657}
     speed: 2
-    m_Value: {x: -59.79078, y: 3.23968, z: -49.438274}
+    m_Value: {x: 20.699263, y: 1.9020174, z: -6.991657}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -686,13 +686,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.005971222, y: -0.99304247, z: 0.10254452, w: -0.057865027}
+    m_Target: {x: -0.014872631, y: -0.9682428, z: 0.24249147, w: -0.059331108}
     speed: 2
-    m_Value: {x: -0.005971125, y: -0.99302626, z: 0.10254284, w: -0.05786408}
+    m_Value: {x: -0.014872351, y: -0.9682246, z: 0.2424869, w: -0.05932999}
   m_Size:
-    m_Target: 6.6270037
+    m_Target: 4.064555
     speed: 2
-    m_Value: 6.6270037
+    m_Value: 4.064555
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -749,9 +749,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: d0faffff
-      m_LastClickedID: -1328
-      m_ExpandedIDs: fefaffff
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: fefaffffac720000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -910,22 +910,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Animations/MixamoBlocking
+    - Assets/Prefabs/BlobkingPrefab
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Animations/MixamoBlocking
+  - Assets/Prefabs/BlobkingPrefab
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Etudiant\Documents\GitHub\MasterGame
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 57}
-    m_SelectedIDs: 267a0000
-    m_LastClickedID: 31270
-    m_ExpandedIDs: 000000000e780000de79000000ca9a3bffffff7f
+    m_SelectedIDs: ba7b0000
+    m_LastClickedID: 31674
+    m_ExpandedIDs: 000000000e780000de790000e679000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1074,7 +1074,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 216
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
