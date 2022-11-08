@@ -18,13 +18,16 @@ public class PlayerClimb : MonoBehaviour
 
 
     [Header("Climb Settings")]
-    public bool canClimb; // Si le joueur peut grimper
-    public bool askToClimb; // Le joueur appuie sur la touche pour grimper
+    public bool isClimbing; // Si le joueur grimpe
     public bool canGrip; // Si le joueur peut s'accrocher
-    private bool climbing; // Le joueur est en train de grimper
     public int raycastGood;
 
     public RaycastCheck[] raycastsClimb;
+
+    [Header("Climb Anim")]
+    public bool jumpAnim;
+    public bool climbAnim;
+    public bool gripAnim;
 
 
 
@@ -115,8 +118,6 @@ public class PlayerClimb : MonoBehaviour
 
     private void Awake()
     {
-        askToClimb = true;
-        //canClimb = true;
         foreach (RaycastCheck raycastCheck in raycastsClimb)
         {
             raycastCheck.directionRaycast = transform.forward;
@@ -140,6 +141,7 @@ public class PlayerClimb : MonoBehaviour
         {
             // On repositionne le raycast lorsque le joueur se déplace
             raycast.directionRaycast = transform.forward;
+
             if (raycast.RaycastTest()) raycastGood++;
         }
 
@@ -153,51 +155,72 @@ public class PlayerClimb : MonoBehaviour
     /// </summary>
     public void Climb()
     {
-        if (raycastGood == 1)
+        //Debug.Log("je demande de grimper");
+
+        if (raycastsClimb[0].RaycastTest() && !raycastsClimb[1].RaycastTest()) // Si mon premier raycast est bon, mais aussi que le second est faux alors on peut enjamber
         {
-            canClimb = true;
+            isClimbing = true;
+
+            // On réalise l'animation
+            jumpAnim = true;
+
 
             // Je peux enjamber
             Debug.Log("J'enjambe !");
 
-            // On réalise l'animation
             // On déplace le personnage à l'endroit où il doit se trouver après avoir grimpé
         }
-        else if (raycastGood == 2)
+        else if (raycastsClimb[0].RaycastTest() && raycastsClimb[1].RaycastTest() && !raycastsClimb[2].RaycastTest())
         {
-            canClimb = true;
+            isClimbing = true;
+
+            // On réalise l'animation
+            climbAnim = true;
 
             // Je peux grimper
             Debug.Log("je grimpe !");
 
-            // On réalise l'animation
             // On déplace le personnage à l'endroit où il doit se trouver après avoir grimpé
         }
-        else if (raycastGood == 3)
+        else if (raycastsClimb[0].RaycastTest() && raycastsClimb[1].RaycastTest() && raycastsClimb[2].RaycastTest() && !raycastsClimb[3].RaycastTest())
         {
-            canClimb = true;
+            isClimbing = true;
+
+            // On réalise l'animation
+            gripAnim = true;
 
             // Je m'accroche avant de grimper
             Debug.Log("Je m'accroche avant de grimper !");
 
-            // On réalise l'animation
+
             // On déplace le personnage à l'endroit où il doit se trouver après avoir grimpé
         }
-        else if (raycastGood == 4)
+        else if (raycastsClimb[3].RaycastTest()) // Du moment que le dernier touche, c'est impossible pour le joueur de franchir l'obstacle
         {
-            canClimb = false;
+            isClimbing = false;
+
+            // Reset des booléens
+            jumpAnim = false;
+            climbAnim = false;
+            gripAnim = false;
 
             // Trop haut, donc il ne se passe rien
             Debug.Log("C'est trop haut pour moi !");
         }
         else
         {
+            // Reset des booléens
+            jumpAnim = false;
+            climbAnim = false;
+            gripAnim = false;
+
+
             Debug.Log("impossible de grimper");
-            canClimb = false;
+            isClimbing = false;
         }
     }
 
-
+    /*
     private void OnDrawGizmos()
     {
         foreach (RaycastCheck raycast in raycastsClimb)
@@ -206,4 +229,5 @@ public class PlayerClimb : MonoBehaviour
             Gizmos.DrawLine(raycast.transform.position, raycast.transform.position + transform.forward);
         }
     }
+    */
 }
