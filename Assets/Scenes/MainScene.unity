@@ -1004,7 +1004,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28784
+  m_Name: pb_Mesh29190
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1168,7 +1168,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29138
+  m_Name: pb_Mesh29624
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1341,7 +1341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &144701099
 Transform:
   m_ObjectHideFlags: 0
@@ -1350,7 +1350,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144701098}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -7.7, y: 0, z: -67.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1593,8 +1593,6 @@ MonoBehaviour:
   interactText: Npc 1
   onInteractText: Je suis le num1
   state: 0
-  weight: 0
-  rb: {fileID: 0}
   cube: {fileID: 4685609807112040223, guid: 6e24c86fbf4cd074c87bad4478a373b1, type: 3}
   spawnPos: {fileID: 941654030}
   topCube: {fileID: 353575362}
@@ -1636,7 +1634,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196465452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.08, z: 0}
+  m_LocalPosition: {x: 0, y: 1.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1658,7 +1656,7 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 3649
-  rangeMax: 0.5
+  rangeMax: 0.4
   directionRaycast: {x: 0, y: 0, z: 0}
 --- !u!1 &221668850
 GameObject:
@@ -1881,8 +1879,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226260086}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 4.458562, y: -1.125, z: 45.73}
-  m_LocalScale: {x: 8.0952, y: 1.75, z: 3.6657174}
+  m_LocalPosition: {x: 4.458561, y: -1.15, z: 45.73}
+  m_LocalScale: {x: 8.0952, y: 1.7, z: 3.6657174}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 144701099}
@@ -2020,7 +2018,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259475071}
-  m_LocalRotation: {x: 0.000000020121773, y: 0.7022637, z: -0.7119169, w: -0.00000008554848}
+  m_LocalRotation: {x: 0.000000011023688, y: 0.7022637, z: -0.7119169, w: -0.00000004686762}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2078,8 +2076,6 @@ MonoBehaviour:
   interactText: Npc 3
   onInteractText: Je suis le num3
   state: 0
-  weight: 0
-  rb: {fileID: 0}
   cube: {fileID: 5574854370575994575, guid: d5058d445039b764f8898f3e8c96c24e, type: 3}
   spawnPos: {fileID: 388577223}
   topCube: {fileID: 1242591347}
@@ -2267,55 +2263,6 @@ Transform:
   m_Father: {fileID: 789941176}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: -60}
---- !u!1 &278279696
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 278279697}
-  - component: {fileID: 278279698}
-  m_Layer: 3
-  m_Name: Grimper/Idle
-  m_TagString: Untagged
-  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &278279697
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278279696}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 613852920}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &278279698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278279696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcb26dd546e75ab4b99238c595633840, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layer:
-    serializedVersion: 2
-    m_Bits: 3649
-  rangeMax: 0.5
-  directionRaycast: {x: 0, y: 0, z: 0}
 --- !u!1 &287379129
 GameObject:
   m_ObjectHideFlags: 0
@@ -2579,8 +2526,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400666681}
-  m_LocalRotation: {x: -0.000000026774245, y: 0.96088755, z: -0.276939, w: -0.00000009289787}
-  m_LocalPosition: {x: 17.030003, y: 8.16, z: 7.94}
+  m_LocalRotation: {x: -0.00000001576968, y: 0.96088755, z: -0.276939, w: -0.00000005471563}
+  m_LocalPosition: {x: 9.600001, y: 8.014, z: -29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2838,7 +2785,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 529062784}
-  m_LocalRotation: {x: 0.000000015259248, y: 0.6926654, z: -0.7212591, w: -0.00000006900975}
+  m_LocalRotation: {x: 0.0000000066800636, y: 0.6926654, z: -0.7212591, w: -0.000000030210504}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2872,7 +2819,7 @@ PrefabInstance:
     - target: {fileID: 5574854370575994560, guid: d5058d445039b764f8898f3e8c96c24e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.808
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 5574854370575994560, guid: d5058d445039b764f8898f3e8c96c24e,
         type: 3}
@@ -2927,7 +2874,7 @@ GameObject:
   - component: {fileID: 553970976}
   - component: {fileID: 553970977}
   m_Layer: 3
-  m_Name: Grimper
+  m_Name: GrimperHit
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2941,7 +2888,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 553970975}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.4, z: 0}
+  m_LocalPosition: {x: 0, y: 1.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2963,7 +2910,7 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 3649
-  rangeMax: 0.5
+  rangeMax: 0.4
   directionRaycast: {x: 0, y: 0, z: 0}
 --- !u!1 &563193137
 GameObject:
@@ -3399,7 +3346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &613852920
 Transform:
   m_ObjectHideFlags: 0
@@ -3414,8 +3361,7 @@ Transform:
   m_Children:
   - {fileID: 196465453}
   - {fileID: 553970976}
-  - {fileID: 278279697}
-  - {fileID: 1502527558}
+  - {fileID: 1750462332}
   m_Father: {fileID: 482659217}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3468,8 +3414,6 @@ MonoBehaviour:
   interactText: Npc 4
   onInteractText: Je suis le num4
   state: 0
-  weight: 0
-  rb: {fileID: 0}
   cube: {fileID: 7459339983721684244, guid: 59da2e9d81744b64eb8afcd022a4b7ad, type: 3}
   spawnPos: {fileID: 597180650}
   topCube: {fileID: 436863109}
@@ -3579,7 +3523,7 @@ PrefabInstance:
     - target: {fileID: 4685609807112040222, guid: 6e24c86fbf4cd074c87bad4478a373b1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.04
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 4685609807112040222, guid: 6e24c86fbf4cd074c87bad4478a373b1,
         type: 3}
@@ -4780,12 +4724,12 @@ PrefabInstance:
         type: 3}
       propertyPath: raycastsClimb.Array.data[2]
       value: 
-      objectReference: {fileID: 278279698}
+      objectReference: {fileID: 1750462333}
     - target: {fileID: 4839972090948213068, guid: 7504c171e29102f4da2897b560aac698,
         type: 3}
       propertyPath: raycastsClimb.Array.data[3]
       value: 
-      objectReference: {fileID: 1502527559}
+      objectReference: {fileID: 0}
     - target: {fileID: 4839972090948213069, guid: 7504c171e29102f4da2897b560aac698,
         type: 3}
       propertyPath: hands
@@ -4819,17 +4763,17 @@ PrefabInstance:
     - target: {fileID: 4839972090948213079, guid: 7504c171e29102f4da2897b560aac698,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.03
+      value: 9.6
       objectReference: {fileID: 0}
     - target: {fileID: 4839972090948213079, guid: 7504c171e29102f4da2897b560aac698,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.16
+      value: 0.014
       objectReference: {fileID: 0}
     - target: {fileID: 4839972090948213079, guid: 7504c171e29102f4da2897b560aac698,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.06
+      value: -41
       objectReference: {fileID: 0}
     - target: {fileID: 4839972090948213079, guid: 7504c171e29102f4da2897b560aac698,
         type: 3}
@@ -5042,7 +4986,7 @@ PrefabInstance:
     - target: {fileID: 7544750868876853654, guid: 0c53ed91f59143440a48bce2cb0b7913,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.82
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 7544750868876853654, guid: 0c53ed91f59143440a48bce2cb0b7913,
         type: 3}
@@ -7039,55 +6983,6 @@ Transform:
   m_Father: {fileID: 352447765}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1502527557
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1502527558}
-  - component: {fileID: 1502527559}
-  m_Layer: 3
-  m_Name: PasPossible
-  m_TagString: Untagged
-  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1502527558
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1502527557}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 613852920}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1502527559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1502527557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcb26dd546e75ab4b99238c595633840, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layer:
-    serializedVersion: 2
-    m_Bits: 3649
-  rangeMax: 0.5
-  directionRaycast: {x: 0, y: 0, z: 0}
 --- !u!1 &1539964147
 GameObject:
   m_ObjectHideFlags: 0
@@ -7445,8 +7340,6 @@ MonoBehaviour:
   interactText: Npc 2
   onInteractText: Je suis le num2
   state: 0
-  weight: 0
-  rb: {fileID: 0}
   cube: {fileID: 7544750868876853655, guid: 0c53ed91f59143440a48bce2cb0b7913, type: 3}
   spawnPos: {fileID: 2116973178}
   topCube: {fileID: 268669972}
@@ -7756,6 +7649,55 @@ Transform:
   m_Father: {fileID: 1889005060}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1750462331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1750462332}
+  - component: {fileID: 1750462333}
+  m_Layer: 3
+  m_Name: GrimperNoHit
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1750462332
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750462331}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.55, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 613852920}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1750462333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750462331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcb26dd546e75ab4b99238c595633840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layer:
+    serializedVersion: 2
+    m_Bits: 3649
+  rangeMax: 0.4
+  directionRaycast: {x: 0, y: 0, z: 0}
 --- !u!4 &1802992265 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1954801073229870444, guid: 217aedada477a06438bca49ebed5de33,
@@ -8182,8 +8124,6 @@ MonoBehaviour:
   interactText: Npc 5
   onInteractText: Je suis le num5
   state: 0
-  weight: 0
-  rb: {fileID: 0}
   cube: {fileID: 7851100072269075750, guid: b5407df4dbd1f204d87b6acdd11df1c1, type: 3}
   spawnPos: {fileID: 1659143573}
   topCube: {fileID: 293765876}
@@ -8362,7 +8302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143089977}
   m_LocalRotation: {x: 0.4895879, y: 0.0000000076698825, z: -0.0000000043065156, w: 0.87195396}
-  m_LocalPosition: {x: 17.030003, y: 8.16, z: 7.94}
+  m_LocalPosition: {x: 9.600001, y: 8.014, z: -29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8561,7 +8501,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143555526}
-  m_LocalRotation: {x: 0.00000002126415, y: 0.71172255, z: -0.70246077, w: -0.000000085271694}
+  m_LocalRotation: {x: 0.0000000033230312, y: 0.71172255, z: -0.70246077, w: -0.000000013325752}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -46,9 +46,7 @@ public class PlayerMovement : MonoBehaviour
     public Camera cam;
     private CharacterController cc;
     private PlayerInput playerInput;
-    private Animator animator;
-
-    private PlayerClimb playerClimb;
+    public Animator animator;
 
 
     #endregion
@@ -58,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
         cc = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         animator = GetComponent<Animator>();
-        playerClimb = GetComponent<PlayerClimb>();
 
         foreach (RaycastCheck raycast in raycastsGrounds)
         {
@@ -81,12 +78,7 @@ public class PlayerMovement : MonoBehaviour
 
         Locomotion();
 
-
-        if (OnSteepSlope())
-        {
-            //Debug.Log("Here");
-            SteepSlopeMovement();
-        }
+        if (OnSteepSlope()) SteepSlopeMovement();
 
         Crouching();
 
@@ -128,8 +120,6 @@ public class PlayerMovement : MonoBehaviour
 
     private bool OnSteepSlope()
     {
-        //if (!isGrounded()) return false;
-
         float indicRaycastCheck = 0;
         foreach (RaycastCheck raycast in raycastsGrounds)
         {
@@ -191,16 +181,10 @@ public class PlayerMovement : MonoBehaviour
 
                 ySpeed = jumpForce;
                 coyoteTime = coyoteTimer;
-
-
-                //Debug.Log("je demande de grimper");
-                // On grimpe
-                //playerClimb.Climb();
             }
         }
         movement.y = ySpeed * Time.deltaTime;
 
-        //Debug.Log("jumpbug");
         cc.Move(movement);
     }
 
@@ -208,7 +192,7 @@ public class PlayerMovement : MonoBehaviour
     /// Check si le joueur est au sol
     /// </summary>
     /// <returns></returns>
-    private bool isGrounded()
+    public bool isGrounded()
     {
         int raycastGood = 0;
         foreach (RaycastCheck raycast in raycastsGrounds)

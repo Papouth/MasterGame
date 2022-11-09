@@ -1677,20 +1677,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4839972090948213078}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bcc492b4f50f284ca54a448efc1ab2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canClimb: 0
-  askToClimb: 0
-  canGrip: 0
+  isClimbing: 0
   raycastGood: 0
   raycastsClimb:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  jumpAnim: 0
+  climbAnim: 0
 --- !u!114 &4839972090948213067
 MonoBehaviour:
   m_ObjectHideFlags: 0
