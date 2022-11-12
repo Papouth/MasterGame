@@ -164,7 +164,13 @@ public class PlayerClimb : MonoBehaviour
 
             // On réalise l'animation
             playerMovement.animator.applyRootMotion = true;
-            playerMovement.animator.SetBool("FastJumpAnim", true);
+            playerMovement.animator.SetTrigger("TrFastJumpAnim");
+
+
+            // On empêche l'autre anim de pouvoir se lancer
+            playerMovement.animator.SetBool("FastJumpCheck", true); 
+
+
             StartCoroutine(ClimbEndFastJump());
 
 
@@ -179,7 +185,12 @@ public class PlayerClimb : MonoBehaviour
 
             // On réalise l'animation
             playerMovement.animator.applyRootMotion = true;
-            playerMovement.animator.SetBool("ClimbAnim", true);
+            playerMovement.animator.SetTrigger("TrClimbAnim");
+
+
+            // On empêche l'autre anim de pouvoir se lancer
+            playerMovement.animator.SetBool("ClimbCheck", true);
+
 
             StartCoroutine(ClimbEnd());
 
@@ -197,29 +208,37 @@ public class PlayerClimb : MonoBehaviour
 
     private IEnumerator ClimbEndFastJump()
     {
-        yield return new WaitForSeconds(2.05f);
+        yield return new WaitForSeconds(1.05f);
 
         isClimbing = false;
 
         // Reset des booléens
         playerMovement.animator.applyRootMotion = false;
 
-        playerMovement.animator.SetBool("FastJumpAnim", false);
+
+        playerMovement.animator.ResetTrigger("TrFastJumpAnim");
+
+
+        playerMovement.animator.SetBool("FastJumpCheck", false);
     }
 
     private IEnumerator ClimbEnd()
     {
-        yield return new WaitForSeconds(3.2f);
+        yield return new WaitForSeconds(1.2f);
 
         isClimbing = false;
 
         // Reset des booléens
         playerMovement.animator.applyRootMotion = false;
 
-        playerMovement.animator.SetBool("ClimbAnim", false);
+
+        playerMovement.animator.ResetTrigger("TrClimbAnim");
+
+
+        playerMovement.animator.SetBool("ClimbCheck", false);
     }
 
-    
+
     private void OnDrawGizmos()
     {
         foreach (RaycastCheck raycast in raycastsClimb)
