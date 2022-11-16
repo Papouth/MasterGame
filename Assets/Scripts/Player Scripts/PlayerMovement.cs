@@ -27,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Player Jump")]
     public float jumpForce = 2f;
-    public float airDrag = .5f;
     private float ySpeed = 0;
     private float coyoteTime = 0;
     [SerializeField] private float coyoteTimer = .5f;
@@ -106,16 +105,10 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             directionInput = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        }
 
-            // Animator Walk
-            //animator.SetBool("Walk", true);
-        }
-        else if (directionInput.magnitude == 0f)
-        {
-            //animator.SetBool("Walk", false);
-        }
+
         movement = directionInput.normalized * (moveSpeed * Time.deltaTime);
-
     }
 
     private bool OnSteepSlope()
@@ -182,7 +175,9 @@ public class PlayerMovement : MonoBehaviour
                 ySpeed = jumpForce;
                 coyoteTime = coyoteTimer;
             }
+
         }
+
         movement.y = ySpeed * Time.deltaTime;
 
         cc.Move(movement);

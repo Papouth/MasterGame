@@ -174,7 +174,7 @@ public class PlayerClimb : MonoBehaviour
             StartCoroutine(ClimbEndFastJump());
 
 
-            Debug.Log("J'enjambe !");
+            //Debug.Log("J'enjambe !");
 
             // On déplace le personnage à l'endroit où il doit se trouver après avoir grimpé si besoin
         }
@@ -195,14 +195,13 @@ public class PlayerClimb : MonoBehaviour
             StartCoroutine(ClimbEnd());
 
 
-            Debug.Log("je grimpe !");
+            //Debug.Log("je grimpe !");
 
             // On déplace le personnage à l'endroit où il doit se trouver après avoir grimpé si besoin
         }
         else 
         {
-            Debug.Log("impossible de grimper");
-            //isClimbing = false;
+            //Debug.Log("impossible de grimper");
         }
     }
 
