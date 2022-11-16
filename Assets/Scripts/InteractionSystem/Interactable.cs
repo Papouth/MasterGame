@@ -7,7 +7,7 @@ public abstract class Interactable : MonoBehaviour
     [SerializeField] protected string interactText;
     [SerializeField] protected string onInteractText;
 
-    [SerializeField] protected bool state;
+    //[SerializeField] protected bool state;
     [SerializeField] protected float weight;
     [SerializeField] protected Rigidbody rb;
 
@@ -44,6 +44,8 @@ public abstract class Interactable : MonoBehaviour
 
     public virtual void GoToHand(GameObject hands, PlayerInput playerInput)
     {
+        Debug.Log("gotohand");
+
         if (playerInput.CanInteract && hands.transform.childCount == 0)
         {
 
