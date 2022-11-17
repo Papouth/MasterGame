@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float turnSmoothVelocity = 0.1f;
 
+    [SerializeField] private bool isPushing;
+
 
     [Header("Player Ground")]
     public RaycastCheck[] raycastsGrounds;
@@ -274,6 +276,69 @@ public class PlayerMovement : MonoBehaviour
         cc.center = Vector3.Lerp(cc.center, new Vector3(0, center, 0), crouchSpeed);
     }
 
+    #endregion
+
+    #region Push
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody rbCol = hit.collider.attachedRigidbody;
+
+        if (rbCol != null && !rbCol.isKinematic)
+        {
+            // On joue l'animation pour pousser qui correspond au poids de l'objet
+            if (rbCol.mass < 12)
+            {
+                Debug.Log("pushing");
+
+                //animator.applyRootMotion = true;
+
+                isPushing = true;
+
+                animator.SetBool("LowPush", true);
+
+                // On règle à la bonne vitesse
+                rbCol.velocity = hit.moveDirection * 2;
+            }
+            else if (rbCol.mass >= 12 && rbCol.mass < 22)
+            {
+                Debug.Log("pushing2");
+
+                //animator.applyRootMotion = true;
+
+                isPushing = true;
+
+                animator.SetBool("MediumPush", true);
+
+                // On règle à la bonne vitesse
+                rbCol.velocity = hit.moveDirection;
+            }
+            else if (rbCol.mass >= 22 && rbCol.mass < 32)
+            {
+                Debug.Log("pushing3");
+
+                //animator.applyRootMotion = true;
+
+                isPushing = true;
+
+                animator.SetBool("HardPush", true);
+
+                // On règle à la bonne vitesse
+                rbCol.velocity = hit.moveDirection * 0.5f;
+            }
+
+            if (directionInput.magnitude < 0.1)
+            {
+                isPushing = false;
+
+                animator.SetBool("LowPush", false);
+                animator.SetBool("MediumPush", false);
+                animator.SetBool("HardPush", false);
+
+                //animator.applyRootMotion = false;
+            }
+
+        }
+    }
     #endregion
 
     private void SetAnimator()
