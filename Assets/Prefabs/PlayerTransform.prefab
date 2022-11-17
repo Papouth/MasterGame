@@ -1836,6 +1836,10 @@ MonoBehaviour:
   moveSpeed: 3
   turnSmoothTime: 0.1
   turnSmoothVelocity: 0.1
+  isPushing: 0
+  rbCol: {fileID: 0}
+  raycastPush: []
+  rangeMaxPush: 0.35
   raycastsGrounds:
   - {fileID: 4839972090209269726}
   - {fileID: 4839972092034292039}
