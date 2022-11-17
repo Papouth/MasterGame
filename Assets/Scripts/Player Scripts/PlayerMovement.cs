@@ -14,7 +14,12 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float turnSmoothVelocity = 0.1f;
 
+    [Header("Player Push")]
     [SerializeField] private bool isPushing;
+    [SerializeField] private Rigidbody rbCol;
+    public RaycastCheck[] raycastPush;
+    public float rangeMaxPush = 0.4f;
+    public LayerMask layersCanPush;
 
 
     [Header("Player Ground")]
@@ -71,6 +76,13 @@ public class PlayerMovement : MonoBehaviour
             raycast.rangeMax = rangeMaxStandUp;
             raycast.directionRaycast = Vector3.up;
         }
+
+        foreach (RaycastCheck raycast in raycastPush)
+        {
+            raycast.layer = layersCanPush;
+            raycast.rangeMax = rangeMaxPush;
+            raycast.directionRaycast = Vector3.forward;
+        }
     }
 
     private void Update()
@@ -84,6 +96,8 @@ public class PlayerMovement : MonoBehaviour
         Crouching();
 
         SetAnimator();
+        
+        PushAnimator();
     }
 
     #region PlayerMove
@@ -219,7 +233,6 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
-
     #region PlayerCrouched
 
     /// <summary>
@@ -281,7 +294,8 @@ public class PlayerMovement : MonoBehaviour
     #region Push
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        Rigidbody rbCol = hit.collider.attachedRigidbody;
+        rbCol = hit.collider.attachedRigidbody;
+
 
         if (rbCol != null && !rbCol.isKinematic)
         {
@@ -290,9 +304,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("pushing");
 
-                //animator.applyRootMotion = true;
-
-                isPushing = true;
+                //isPushing = true;
 
                 animator.SetBool("LowPush", true);
 
@@ -303,9 +315,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("pushing2");
 
-                //animator.applyRootMotion = true;
-
-                isPushing = true;
+                //isPushing = true;
 
                 animator.SetBool("MediumPush", true);
 
@@ -316,27 +326,49 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("pushing3");
 
-                //animator.applyRootMotion = true;
-
-                isPushing = true;
+                //isPushing = true;
 
                 animator.SetBool("HardPush", true);
 
                 // On règle à la bonne vitesse
                 rbCol.velocity = hit.moveDirection * 0.5f;
             }
+        }
+    }
 
-            if (directionInput.magnitude < 0.1)
-            {
-                isPushing = false;
+    private bool CanPush()
+    {
+        // Rajouter un Check avec un raycast
+        int raycastPushGood = 0;
+        foreach (RaycastCheck raycast in raycastsGrounds)
+        {
+            if (raycast.RaycastTest()) raycastPushGood++;
+        }
 
-                animator.SetBool("LowPush", false);
-                animator.SetBool("MediumPush", false);
-                animator.SetBool("HardPush", false);
 
-                //animator.applyRootMotion = false;
-            }
+        if (raycastPushGood < 0) // On ne pousse plus
+        {
+            Debug.Log("Il n'y a plus rien devant, j'arrête de pousser");
+            //isPushing = false;
 
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    private void PushAnimator()
+    {
+        CanPush();
+
+
+        if (directionInput.magnitude == 0 || !CanPush())
+        {
+            animator.SetBool("LowPush", false);
+            animator.SetBool("MediumPush", false);
+            animator.SetBool("HardPush", false);
         }
     }
     #endregion
@@ -359,6 +391,12 @@ public class PlayerMovement : MonoBehaviour
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(raycast.transform.position, raycast.transform.position + Vector3.up * rangeMaxStandUp);
+        }
+
+        foreach (RaycastCheck raycast in raycastPush)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(raycast.transform.position, raycast.transform.position + Vector3.forward * rangeMaxPush);
         }
     }
 }
