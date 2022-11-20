@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float turnSmoothVelocity = 0.1f;
 
     [Header("Player Push")]
-    [SerializeField] private bool isPushing;
     [SerializeField] private Rigidbody rbCol;
     public RaycastCheck[] raycastPush;
     public float rangeMaxPush = 0.4f;
@@ -77,11 +76,11 @@ public class PlayerMovement : MonoBehaviour
             raycast.directionRaycast = Vector3.up;
         }
 
-        foreach (RaycastCheck raycast in raycastPush)
+        foreach (RaycastCheck raycastCheck in raycastPush)
         {
-            raycast.layer = layersCanPush;
-            raycast.rangeMax = rangeMaxPush;
-            raycast.directionRaycast = Vector3.forward;
+            raycastCheck.layer = layersCanPush;
+            raycastCheck.rangeMax = rangeMaxPush;
+            raycastCheck.directionRaycast = transform.forward;
         }
     }
 
@@ -302,10 +301,6 @@ public class PlayerMovement : MonoBehaviour
             // On joue l'animation pour pousser qui correspond au poids de l'objet
             if (rbCol.mass < 12)
             {
-                Debug.Log("pushing");
-
-                //isPushing = true;
-
                 animator.SetBool("LowPush", true);
 
                 // On règle à la bonne vitesse
@@ -313,10 +308,6 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (rbCol.mass >= 12 && rbCol.mass < 22)
             {
-                Debug.Log("pushing2");
-
-                //isPushing = true;
-
                 animator.SetBool("MediumPush", true);
 
                 // On règle à la bonne vitesse
@@ -324,10 +315,6 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (rbCol.mass >= 22 && rbCol.mass < 32)
             {
-                Debug.Log("pushing3");
-
-                //isPushing = true;
-
                 animator.SetBool("HardPush", true);
 
                 // On règle à la bonne vitesse
@@ -340,32 +327,36 @@ public class PlayerMovement : MonoBehaviour
     {
         // Rajouter un Check avec un raycast
         int raycastPushGood = 0;
-        foreach (RaycastCheck raycast in raycastsGrounds)
+        foreach (RaycastCheck raycast in raycastPush)
         {
+            raycast.directionRaycast = transform.forward;
+
             if (raycast.RaycastTest()) raycastPushGood++;
+
+            Debug.Log(raycastPushGood);
         }
 
 
-        if (raycastPushGood < 0) // On ne pousse plus
+        if (raycastPushGood == 0) // On ne pousse plus
         {
             Debug.Log("Il n'y a plus rien devant, j'arrête de pousser");
-            //isPushing = false;
 
-            return false;
+            return true;
         }
         else
         {
-            return true;
+            Debug.Log("je pousse encore");
+
+            return false;
         }
     }
 
     private void PushAnimator()
     {
-        CanPush();
-
-
-        if (directionInput.magnitude == 0 || !CanPush())
+        if (directionInput.magnitude == 0 || CanPush())
         {
+            Debug.Log("STOP");
+
             animator.SetBool("LowPush", false);
             animator.SetBool("MediumPush", false);
             animator.SetBool("HardPush", false);
@@ -396,7 +387,7 @@ public class PlayerMovement : MonoBehaviour
         foreach (RaycastCheck raycast in raycastPush)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawLine(raycast.transform.position, raycast.transform.position + Vector3.forward * rangeMaxPush);
+            Gizmos.DrawLine(raycast.transform.position, raycast.transform.position + transform.forward * rangeMaxPush);
         }
     }
 }
