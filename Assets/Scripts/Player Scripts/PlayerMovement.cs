@@ -8,18 +8,10 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Player Movement")]
     public float moveSpeed = 3f;
-    private Vector3 directionInput;
+    public Vector3 directionInput;
     private Vector3 movement;
     [SerializeField] private float turnSmoothTime = 0.1f;
-
     [SerializeField] private float turnSmoothVelocity = 0.1f;
-
-    [Header("Player Push")]
-    [SerializeField] private Rigidbody rbCol;
-    public RaycastCheck[] raycastPush;
-    public float rangeMaxPush = 0.4f;
-    public LayerMask layersCanPush;
-
 
     [Header("Player Ground")]
     public RaycastCheck[] raycastsGrounds;
@@ -37,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
     private float coyoteTime = 0;
     [SerializeField] private float coyoteTimer = .5f;
 
-
     [Header("Crouch")]
     public float crouchSpeed = .3f;
     public float standHeight = 2.0f;
@@ -46,13 +37,13 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask layersCanStandUp;
     public float rangeMaxStandUp = 1.05f;
 
+    [Header("Player Capacity")]
 
     [Header("Player Component")]
     public Camera cam;
     private CharacterController cc;
     private PlayerInput playerInput;
     public Animator animator;
-
 
     #endregion
 
@@ -75,13 +66,6 @@ public class PlayerMovement : MonoBehaviour
             raycast.rangeMax = rangeMaxStandUp;
             raycast.directionRaycast = Vector3.up;
         }
-
-        foreach (RaycastCheck raycastCheck in raycastPush)
-        {
-            raycastCheck.layer = layersCanPush;
-            raycastCheck.rangeMax = rangeMaxPush;
-            raycastCheck.directionRaycast = transform.forward;
-        }
     }
 
     private void Update()
@@ -95,8 +79,6 @@ public class PlayerMovement : MonoBehaviour
         Crouching();
 
         SetAnimator();
-        
-        PushAnimator();
     }
 
     #region PlayerMove
@@ -121,7 +103,6 @@ public class PlayerMovement : MonoBehaviour
 
             directionInput = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         }
-
 
         movement = directionInput.normalized * (moveSpeed * Time.deltaTime);
     }
@@ -290,85 +271,10 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
-    #region Push
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        rbCol = hit.collider.attachedRigidbody;
-
-
-        if (rbCol != null && !rbCol.isKinematic)
-        {
-            // On joue l'animation pour pousser qui correspond au poids de l'objet
-            if (rbCol.mass < 12)
-            {
-                animator.SetBool("LowPush", true);
-
-                // On règle à la bonne vitesse
-                rbCol.velocity = hit.moveDirection * 2;
-            }
-            else if (rbCol.mass >= 12 && rbCol.mass < 22)
-            {
-                animator.SetBool("MediumPush", true);
-
-                // On règle à la bonne vitesse
-                rbCol.velocity = hit.moveDirection;
-            }
-            else if (rbCol.mass >= 22 && rbCol.mass < 32)
-            {
-                animator.SetBool("HardPush", true);
-
-                // On règle à la bonne vitesse
-                rbCol.velocity = hit.moveDirection * 0.5f;
-            }
-        }
-    }
-
-    private bool CanPush()
-    {
-        // Rajouter un Check avec un raycast
-        int raycastPushGood = 0;
-        foreach (RaycastCheck raycast in raycastPush)
-        {
-            raycast.directionRaycast = transform.forward;
-
-            if (raycast.RaycastTest()) raycastPushGood++;
-
-            Debug.Log(raycastPushGood);
-        }
-
-
-        if (raycastPushGood == 0) // On ne pousse plus
-        {
-            Debug.Log("Il n'y a plus rien devant, j'arrête de pousser");
-
-            return true;
-        }
-        else
-        {
-            Debug.Log("je pousse encore");
-
-            return false;
-        }
-    }
-
-    private void PushAnimator()
-    {
-        if (directionInput.magnitude == 0 || CanPush())
-        {
-            Debug.Log("STOP");
-
-            animator.SetBool("LowPush", false);
-            animator.SetBool("MediumPush", false);
-            animator.SetBool("HardPush", false);
-        }
-    }
-    #endregion
-
     private void SetAnimator()
     {
         animator.SetFloat("Movement", directionInput.magnitude);
     }
-
 
     private void OnDrawGizmos()
     {
@@ -382,12 +288,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(raycast.transform.position, raycast.transform.position + Vector3.up * rangeMaxStandUp);
-        }
-
-        foreach (RaycastCheck raycast in raycastPush)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(raycast.transform.position, raycast.transform.position + transform.forward * rangeMaxPush);
         }
     }
 }
