@@ -7,7 +7,6 @@ public abstract class Interactable : MonoBehaviour
     [SerializeField] protected string interactText;
     [SerializeField] protected string onInteractText;
 
-    //[SerializeField] protected bool state;
     [SerializeField] protected float weight;
     [SerializeField] protected Rigidbody rb;
 
