@@ -2005,7 +2005,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259475071}
-  m_LocalRotation: {x: -0.0000000059535754, y: 0.7022637, z: -0.7119169, w: 0.00000002531184}
+  m_LocalRotation: {x: 0.0000000019256, y: 0.7022637, z: -0.7119169, w: -0.000000008186768}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2515,7 +2515,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400666681}
-  m_LocalRotation: {x: 0.000000004765118, y: 0.96088755, z: -0.276939, w: 0.000000016533397}
+  m_LocalRotation: {x: -0.000000004765118, y: 0.96088755, z: -0.276939, w: -0.000000016533397}
   m_LocalPosition: {x: 43.82, y: 8.014, z: 5.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4312,6 +4312,7 @@ GameObject:
   - component: {fileID: 893655038}
   - component: {fileID: 893655037}
   - component: {fileID: 893655041}
+  - component: {fileID: 893655042}
   m_Layer: 8
   m_Name: GetSuperForce
   m_TagString: Untagged
@@ -4425,7 +4426,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2e4eae1e8f25c47b2c1cea1a7c8722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leverEvent:
+  interactText: 
+  onInteractText: 
+  weight: 0
+  rb: {fileID: 0}
+  statEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1018284095}
@@ -4440,6 +4445,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  statAnim: {fileID: 0}
+--- !u!135 &893655042
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893655035}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &918141805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4685609807112040222, guid: 6e24c86fbf4cd074c87bad4478a373b1,
