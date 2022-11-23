@@ -8,15 +8,17 @@ public class Npc : Interactable
     public Transform spawnPos;
     public GameObject topCube;
 
+    public Dialogue[] dialogues;
+
     public override void Awake()
     {
         topCube.SetActive(false);
     }
 
-    public override bool Interact()
+    public override bool Interact(PlayerInteractor playerInteractor)
     {
         //Debug.Log("Comment puis-je vous aider ?");
-        base.Interact();
+        base.Interact(playerInteractor);
         Instantiate(cube, spawnPos.position, spawnPos.rotation);
 
         return true;
@@ -42,8 +44,4 @@ public class Npc : Interactable
             topCube.SetActive(false);
     }
 
-    public override void GoToHand(GameObject hands, PlayerInput playerInput)
-    {
-
-    }
 }

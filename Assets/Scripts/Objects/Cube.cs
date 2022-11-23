@@ -9,15 +9,29 @@ public class Cube : Interactable
         base.Awake();
     }
 
-    public override bool Interact()
+    public override bool Interact(PlayerInteractor playerInteractor)
     {
         //Debug.Log("cube");
-
+        GoToHand(playerInteractor.hands, playerInteractor.playerInput);
         return true;
     }
-
-    public override void GoToHand(GameObject hands, PlayerInput playerInput)
+    
+    public void GoToHand(GameObject hands, PlayerInput playerInput)
     {
-        base.GoToHand(hands, playerInput);
+        Debug.Log("gotohand");
+
+        if (playerInput.CanInteract && hands.transform.childCount == 0)
+        {
+
+            gameObject.transform.SetParent(hands.transform, false);
+            gameObject.transform.position = hands.transform.position;
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
+        }
+        else if (playerInput.CanInteract && hands.transform.childCount > 0)
+        {
+            gameObject.transform.SetParent(null);
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        }
     }
 }
