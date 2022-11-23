@@ -20,7 +20,7 @@ public abstract class Interactable : MonoBehaviour
         weight = rb.mass;
     }
 
-    public virtual bool Interact()
+    public virtual bool Interact(PlayerInteractor playerInteractor)
     {
         Debug.Log(onInteractText);
         return true;
@@ -41,22 +41,4 @@ public abstract class Interactable : MonoBehaviour
             TextInfo();
     }
 
-    public virtual void GoToHand(GameObject hands, PlayerInput playerInput)
-    {
-        Debug.Log("gotohand");
-
-        if (playerInput.CanInteract && hands.transform.childCount == 0)
-        {
-
-            gameObject.transform.SetParent(hands.transform, false);
-            gameObject.transform.position = hands.transform.position;
-            gameObject.GetComponent<Rigidbody>().isKinematic = true;
-
-        }
-        else if (playerInput.CanInteract && hands.transform.childCount > 0)
-        {
-            gameObject.transform.SetParent(null);
-            gameObject.GetComponent<Rigidbody>().isKinematic = false;
-        }
-    }
 }

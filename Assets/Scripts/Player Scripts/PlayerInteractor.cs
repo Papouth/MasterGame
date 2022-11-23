@@ -14,7 +14,7 @@ public class PlayerInteractor : MonoBehaviour
     private Collider[] colliders = new Collider[5];
     private Interactable interactable;
 
-    private PlayerInput playerInput;
+    [HideInInspector] public PlayerInput playerInput;
     public GameObject hands;
 
     private void Awake()
@@ -45,8 +45,7 @@ public class PlayerInteractor : MonoBehaviour
 
             if (interactable) //Sécurité au cas ou
             {
-                interactable.Interact();
-                interactable.GoToHand(hands, playerInput);
+                interactable.Interact(this);
             }
         }
 

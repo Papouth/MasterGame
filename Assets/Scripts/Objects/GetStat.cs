@@ -10,7 +10,7 @@ public class GetStat : Interactable
     public Animation statAnim;
 
 
-    public override bool Interact()
+    public override bool Interact(PlayerInteractor playerInteractor)
     {
         //Debug.Log(onInteractText);
 
@@ -21,13 +21,9 @@ public class GetStat : Interactable
 
     public void AnimSuperForce()
     {
-        // On joue l'animation de récupération de la super force
+        // On joue l'animation de rï¿½cupï¿½ration de la super force
         statState = true;
         //statAnim.Play();
     }
 
-    public override void GoToHand(GameObject hands, PlayerInput playerInput)
-    {
-
-    }
 }

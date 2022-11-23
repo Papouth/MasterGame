@@ -11,7 +11,7 @@ public class Leviers : Interactable
     public Animation theDoorAnim;
 
 
-    public override bool Interact()
+    public override bool Interact(PlayerInteractor playerInteractor)
     {
         //Debug.Log("Levier");
 
@@ -27,8 +27,4 @@ public class Leviers : Interactable
         theDoorAnim.Play();
     }
 
-    public override void GoToHand(GameObject hands, PlayerInput playerInput)
-    {
-
-    }
 }

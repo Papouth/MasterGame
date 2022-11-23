@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Blocking - Test Couloir A-B.unity
+    path: Assets/Scenes/TestSceneAdditiv/Blocking - Test Couloir A-B.unity
     guid: 2984b0466b935304bb5701176cf73874
   - enabled: 1
-    path: Assets/Scenes/Blocking - Test B.unity
+    path: Assets/Scenes/TestSceneAdditiv/Blocking - Test B.unity
     guid: e5fe9c00c8fe0fa4a845beb79d9efd1b
   - enabled: 1
-    path: Assets/Scenes/Blocking - Test A.unity
+    path: Assets/Scenes/TestSceneAdditiv/Blocking - Test A.unity
     guid: 8c32e36add09ecf4b8b62cb52dffb077
   m_configObjects: {}
