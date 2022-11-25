@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour
     private bool canJump;
     private bool crouching;
     private bool canInteract;
+    private bool canChangeTempo;
 
     public Vector2 MoveInput => moveInput;
     public bool CanJump
@@ -18,9 +19,14 @@ public class PlayerInput : MonoBehaviour
     public bool CanInteract
     {
         get { return canInteract; }
-        set {canInteract = value;}
+        set { canInteract = value; }
     }
 
+    public bool ChangeTempo
+    {
+        get { return canChangeTempo; }
+        set { canChangeTempo = value; }
+    }
 
  
     /// <summary>
@@ -53,5 +59,10 @@ public class PlayerInput : MonoBehaviour
     public void OnInteract()
     {
         canInteract = true;
+    }
+
+    public void OnTempo()
+    {
+        canChangeTempo = true;
     }
 }
