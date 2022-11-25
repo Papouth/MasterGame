@@ -10,20 +10,16 @@ public class PlayerTemporel : MonoBehaviour
     [SerializeField] private string scenesToUnload;
     private string past = "Passé";
     private string present = "Présent";
-
     private bool sceneState;
-
 
     [Header("Player Component")]
     private PlayerInput playerInput;
-    private CharacterController cc;
 
 
     #region Built In Methods
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
-        cc = GetComponent<CharacterController>();
 
         scenesToLoad = "Passé";
         scenesToUnload = "Présent";
@@ -43,10 +39,6 @@ public class PlayerTemporel : MonoBehaviour
     {
         if (playerInput.ChangeTempo)
         {
-            Debug.Log("Tempo");
-
-
-
             // On change de temporalité
             LoadingScene();
 
@@ -65,7 +57,6 @@ public class PlayerTemporel : MonoBehaviour
                 scenesToLoad = past;
                 scenesToUnload = present;
             }
-
 
             playerInput.ChangeTempo = false;
         }
