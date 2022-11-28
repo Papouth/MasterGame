@@ -71,6 +71,15 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Break"",
+                    ""type"": ""Button"",
+                    ""id"": ""efabafaa-2529-4e78-9381-c477497c2d6e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                     ""action"": ""Tempo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""68c96919-8c23-4583-83ac-3cf4ea5e85ce"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Break"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -185,6 +205,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         m_PlayerMap_Crouch = m_PlayerMap.FindAction("Crouch", throwIfNotFound: true);
         m_PlayerMap_Interact = m_PlayerMap.FindAction("Interact", throwIfNotFound: true);
         m_PlayerMap_Tempo = m_PlayerMap.FindAction("Tempo", throwIfNotFound: true);
+        m_PlayerMap_Break = m_PlayerMap.FindAction("Break", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -249,6 +270,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMap_Crouch;
     private readonly InputAction m_PlayerMap_Interact;
     private readonly InputAction m_PlayerMap_Tempo;
+    private readonly InputAction m_PlayerMap_Break;
     public struct PlayerMapActions
     {
         private @PlayerMovementInput m_Wrapper;
@@ -258,6 +280,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         public InputAction @Crouch => m_Wrapper.m_PlayerMap_Crouch;
         public InputAction @Interact => m_Wrapper.m_PlayerMap_Interact;
         public InputAction @Tempo => m_Wrapper.m_PlayerMap_Tempo;
+        public InputAction @Break => m_Wrapper.m_PlayerMap_Break;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -282,6 +305,9 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                 @Tempo.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnTempo;
                 @Tempo.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnTempo;
                 @Tempo.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnTempo;
+                @Break.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnBreak;
+                @Break.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnBreak;
+                @Break.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnBreak;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -301,6 +327,9 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                 @Tempo.started += instance.OnTempo;
                 @Tempo.performed += instance.OnTempo;
                 @Tempo.canceled += instance.OnTempo;
+                @Break.started += instance.OnBreak;
+                @Break.performed += instance.OnBreak;
+                @Break.canceled += instance.OnBreak;
             }
         }
     }
@@ -312,5 +341,6 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnTempo(InputAction.CallbackContext context);
+        void OnBreak(InputAction.CallbackContext context);
     }
 }

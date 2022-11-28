@@ -8,8 +8,8 @@ public class PlayerTemporel : MonoBehaviour
     [Header("Scènes")]
     [SerializeField] private string scenesToLoad;
     [SerializeField] private string scenesToUnload;
-    private string past = "Passé";
-    private string present = "Présent";
+    public string past = "Passé";
+    public string present = "Présent";
     private bool sceneState;
 
     [Header("Player Component")]
@@ -21,8 +21,8 @@ public class PlayerTemporel : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
 
-        scenesToLoad = "Passé";
-        scenesToUnload = "Présent";
+        scenesToLoad = past;
+        scenesToUnload = present;
     }
 
     private void Update()

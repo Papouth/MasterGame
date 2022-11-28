@@ -4,13 +4,15 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
+    [Header("Interactable Info")]
     [SerializeField] protected string interactText;
     [SerializeField] protected string onInteractText;
 
     [SerializeField] protected float weight;
     [SerializeField] protected Rigidbody rb;
 
-    
+
+
     public virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -38,7 +40,8 @@ public abstract class Interactable : MonoBehaviour
     public virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
             TextInfo();
+        }
     }
-
 }
