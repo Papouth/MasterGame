@@ -5,7 +5,9 @@ using UnityEngine.Events;
 
 public class PlayerStats : MonoBehaviour
 {
-    [Header("Push")]
+    [Header("SuperForce")]
+    public bool haveSuperForce;
+
     private PlayerPush playerPush;
     private PlayerSuperForce playerSuperForce;
 
@@ -18,7 +20,9 @@ public class PlayerStats : MonoBehaviour
 
     public void GetSuperForce()
     {
+        Debug.Log("SuperForce récupéré");
         playerPush.enabled = false;
         playerSuperForce.enabled = true;
+        haveSuperForce = true;
     }
 }

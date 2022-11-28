@@ -8,6 +8,7 @@ public class PlayerInput : MonoBehaviour
     private bool crouching;
     private bool canInteract;
     private bool canChangeTempo;
+    private bool canDestroy;
 
     public Vector2 MoveInput => moveInput;
     public bool CanJump
@@ -28,33 +29,30 @@ public class PlayerInput : MonoBehaviour
         set { canChangeTempo = value; }
     }
 
+    public bool CanDestroy
+    {
+        get { return canDestroy; }
+        set { canDestroy = value; }
+    }
  
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="value"></param>
+
     public void OnMovement(InputValue value)
     {
         // On r�cup�re la valeur du mouvement qu'on stock dans un Vector2
         moveInput = value.Get<Vector2>();
     }
 
-    /// <summary>
-    /// Imput Du jump
-    /// </summary>
     public void OnJump()
     {
         //R�cup�ration de l'input
         canJump = true;
     }
 
-
     public void OnCrouch()
     {
         if (crouching == true) crouching = false;
         else crouching = true;
     }
-
 
     public void OnInteract()
     {
@@ -64,5 +62,16 @@ public class PlayerInput : MonoBehaviour
     public void OnTempo()
     {
         canChangeTempo = true;
+    }
+
+    public void OnBreak()
+    {
+        canDestroy = true;
+        Invoke("BreakTimer", 0.1f);
+    }
+
+    private void BreakTimer()
+    {
+        canDestroy = false;
     }
 }

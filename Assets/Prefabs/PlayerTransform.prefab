@@ -1843,6 +1843,7 @@ GameObject:
   - component: {fileID: 1475131530}
   - component: {fileID: 4055738831641373676}
   - component: {fileID: 8692826278527429158}
+  - component: {fileID: 1092801138}
   m_Layer: 3
   m_Name: PlayerTransform
   m_TagString: Player
@@ -1937,6 +1938,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   interactableCount: 0
+  playerInput: {fileID: 0}
   hands: {fileID: 2101819051}
 --- !u!114 &4839972090948213068
 MonoBehaviour:
@@ -2088,6 +2090,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52ffa0d9bd5f94d4ea8b608935f6da07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1092801138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4839972090948213078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da0f42855b5f7d429430e7aaaa5fe7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenesToLoad: 
+  scenesToUnload: 
+  past: "Pass\xE9"
+  present: "Pr\xE9sent"
 --- !u!1 &4839972091060060276
 GameObject:
   m_ObjectHideFlags: 0

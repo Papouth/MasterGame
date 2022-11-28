@@ -7,7 +7,6 @@ public class PlayerSuperForce : PlayerPush
     public float superForceMultiplier = 1.5f;
 
 
-
     public override void Awake()
     {
         base.Awake();
@@ -62,10 +61,8 @@ public class PlayerSuperForce : PlayerPush
     }
     #endregion
 
-
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
     }
-
 }
