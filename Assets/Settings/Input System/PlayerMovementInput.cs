@@ -80,6 +80,15 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Osmose"",
+                    ""type"": ""Button"",
+                    ""id"": ""917770e0-53ee-4475-bf09-6cd203f74a5b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,17 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                     ""action"": ""Break"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""824f73d7-1932-4c8c-893f-efc7d8bacfa5"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Osmose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -206,6 +226,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         m_PlayerMap_Interact = m_PlayerMap.FindAction("Interact", throwIfNotFound: true);
         m_PlayerMap_Tempo = m_PlayerMap.FindAction("Tempo", throwIfNotFound: true);
         m_PlayerMap_Break = m_PlayerMap.FindAction("Break", throwIfNotFound: true);
+        m_PlayerMap_Osmose = m_PlayerMap.FindAction("Osmose", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -271,6 +292,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMap_Interact;
     private readonly InputAction m_PlayerMap_Tempo;
     private readonly InputAction m_PlayerMap_Break;
+    private readonly InputAction m_PlayerMap_Osmose;
     public struct PlayerMapActions
     {
         private @PlayerMovementInput m_Wrapper;
@@ -281,6 +303,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_PlayerMap_Interact;
         public InputAction @Tempo => m_Wrapper.m_PlayerMap_Tempo;
         public InputAction @Break => m_Wrapper.m_PlayerMap_Break;
+        public InputAction @Osmose => m_Wrapper.m_PlayerMap_Osmose;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -308,6 +331,9 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                 @Break.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnBreak;
                 @Break.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnBreak;
                 @Break.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnBreak;
+                @Osmose.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOsmose;
+                @Osmose.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOsmose;
+                @Osmose.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOsmose;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -330,6 +356,9 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                 @Break.started += instance.OnBreak;
                 @Break.performed += instance.OnBreak;
                 @Break.canceled += instance.OnBreak;
+                @Osmose.started += instance.OnOsmose;
+                @Osmose.performed += instance.OnOsmose;
+                @Osmose.canceled += instance.OnOsmose;
             }
         }
     }
@@ -342,5 +371,6 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnTempo(InputAction.CallbackContext context);
         void OnBreak(InputAction.CallbackContext context);
+        void OnOsmose(InputAction.CallbackContext context);
     }
 }
