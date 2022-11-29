@@ -9,6 +9,9 @@ public class Npc : Interactable
     public GameObject topCube;
 
     public Dialogue[] dialogues;
+    public DialogueManager manager;
+
+
 
     public override void Awake()
     {
@@ -26,14 +29,20 @@ public class Npc : Interactable
 
     public override void TextInfo()
     {
-        base.TextInfo();
+        //base.TextInfo();
     }
 
     public override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
         if (other.CompareTag("Player"))
+        {
             topCube.SetActive(true);
+
+
+            //manager.StartDialogue(dialogues);
+
+        }
 
         //Action sur UI
     }
@@ -41,7 +50,9 @@ public class Npc : Interactable
     public void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
             topCube.SetActive(false);
+        }
     }
 
 }

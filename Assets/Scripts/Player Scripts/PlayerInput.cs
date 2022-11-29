@@ -3,13 +3,18 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
+    #region Variables
     private Vector2 moveInput;
     private bool canJump;
     private bool crouching;
     private bool canInteract;
     private bool canChangeTempo;
     private bool canDestroy;
+    private bool canOsmose;
+    #endregion
 
+
+    #region Bool Functions
     public Vector2 MoveInput => moveInput;
     public bool CanJump
     {
@@ -34,17 +39,26 @@ public class PlayerInput : MonoBehaviour
         get { return canDestroy; }
         set { canDestroy = value; }
     }
- 
 
+    public bool CanOsmose
+    {
+        get { return canOsmose; }
+        set { canOsmose = value; }
+    }
+
+    #endregion
+
+
+    #region Functions
     public void OnMovement(InputValue value)
     {
-        // On r�cup�re la valeur du mouvement qu'on stock dans un Vector2
+        // On récupère la valeur du mouvement qu'on stock dans un Vector2
         moveInput = value.Get<Vector2>();
     }
 
     public void OnJump()
     {
-        //R�cup�ration de l'input
+        // Récupération de l'input
         canJump = true;
     }
 
@@ -74,4 +88,11 @@ public class PlayerInput : MonoBehaviour
     {
         canDestroy = false;
     }
+
+    public void OnOsmose()
+    {
+        canOsmose = true;
+    }
+
+    #endregion
 }

@@ -10,19 +10,15 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
     public float speedDisplay;
 
+    public PlayerInput playerInput;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         InstanceDialogue = this;
         sentences = new Queue<string>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     #region Dialogue
 
@@ -79,7 +75,7 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(speedDisplay);
         }
 
-        yield return WaitForKeyDown(KeyCode.Space);
+        yield return WaitForKeyDown(playerInput.CanDestroy);
 
         DisplayNextSentece(dialogue);
     }
@@ -87,11 +83,10 @@ public class DialogueManager : MonoBehaviour
     /// <summary>
     /// wait for a key press to next display sentence
     /// </summary>
-    /// <param name="keyCode"></param>
     /// <returns></returns>
-    public IEnumerator WaitForKeyDown(KeyCode keyCode)
+    public IEnumerator WaitForKeyDown(bool canDestroy)
     {
-        while (!Input.GetKeyDown(keyCode))
+        while (!canDestroy)
         {
             Debug.Log("Waiting key");
             yield return null;
@@ -120,5 +115,3 @@ public class Dialogue
     [TextArea(3, 10)]
     public string[] sentences;
 }
-
-

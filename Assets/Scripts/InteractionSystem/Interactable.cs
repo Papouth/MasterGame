@@ -24,13 +24,13 @@ public abstract class Interactable : MonoBehaviour
 
     public virtual bool Interact(PlayerInteractor playerInteractor)
     {
-        Debug.Log(onInteractText);
+        //Debug.Log(onInteractText);
         return true;
     }
 
     public virtual void TextInfo()
     {
-        Debug.Log(interactText);
+       // Debug.Log(interactText);
     }
 
     /// <summary
