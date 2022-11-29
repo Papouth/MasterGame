@@ -8,7 +8,7 @@ public class Npc : Interactable
     public Transform spawnPos;
     public GameObject topCube;
 
-    public Dialogue[] dialogues;
+    public Dialogue dialogues;
     public DialogueManager manager;
 
 
@@ -40,7 +40,7 @@ public class Npc : Interactable
             topCube.SetActive(true);
 
 
-            //manager.StartDialogue(dialogues);
+            manager.StartDialogue(dialogues);
 
         }
 
