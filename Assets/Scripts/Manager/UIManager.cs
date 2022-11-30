@@ -10,6 +10,12 @@ public class UIManager : MonoBehaviour
 
     public TextMeshProUGUI dialogueText;
 
+    private void Awake()
+    {
+        if (!UIInstance)
+            UIInstance = this;
+    }
+
     public void MajTextDialogue(string sentences)
     {
         dialogueText.text = sentences;
@@ -19,5 +25,4 @@ public class UIManager : MonoBehaviour
     {
         dialogueUI.SetActive(enabled);
     }
-
 }

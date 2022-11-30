@@ -39,9 +39,7 @@ public class Npc : Interactable
         {
             topCube.SetActive(true);
 
-
             manager.StartDialogue(dialogues);
-
         }
 
         //Action sur UI
@@ -52,7 +50,8 @@ public class Npc : Interactable
         if (other.CompareTag("Player"))
         {
             topCube.SetActive(false);
+
+            manager.EndDialogue();
         }
     }
-
 }
