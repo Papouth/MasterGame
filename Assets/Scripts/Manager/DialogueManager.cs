@@ -17,6 +17,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         InstanceDialogue = this;
+        UIInstance = UIManager.UIInstance;
         sentences = new Queue<string>();
     }
 
@@ -76,7 +77,8 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(speedDisplay);
         }
 
-        yield return WaitForKeyDown(playerInput.CanDestroy);
+        //yield return WaitForKeyDown(playerInput.);
+        yield return new WaitForSeconds(2f);
 
         DisplayNextSentece(dialogue);
     }
@@ -92,7 +94,6 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("Waiting key");
             yield return null;
         }
-        Debug.Log("go");
     }
 
     /// <summary>
