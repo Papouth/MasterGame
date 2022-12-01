@@ -10,7 +10,7 @@ public class PlayerTemporel : MonoBehaviour
     [SerializeField] private string scenesToUnload;
     public string past = "Passé";
     public string present = "Présent";
-    private bool sceneState;
+    public bool sceneState;
 
 
     [Header("Player Component")]
