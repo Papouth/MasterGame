@@ -12,6 +12,7 @@ public class PlayerTemporel : MonoBehaviour
     public string present = "Présent";
     private bool sceneState;
 
+
     [Header("Player Component")]
     private PlayerInput playerInput;
 
@@ -63,7 +64,7 @@ public class PlayerTemporel : MonoBehaviour
     }
 
     /// <summary>
-    /// Loading the scenes of the 
+    /// Loading the scenes 
     /// </summary>
     private void LoadingScene()
     {
