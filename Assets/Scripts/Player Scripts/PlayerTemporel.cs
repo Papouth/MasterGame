@@ -22,6 +22,11 @@ public class PlayerTemporel : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
 
+        SceneManager.LoadScene(past, LoadSceneMode.Additive);
+        SceneManager.LoadScene(present, LoadSceneMode.Additive);
+
+        PastSceneAtStart();
+
         scenesToLoad = past;
         scenesToUnload = present;
     }
@@ -31,6 +36,17 @@ public class PlayerTemporel : MonoBehaviour
         ChangeTempo();
     }
     #endregion
+
+    private void PastSceneAtStart()
+    {
+        Scene pastScene = SceneManager.GetSceneByName(past);
+
+        GameObject[] pastUnload = pastScene.GetRootGameObjects();
+        foreach (var item in pastUnload)
+        {
+            item.SetActive(false);
+        }
+    }
 
 
     /// <summary>
@@ -70,10 +86,26 @@ public class PlayerTemporel : MonoBehaviour
     {
         Scene scene = SceneManager.GetSceneByName(scenesToLoad);
 
+        GameObject[] goSceneLoad = scene.GetRootGameObjects();
+        foreach (var item in goSceneLoad)
+        {
+            item.SetActive(true);
+        }
+
+
+        Scene unloadScene = SceneManager.GetSceneByName(scenesToUnload);
+        GameObject[] goSceneUnload = unloadScene.GetRootGameObjects();
+        foreach (var item in goSceneUnload)
+        {
+            item.SetActive(false);
+        }
+
+        /*
         if (!scene.isLoaded)
         {
             SceneManager.LoadScene(scenesToLoad, LoadSceneMode.Additive);
             SceneManager.UnloadSceneAsync(scenesToUnload);
         }
+        */
     }
 }
