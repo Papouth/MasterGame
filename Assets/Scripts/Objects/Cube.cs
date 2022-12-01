@@ -12,10 +12,11 @@ public class Cube : Interactable
     public override bool Interact(PlayerInteractor playerInteractor)
     {
         //Debug.Log("cube");
-        GoToHand(playerInteractor.hands, playerInteractor.playerInput);
+        //GoToHand(playerInteractor.hands, playerInteractor.playerInput);
         return true;
     }
     
+    /*
     public void GoToHand(GameObject hands, PlayerInput playerInput)
     {
         Debug.Log("gotohand");
@@ -34,4 +35,5 @@ public class Cube : Interactable
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
+    */
 }

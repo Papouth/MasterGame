@@ -14,12 +14,14 @@ public class PlayerClimb : MonoBehaviour
 
     [Header("Player Component")]
     private PlayerMovement playerMovement;
+    private PlayerInteractor playerInteractor;
 
 
 
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        playerInteractor = GetComponent<PlayerInteractor>();
 
         foreach (RaycastCheck raycastCheck in raycastsClimb)
         {
@@ -29,7 +31,7 @@ public class PlayerClimb : MonoBehaviour
 
     private void Update()
     {
-        if (!playerMovement.isGrounded()) ClimbChecker();
+        if (!playerMovement.isGrounded() && playerInteractor.hands.transform.childCount == 0) ClimbChecker();
 
         if (isClimbing)
         {
