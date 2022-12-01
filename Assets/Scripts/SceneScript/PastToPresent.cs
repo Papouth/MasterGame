@@ -4,15 +4,24 @@ using UnityEngine.SceneManagement;
 
 public class PastToPresent : MonoBehaviour
 {
+    #region Variables
     [Header("Component")]
-    [SerializeField] private Rigidbody rb; 
+    [SerializeField] private Rigidbody rb;
+
+    [Tooltip("Le prefab du passé")]
+    public GameObject pastPrefab;
+
+    [Tooltip("Le prefab du présent")]
+    public GameObject presentPrefab;
+
 
     [Header("Scenes Infos")]
     [SerializeField] private bool isPresent;
+    private bool prefabState;
 
     [Header("Player Components")]
     private PlayerTemporel playerTemporel;
-
+    #endregion
 
     #region Built In Methods
     private void Awake()
@@ -23,6 +32,13 @@ public class PastToPresent : MonoBehaviour
 
         // On commence dans le présent
         isPresent = true;
+
+        if (prefabState)
+        {
+            // On désactive le prefab du passé
+            pastPrefab.SetActive(false);
+            prefabState = !prefabState;
+        }
     }
 
     private void Update()
@@ -46,11 +62,29 @@ public class PastToPresent : MonoBehaviour
         {
             //Debug.Log("On est dans le présent");
             isPresent = true;
+
+
+            // Si je n'ai pas encore modifier le prefab
+            if (prefabState)
+            {
+                pastPrefab.SetActive(false);
+                presentPrefab.SetActive(true);
+                prefabState = !prefabState;
+            }
         }
         else if (playerTemporel.sceneState)
         {
             //Debug.Log("On est dans le passé");
             isPresent = false;
+
+
+            // Si je n'ai pas encore modifier le prefab
+            if (!prefabState)
+            {
+                presentPrefab.SetActive(false);
+                pastPrefab.SetActive(true);
+                prefabState = !prefabState;
+            }
         }
     }
 
