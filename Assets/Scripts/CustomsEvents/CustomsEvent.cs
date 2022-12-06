@@ -21,6 +21,10 @@ public class CustomsEvent : MonoBehaviour
         
     }
 
-    public virtual bool isCompleted();
-    public virtual bool OnComplete();
+    public virtual bool isCompleted(){
+        return false;
+    }
+    public virtual bool OnComplete(){
+        return false;
+    }
 }
