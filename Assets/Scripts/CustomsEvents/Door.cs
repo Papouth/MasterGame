@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : CustomsEvent
+public class Door : MonoBehaviour
 {
     public Plaque[] plaques;
     private Animator doorAnimator;
