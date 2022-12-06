@@ -1130,7 +1130,6 @@ MonoBehaviour:
     sentences:
     - "Bonjour Aventuri\xE8re !\n\nJe suis le porteur de cube orange ! Comment puis-je
       t'aider ?"
-  manager: {fileID: 2023211965}
 --- !u!135 &166885227
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1205,7 +1204,6 @@ MonoBehaviour:
       t'aider ?"
     - "Oh je vois ! \n\nTu cherches \xE0 r\xE9cup\xE9rer un cube blanc n'est ce pas
       ?"
-  manager: {fileID: 2023211965}
 --- !u!136 &260139442
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1614,7 +1612,6 @@ MonoBehaviour:
     npcName: 
     npcNameImage: {fileID: 0}
     sentences: []
-  manager: {fileID: 2023211965}
 --- !u!136 &674750195
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3288,7 +3285,6 @@ MonoBehaviour:
     npcName: 
     npcNameImage: {fileID: 0}
     sentences: []
-  manager: {fileID: 2023211965}
 --- !u!136 &1632319209
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3853,7 +3849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedDisplay: 0.05
   playerInput: {fileID: 1018284096}
-  UIInstance: {fileID: 0}
+  UIInstance: {fileID: 2023211967}
 --- !u!4 &2023211966
 Transform:
   m_ObjectHideFlags: 0
@@ -3958,7 +3954,6 @@ MonoBehaviour:
     npcName: 
     npcNameImage: {fileID: 0}
     sentences: []
-  manager: {fileID: 2023211965}
 --- !u!136 &2078388037
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4120,12 +4115,12 @@ PrefabInstance:
     - target: {fileID: 717258714208610850, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.000000046715993
+      value: -0.000000013325763
       objectReference: {fileID: 0}
     - target: {fileID: 717258714208610850, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000011649538
+      value: 0.0000000033230334
       objectReference: {fileID: 0}
     - target: {fileID: 717258715556111211, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}

@@ -2,7 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Interactable : MonoBehaviour
+
+public interface IInteractable
+{
+    public bool Interact(PlayerInteractor playerInteractor);
+}
+
+public abstract class CustomsTriggers : MonoBehaviour, IInteractable
 {
     [Header("Interactable Info")]
     [SerializeField] protected string interactText;
