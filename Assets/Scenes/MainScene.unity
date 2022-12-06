@@ -987,6 +987,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a45c85afa876b0439cc68be8e4a2fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weight: 0
+  rb: {fileID: 0}
   cubeColor:
     serializedVersion: 2
     m_Bits: 2048
@@ -1117,8 +1119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed3636d3e0f4b0f44b95bc30ebb786f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: Npc 1
-  onInteractText: Je suis le num1
   weight: 0
   rb: {fileID: 0}
   cube: {fileID: 4685609807112040223, guid: 6e24c86fbf4cd074c87bad4478a373b1, type: 3}
@@ -1189,8 +1189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed3636d3e0f4b0f44b95bc30ebb786f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: Npc 3
-  onInteractText: Je suis le num3
   weight: 0
   rb: {fileID: 0}
   cube: {fileID: 5574854370575994575, guid: d5058d445039b764f8898f3e8c96c24e, type: 3}
@@ -1601,8 +1599,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed3636d3e0f4b0f44b95bc30ebb786f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: Npc 4
-  onInteractText: Je suis le num4
   weight: 0
   rb: {fileID: 0}
   cube: {fileID: 7459339983721684244, guid: 59da2e9d81744b64eb8afcd022a4b7ad, type: 3}
@@ -2994,6 +2990,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a45c85afa876b0439cc68be8e4a2fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weight: 0
+  rb: {fileID: 0}
   cubeColor:
     serializedVersion: 2
     m_Bits: 1024
@@ -3224,6 +3222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a45c85afa876b0439cc68be8e4a2fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weight: 0
+  rb: {fileID: 0}
   cubeColor:
     serializedVersion: 2
     m_Bits: 512
@@ -3274,8 +3274,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed3636d3e0f4b0f44b95bc30ebb786f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: Npc 2
-  onInteractText: Je suis le num2
   weight: 0
   rb: {fileID: 0}
   cube: {fileID: 7544750868876853655, guid: 0c53ed91f59143440a48bce2cb0b7913, type: 3}
@@ -3551,8 +3549,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1feddfe2f8ea4c40b085747d2d9b113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: 
-  onInteractText: 
   weight: 0
   rb: {fileID: 0}
   isDestroyable: 0
@@ -3943,8 +3939,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed3636d3e0f4b0f44b95bc30ebb786f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: Npc 5
-  onInteractText: Je suis le num5
   weight: 0
   rb: {fileID: 0}
   cube: {fileID: 7851100072269075750, guid: b5407df4dbd1f204d87b6acdd11df1c1, type: 3}
@@ -4125,12 +4119,12 @@ PrefabInstance:
     - target: {fileID: 717258715556111211, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.000000013369014
+      value: -0.00000004686762
       objectReference: {fileID: 0}
     - target: {fileID: 717258715556111211, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0000000031445118
+      value: 0.000000011023688
       objectReference: {fileID: 0}
     - target: {fileID: 717258715682608598, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
@@ -4140,12 +4134,12 @@ PrefabInstance:
     - target: {fileID: 717258715682608598, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.000000021648843
+      value: -0.00000005471563
       objectReference: {fileID: 0}
     - target: {fileID: 717258715682608598, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.000000006239447
+      value: -0.00000001576968
       objectReference: {fileID: 0}
     - target: {fileID: 717258715791264468, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}

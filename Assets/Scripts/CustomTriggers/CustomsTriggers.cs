@@ -10,14 +10,8 @@ public interface IInteractable
 
 public abstract class CustomsTriggers : MonoBehaviour, IInteractable
 {
-    [Header("Interactable Info")]
-    [SerializeField] protected string interactText;
-    [SerializeField] protected string onInteractText;
-
     [SerializeField] protected float weight;
     [SerializeField] protected Rigidbody rb;
-
-
 
     public virtual void Awake()
     {
