@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GetStat : Interactable
+public class GetStat : CustomsTriggers
 {
     public UnityEvent statEvent;
     private bool statState;

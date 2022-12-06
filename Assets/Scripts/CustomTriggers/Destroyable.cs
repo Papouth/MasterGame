@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Destroyable : Interactable
+public class Destroyable : CustomsTriggers
 {
     public bool isDestroyable;
 
@@ -11,7 +11,6 @@ public class Destroyable : Interactable
     private PlayerStats playerStats;
     private Animator anim;
     private bool playerCheck;
-
 
     public override void Awake()
     {

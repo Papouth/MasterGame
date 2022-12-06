@@ -14,7 +14,7 @@ public class DialogueManager : MonoBehaviour
     public UIManager UIInstance;
 
 
-    void Start()
+    void Awake()
     {
         InstanceDialogue = this;
         UIInstance = UIManager.UIInstance;
