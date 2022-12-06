@@ -109,7 +109,7 @@ Material:
     - _AmbientOcclusion: 1
     - _Anim_Decal: 0.015
     - _Anim_Timer: 2
-    - _Bush_Wind_Strenght: 0.15
+    - _Bush_Wind_Strenght: 0.07
     - _Emissive_Strenght: 1
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -122,7 +122,7 @@ Material:
     m_Colors:
     - Color_8ddd00ec131d470b9208e25612504d9e: {r: 0, g: 0.6, b: 1, a: 1}
     - Vector2_0f9af665572340848c744bd9d98cabbc: {r: 3, g: 3, b: 0, a: 0}
-    - _Bush_Wind_Offset: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _Bush_Wind_Offset: {r: 1, g: 1, b: 0, a: 0}
     - _Shadow_Color: {r: 0.9056604, g: 0.14951938, b: 0.14951938, a: 1}
     - _Texture_Color: {r: 1, g: 1, b: 1, a: 0}
     - _Texture_Tiling: {r: 1, g: 1, b: 0, a: 0}
