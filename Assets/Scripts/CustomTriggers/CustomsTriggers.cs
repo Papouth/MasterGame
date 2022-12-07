@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Interactable : MonoBehaviour
-{
-    [Header("Interactable Info")]
-    [SerializeField] protected string interactText;
-    [SerializeField] protected string onInteractText;
 
+public interface IInteractable
+{
+    public bool Interact(PlayerInteractor playerInteractor);
+}
+
+public abstract class CustomsTriggers : MonoBehaviour, IInteractable
+{
     [SerializeField] protected float weight;
     [SerializeField] protected Rigidbody rb;
-
-
 
     public virtual void Awake()
     {

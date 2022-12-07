@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class Leviers : Interactable
+public class Leviers : CustomsTriggers
 {
     public UnityEvent leverEvent;
     private bool doorOpen;

@@ -7,8 +7,6 @@ public class Door : MonoBehaviour
     public Plaque[] plaques;
     private Animator doorAnimator;
 
-
-
     private void Awake()
     {
         doorAnimator = GetComponentInChildren<Animator>();

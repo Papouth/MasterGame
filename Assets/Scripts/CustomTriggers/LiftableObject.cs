@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cube : Interactable
+public class LiftableObject : CustomsTriggers
 {
     public override void Awake()
     {

@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Npc : Interactable
+public class Npc : CustomsTriggers
 {
     public GameObject cube;
     public Transform spawnPos;
     public GameObject topCube;
 
     public Dialogue dialogues;
-    public DialogueManager manager;
-
-
+    private DialogueManager manager;
 
     public override void Awake()
     {
+        if(DialogueManager.InstanceDialogue)
+        manager = DialogueManager.InstanceDialogue;
+        else Debug.LogError("Pas de dialogue manager ?");
+        
         topCube.SetActive(false);
     }
 

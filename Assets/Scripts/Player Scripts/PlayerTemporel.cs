@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class PlayerTemporel : MonoBehaviour
 {
-    [Header("Scènes")]
+    [Header("Scï¿½nes")]
     [SerializeField] private string scenesToLoad;
     [SerializeField] private string scenesToUnload;
-    public string past = "Passé";
-    public string present = "Présent";
+    public string past = "Passï¿½";
+    public string present = "Prï¿½sent";
     public bool sceneState;
 
 
@@ -21,7 +21,12 @@ public class PlayerTemporel : MonoBehaviour
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+    }
 
+    private void Start()
+    {
+        if(past == null || present == null) return;
+        
         SceneManager.LoadScene(past, LoadSceneMode.Additive);
         SceneManager.LoadScene(present, LoadSceneMode.Additive);
 
@@ -29,6 +34,7 @@ public class PlayerTemporel : MonoBehaviour
 
         scenesToLoad = past;
         scenesToUnload = present;
+
     }
 
     private void Update()
@@ -56,21 +62,21 @@ public class PlayerTemporel : MonoBehaviour
     {
         if (playerInput.ChangeTempo)
         {
-            // On change de temporalité
+            // On change de temporalitï¿½
             LoadingScene();
 
             sceneState = !sceneState;
 
-            // Une fois changé de tempo on inverse les scènes
+            // Une fois changï¿½ de tempo on inverse les scï¿½nes
             if (sceneState)
             {
-                // On est dans le passé
+                // On est dans le passï¿½
                 scenesToLoad = present;
                 scenesToUnload = past;
             }
             else if (!sceneState)
             {
-                // On est dans le présent
+                // On est dans le prï¿½sent
                 scenesToLoad = past;
                 scenesToUnload = present;
             }

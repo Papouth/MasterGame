@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Plaque : MonoBehaviour
+public class Plaque : CustomsTriggers
 {
     public LayerMask cubeColor;
     public bool valid;
@@ -12,7 +12,7 @@ public class Plaque : MonoBehaviour
         RayChecker();
     }
 
-    private void RayChecker()
+    public void RayChecker()
     {
         Debug.DrawRay(transform.position, Vector3.up, Color.blue);
 
@@ -25,4 +25,6 @@ public class Plaque : MonoBehaviour
             valid = false;
         }
     }
+
+    
 }
