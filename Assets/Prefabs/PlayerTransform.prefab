@@ -1845,6 +1845,7 @@ GameObject:
   - component: {fileID: 8692826278527429158}
   - component: {fileID: 1092801138}
   - component: {fileID: 3498642365606399822}
+  - component: {fileID: 5488210363937726674}
   m_Layer: 3
   m_Name: PlayerTransform
   m_TagString: Player
@@ -2108,6 +2109,7 @@ MonoBehaviour:
   scenesToUnload: 
   past: "Pass\xE9"
   present: "Pr\xE9sent"
+  sceneState: 0
 --- !u!114 &3498642365606399822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2154,6 +2156,21 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &5488210363937726674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4839972090948213078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7dc84c403ce39448bacbe4d10a89f35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useIK: 0
+  leftHandIK: 0
+  rightHandIK: 0
 --- !u!1 &4839972091060060276
 GameObject:
   m_ObjectHideFlags: 0
