@@ -14,7 +14,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -22,9 +22,9 @@ public class PlayerNewClimbSystem : MonoBehaviour
         RaycastHit LeftHit;
         RaycastHit RightHit;
 
-
+        
         // LeftHandIKCheck
-        if (Physics.Raycast(transform.position + new Vector3(0f, 2f, 0.5f), -transform.up + new Vector3(-0.5f, 0f, 0f), out LeftHit, 1f))
+        if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(0f, 2f, 0.5f)), -transform.up + transform.TransformDirection(new Vector3(-0.5f, 0f, 0f)), out LeftHit, 1f))
         {
             leftHandIK = true;
         }
@@ -35,7 +35,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
 
         // RightHandIKCheck
-        if (Physics.Raycast(transform.position + new Vector3(0f, 2f, 0.5f), -transform.up + new Vector3(0.5f, 0f, 0f), out RightHit, 1f))
+        if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(0f, 2f, 0.5f)), -transform.up + transform.TransformDirection(new Vector3(0.5f, 0f, 0f)), out RightHit, 1f))
         {
             rightHandIK = true;
         }
@@ -48,8 +48,8 @@ public class PlayerNewClimbSystem : MonoBehaviour
     private void Update()
     {
         // LeftRay
-        Debug.DrawRay(transform.position + new Vector3(0f, 2f, 0.5f), -transform.up + new Vector3(-0.5f, 0f, 0f), Color.green);
+        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(0f, 2f, 0.5f)), -transform.up + transform.TransformDirection(new Vector3(-0.5f, 0f, 0f)), Color.green);
         // RightRay
-        Debug.DrawRay(transform.position + new Vector3(0f, 2f, 0.5f), -transform.up + new Vector3(0.5f, 0f, 0f), Color.green);
+        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(0f, 2f, 0.5f)), -transform.up + transform.TransformDirection(new Vector3(0.5f, 0f, 0f)), Color.green);
     }
 }
