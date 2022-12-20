@@ -2171,6 +2171,12 @@ MonoBehaviour:
   useIK: 0
   leftHandIK: 0
   rightHandIK: 0
+  leftXOffset: -0.12
+  rightXOffset: 0.12
+  leftHandPos: {x: 0, y: 0, z: 0}
+  rightHandPos: {x: 0, y: 0, z: 0}
+  leftHandRot: {x: 0, y: 0, z: 0, w: 0}
+  rightHandRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4839972091060060276
 GameObject:
   m_ObjectHideFlags: 0

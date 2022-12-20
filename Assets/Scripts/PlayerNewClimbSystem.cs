@@ -10,6 +10,9 @@ public class PlayerNewClimbSystem : MonoBehaviour
     [SerializeField] private bool leftHandIK;
     [SerializeField] private bool rightHandIK;
 
+    [SerializeField] private float leftXOffset;
+    [SerializeField] private float rightXOffset;
+
     public Vector3 leftHandPos;
     public Vector3 rightHandPos;
 
@@ -28,13 +31,19 @@ public class PlayerNewClimbSystem : MonoBehaviour
     {
         RaycastHit LeftHit;
         RaycastHit RightHit;
+        RaycastHit ZPosHit;
 
         
         // LeftHandIKCheck
-        if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(0f, 2f, 0.5f)), -transform.up + transform.TransformDirection(new Vector3(-0.5f, 0f, 0f)), out LeftHit, 1f))
+        if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(leftXOffset, 2f, 0.5f)), -transform.up + transform.TransformDirection(new Vector3(-0.5f, 0f, 0f)), out LeftHit, 1f))
         {
             leftHandIK = true;
             leftHandPos = LeftHit.point;
+
+            if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(0f, 1f, 0f)), transform.forward + transform.TransformDirection(Vector3.zero), out ZPosHit, 1f))
+            {
+                leftHandPos.z = ZPosHit.point.z;
+            }
 
             //leftHandRot = Quaternion.FromToRotation(Vector3.up, transform.forward);
         }
@@ -45,10 +54,15 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
 
         // RightHandIKCheck
-        if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(0f, 2f, 0.5f)), -transform.up + transform.TransformDirection(new Vector3(0.5f, 0f, 0f)), out RightHit, 1f))
+        if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(rightXOffset, 2f, 0.5f)), -transform.up + transform.TransformDirection(new Vector3(0.5f, 0f, 0f)), out RightHit, 1f))
         {
             rightHandIK = true;
             rightHandPos = RightHit.point;
+
+            if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(0f, 1f, 0f)), transform.forward + transform.TransformDirection(Vector3.zero), out ZPosHit, 1f))
+            {
+                rightHandPos.z = ZPosHit.point.z;
+            }
 
             //rightHandRot = Quaternion.FromToRotation(Vector3.up, transform.forward);
         }
@@ -61,9 +75,12 @@ public class PlayerNewClimbSystem : MonoBehaviour
     private void Update()
     {
         // LeftRay
-        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(0f, 2f, 0.5f)), -transform.up + transform.TransformDirection(new Vector3(-0.5f, 0f, 0f)), Color.green);
+        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(leftXOffset, 2f, 0.5f)), -transform.up + transform.TransformDirection(new Vector3(-0.5f, 0f, 0f)), Color.green);
         // RightRay
-        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(0f, 2f, 0.5f)), -transform.up + transform.TransformDirection(new Vector3(0.5f, 0f, 0f)), Color.green);
+        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(rightXOffset, 2f, 0.5f)), -transform.up + transform.TransformDirection(new Vector3(0.5f, 0f, 0f)), Color.green);
+
+        // ZPosRay
+        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(0f, 1f, 0f)), transform.forward + transform.TransformDirection(Vector3.zero), Color.cyan);
     }
 
     private void OnAnimatorIK()
