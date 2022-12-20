@@ -2173,6 +2173,9 @@ MonoBehaviour:
   rightHandIK: 0
   leftXOffset: -0.12
   rightXOffset: 0.12
+  ZPosOffset: 0.065
+  XRotOffset: -15
+  YRotOffset: 180
   leftHandPos: {x: 0, y: 0, z: 0}
   rightHandPos: {x: 0, y: 0, z: 0}
   leftHandRot: {x: 0, y: 0, z: 0, w: 0}
