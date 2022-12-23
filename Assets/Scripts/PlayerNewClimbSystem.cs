@@ -159,7 +159,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
             anim.SetBool("ClimbBool", true);
         }
 
-        if (!leftHandIK && !rightHandIK)
+        if (!leftHandIK && !rightHandIK && climbStateSwitcher)
         {
             Invoke("ClimbingStateSecurity", 0.2f);
         }
@@ -206,6 +206,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
     private void ClimbingStateSecurity()
     {
+        Debug.Log("ClimbingState en faux car plus de contact avec l'IK");
         climbStateSwitcher = false;
         playerFreeze = false;
     }
@@ -218,7 +219,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
         if (climbStateSwitcher)
         {
             // Déplacements latéraux et haut
-            anim.SetFloat("Movement", playerMovement.directionInput.x);
+            anim.SetFloat("ClimbMove", playerMovement.directionInput.x);
             anim.SetFloat("Up", playerMovement.directionInput.z);
         }
     }
