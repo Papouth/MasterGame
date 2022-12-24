@@ -171,7 +171,10 @@ public class PlayerMovement : MonoBehaviour
                 // Animator Jump
                 animator.SetTrigger("TrJump");
 
-                ySpeed = jumpForce;
+                if (!playerNewClimbSystem.climbStateSwitcher)
+                {
+                    ySpeed = jumpForce;
+                }
                 coyoteTime = coyoteTimer;
             }
 
@@ -206,7 +209,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (coyoteTime >= coyoteTimer) //Temps écoulé
             {
-                // On emp�che le joueur de re-sauter instantan�ment au contact du sol
+                // On empeche le joueur de re-sauter instantanement au contact du sol
                 playerInput.CanJump = false;
                 return false;
             }
@@ -232,7 +235,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("Crouch", false);
 
 
-        if (cc.height != desiredHeight && CanStandUp())
+        if (cc.height != desiredHeight && CanStandUp() && !playerNewClimbSystem.climbStateSwitcher)
         {
             AdjustHeight(desiredHeight);
         }
