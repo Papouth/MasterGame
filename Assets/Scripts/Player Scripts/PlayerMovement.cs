@@ -183,6 +183,7 @@ public class PlayerMovement : MonoBehaviour
         movement.y = ySpeed * Time.deltaTime;
 
         cc.Move(movement);
+        animator.ResetTrigger("TrJump");
     }
 
     /// <summary>
@@ -192,6 +193,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded()
     {
         int raycastGood = 0;
+
         foreach (RaycastCheck raycast in raycastsGrounds)
         {
             if (raycast.RaycastTest()) raycastGood++;
@@ -252,6 +254,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // On check si le joueur est accroupis
             int raycastGood = 0;
+
 
             foreach (RaycastCheck raycast in raycastCanStandUp)
                 if (raycast.RaycastTest()) raycastGood++;
