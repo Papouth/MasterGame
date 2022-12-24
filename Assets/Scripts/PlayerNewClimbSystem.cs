@@ -6,7 +6,6 @@ public class PlayerNewClimbSystem : MonoBehaviour
 {
     #region Variables
     [Header("Variables")]
-    [SerializeField] private bool useIK;
     [SerializeField] private bool leftHandIK;
     [SerializeField] private bool rightHandIK;
 
@@ -14,8 +13,9 @@ public class PlayerNewClimbSystem : MonoBehaviour
     [SerializeField] private bool crossState;
     [SerializeField] private bool groundState;
 
-    private Vector3 freezePos = Vector3.zero;
-    private bool playerFreeze;
+    private Vector3 freezePos = new Vector3(0f, 0f, 0f);
+    private bool frozen;
+    private Vector3 playerPos;
 
     [Header("Position de la main")]
     [SerializeField] private float leftXOffset;
@@ -40,6 +40,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
     private Animator anim;
     private PlayerMovement playerMovement;
     private PlayerInput playerInput;
+    private CharacterController cc;
 
     #endregion
 
@@ -49,6 +50,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
         anim = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
         playerInput = GetComponent<PlayerInput>();
+        cc = GetComponent<CharacterController>();
 
         // Booléens permettant de vérifier que l'action s'éxécute une seule et unique fois
         crossState = true;
@@ -62,23 +64,47 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (!playerMovement.isGrounded())
             ShowRay();
+        */
+        ShowRay();
+
+
+        if (frozen)
+        {
+            Debug.Log("AVANT" + transform.position);
+
+            transform.position = freezePos;
+
+            Debug.Log("APRES" + transform.position);
+        }
 
         ClimbState();
 
         ClimbMovement();
-
-        Froze();
     }
     #endregion
 
-    private void Froze()
+    private void FreezePlayer()
     {
+        /*
         if (playerFreeze)
         {
-            transform.position = freezePos;
+            //transform.position = freezePos;
+            playerPos = transform.TransformDirection(new Vector3(transform.position.x, transform.position.y, freezePos.z));
+            transform.rotation = Quaternion.LookRotation(transform.forward, transform.up);
         }
+        else if (!playerFreeze)
+        {
+            playerPos = transform.position;
+            transform.rotation = Quaternion.identity;
+        }*/
+
+        freezePos = transform.position;
+
+        Debug.Log("position de freeze" + freezePos);
+        frozen = true;
     }
 
 
@@ -90,8 +116,9 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
 
         // LeftHandIKCheck
-        if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(0f, 1f, 0f)), transform.forward + transform.TransformDirection(Vector3.zero), out ZPosHit, 0.5f) && Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(leftXOffset, 2f, 0.28f)), -transform.up + transform.TransformDirection(new Vector3(-0.5f, 0f, 0f)), out LeftHit, 1f))
+        if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(0f, 1.7f, 0f)), transform.forward + transform.TransformDirection(Vector3.zero), out ZPosHit, 0.5f) && Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(leftXOffset, 2f, 0.28f)), -transform.up + transform.TransformDirection(new Vector3(-0.5f, 0f, 0f)), out LeftHit, 1f))
         {
+            /*
             // On vérifie que le joueur n'est pas au sol
             if (!playerMovement.isGrounded())
             {
@@ -106,6 +133,12 @@ public class PlayerNewClimbSystem : MonoBehaviour
                 //leftHandRot = Quaternion.FromToRotation(Vector3.forward, LeftHit.normal);
                 leftHandRot = Quaternion.LookRotation(transform.forward, LeftHit.normal);
             }
+            */
+            leftHandIK = true;
+
+            leftHandPos = new Vector3(LeftHit.point.x, LeftHit.point.y, ZPosHit.point.z) - transform.TransformDirection(leftPosOffset);
+
+            leftHandRot = Quaternion.LookRotation(transform.forward, LeftHit.normal);
         }
         else
         {
@@ -114,8 +147,9 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
 
         // RightHandIKCheck
-        if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(0f, 1f, 0f)), transform.forward + transform.TransformDirection(Vector3.zero), out ZPosHit, 0.5f) && Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(rightXOffset, 2f, 0.28f)), -transform.up + transform.TransformDirection(new Vector3(0.5f, 0f, 0f)), out RightHit, 1f))
+        if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(0f, 1.7f, 0f)), transform.forward + transform.TransformDirection(Vector3.zero), out ZPosHit, 0.5f) && Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(rightXOffset, 2f, 0.28f)), -transform.up + transform.TransformDirection(new Vector3(0.5f, 0f, 0f)), out RightHit, 1f))
         {
+            /*
             // On vérifie que le joueur n'est pas au sol
             if (!playerMovement.isGrounded())
             {
@@ -130,6 +164,12 @@ public class PlayerNewClimbSystem : MonoBehaviour
                 //rightHandRot = Quaternion.FromToRotation(-transform.up + new Vector3(XRotOffset, YRotOffset, 0f), RightHit.normal);
                 rightHandRot = Quaternion.LookRotation(transform.forward, RightHit.normal);
             }
+            */
+            rightHandIK = true;
+
+            rightHandPos = new Vector3(RightHit.point.x, RightHit.point.y, ZPosHit.point.z) - transform.TransformDirection(rightPosOffset);
+
+            rightHandRot = Quaternion.LookRotation(transform.forward, RightHit.normal);
         }
         else
         {
@@ -146,9 +186,15 @@ public class PlayerNewClimbSystem : MonoBehaviour
         {
             // On bloque la rotation du joueur quand il est accroché
             climbStateSwitcher = true;
+
+
             // On freeze le joueur
-            freezePos = transform.position;
-            playerFreeze = true;
+            FreezePlayer();
+            //playerFreeze = true;
+
+            // Capsule Collider du joueur ajustement
+            cc.height = Mathf.Lerp(cc.height, 1.25f, 0.3f);
+            cc.center = Vector3.Lerp(cc.center, new Vector3(0, 1.3f, 0), 0.3f);
 
 
             Debug.Log("On est en IdleClimb");
@@ -157,6 +203,11 @@ public class PlayerNewClimbSystem : MonoBehaviour
             // On peut donc jouer l'animation d'idle de climb
             anim.applyRootMotion = true;
             anim.SetBool("ClimbBool", true);
+        }
+
+        if (!climbStateSwitcher)
+        {
+            Debug.Log("ClimbingState en faux car plus de contact avec l'IK");
         }
 
         if (!leftHandIK && !rightHandIK && climbStateSwitcher)
@@ -206,9 +257,8 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
     private void ClimbingStateSecurity()
     {
-        Debug.Log("ClimbingState en faux car plus de contact avec l'IK");
         climbStateSwitcher = false;
-        playerFreeze = false;
+        //frozen = false;
     }
 
     /// <summary>
@@ -218,9 +268,8 @@ public class PlayerNewClimbSystem : MonoBehaviour
     {
         if (climbStateSwitcher)
         {
-            // Déplacements latéraux et haut
+            // Déplacements latéraux
             anim.SetFloat("ClimbMove", playerMovement.directionInput.x);
-            anim.SetFloat("Up", playerMovement.directionInput.z);
         }
     }
 
@@ -237,7 +286,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
         // On débloque la rotation du joueur car il n'est plus accroché
         climbStateSwitcher = false;
-        playerFreeze = false;
+        frozen = false;
 
         anim.applyRootMotion = false;
 
@@ -248,30 +297,28 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
     private void OnAnimatorIK()
     {
-        if (useIK)
+        if (leftHandIK)
         {
-            if (leftHandIK)
-            {
-                // Position
-                anim.SetIKPosition(AvatarIKGoal.LeftHand, leftHandPos);
-                anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1f);
+            // Position
+            anim.SetIKPosition(AvatarIKGoal.LeftHand, leftHandPos);
+            anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1f);
 
-                // Rotation
-                anim.SetIKRotation(AvatarIKGoal.LeftHand, leftHandRot);
-                anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1f);
-            }
-
-            if (rightHandIK)
-            {
-                // Position
-                anim.SetIKPosition(AvatarIKGoal.RightHand, rightHandPos);
-                anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1f);
-
-                // Rotation
-                anim.SetIKRotation(AvatarIKGoal.RightHand, rightHandRot);
-                anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1f);
-            }
+            // Rotation
+            anim.SetIKRotation(AvatarIKGoal.LeftHand, leftHandRot);
+            anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1f);
         }
+
+        if (rightHandIK)
+        {
+            // Position
+            anim.SetIKPosition(AvatarIKGoal.RightHand, rightHandPos);
+            anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1f);
+
+            // Rotation
+            anim.SetIKRotation(AvatarIKGoal.RightHand, rightHandRot);
+            anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1f);
+        }
+
     }
 
     #region Visual Debugger
@@ -283,7 +330,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
         Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(rightXOffset, 2f, 0.28f)), -transform.up + transform.TransformDirection(new Vector3(0.5f, 0f, 0f)), Color.green);
 
         // ZPosRay
-        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(0f, 1f, 0f)), transform.forward + transform.TransformDirection(Vector3.zero), Color.cyan);
+        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(0f, 1.7f, 0f)), transform.forward + transform.TransformDirection(Vector3.zero), Color.cyan);
     }
     #endregion
 }
