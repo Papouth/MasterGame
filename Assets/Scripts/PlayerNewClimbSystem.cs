@@ -5,22 +5,16 @@ using UnityEngine;
 public class PlayerNewClimbSystem : MonoBehaviour
 {
     #region Variables
-    [Header("Variables")]
+    [Header("IK")]
     [SerializeField] private bool leftHandIK;
     [SerializeField] private bool rightHandIK;
-
-    public bool climbStateSwitcher;
-    [SerializeField] private bool crossState;
-    [SerializeField] private bool groundState;
-
-    [Header("Freeze Position")]
-    private Vector3 freezePos = new Vector3(0f, 0f, 0f);
-    private bool frozen;
-    private Transform playerTransform;
 
     [Header("Position de la main")]
     [SerializeField] private float leftXOffset;
     [SerializeField] private float rightXOffset;
+    [SerializeField] private float yAxisHandsOffset;
+    [SerializeField] private float zAxisHandsOffset;
+    [SerializeField] private float zAxisOffset;
 
     [SerializeField] private Vector3 rightPosOffset;
     [SerializeField] private Vector3 leftPosOffset;
@@ -28,10 +22,23 @@ public class PlayerNewClimbSystem : MonoBehaviour
     public Vector3 leftHandPos;
     public Vector3 rightHandPos;
 
-
     [Header("Rotation de la main")]
     public Quaternion leftHandRot;
     public Quaternion rightHandRot;
+
+
+    [Header("ClimbStates")]
+    [SerializeField] private bool isClimbing;
+    public bool climbStateSwitcher;
+    [SerializeField] private bool crossState;
+    [SerializeField] private bool groundState;
+
+
+    [Header("Freeze Position")]
+    private Vector3 freezePos = new Vector3(0f, 0f, 0f);
+    [SerializeField] private bool frozen;
+    private Transform playerTransform;
+
 
     [Header("Player Component")]
     private Animator anim;
@@ -56,88 +63,42 @@ public class PlayerNewClimbSystem : MonoBehaviour
     private void FixedUpdate()
     {
         HandClimbCheck();
-
-        if (frozen)
-        {
-            //Debug.Log("AVANT" + transform.position.y);
-
-            transform.position = new Vector3(transform.position.x, freezePos.y, transform.position.z);
-
-            //Debug.Log("APRES" + transform.position.y);
-        }
     }
 
     private void Update()
     {
-        /*
-        if (!playerMovement.isGrounded())
-            ShowRay();
-        */
-        
+        OnClimb();
+
         ShowRay();
 
+        //ClimbState();
 
-        if (frozen)
-        {
-            //Debug.Log("AVANT" + transform.position.y);
-
-            transform.position = new Vector3(transform.position.x, freezePos.y, transform.position.z);
-
-            //Debug.Log("APRES" + transform.position.y);
-        }
-
-        ClimbState();
-
-        ClimbMovement();
+        //ClimbMovement();
     }
 
     private void LateUpdate()
     {
         if (frozen)
         {
-            //Debug.Log("AVANT" + transform.position.y);
-
             transform.position = new Vector3(transform.position.x, freezePos.y, transform.position.z);
-
-            //Debug.Log("APRES" + transform.position.y);
         }
     }
     #endregion
 
-    private void FreezePlayer()
-    {
-        /*
-        var myPos = transform.position;
-        myPos.y = transform.position.y;
 
-        freezePos.y = myPos.y;
-        */
-
-
-        //freezePos = transform.position;
-
-        playerTransform.position = transform.position;
-        freezePos.y = playerTransform.position.y;
-
-
-        Debug.Log("position de freeze" + freezePos.y);
-        frozen = true;
-    }
-
-
+    #region IK Function
     private void HandClimbCheck()
     {
-        RaycastHit LeftHit;
-        RaycastHit RightHit;
         RaycastHit ZPosHit;
 
-
-        // LeftHandIKCheck
-        if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(0f, 1.7f, 0f)), transform.forward + transform.TransformDirection(Vector3.zero), out ZPosHit, 0.5f) && Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(leftXOffset, 2f, 0.3f)), -transform.up + transform.TransformDirection(new Vector3(-0.5f, 0f, 0f)), out LeftHit, 1f))
+        // ZRayCheck
+        if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(0f, zAxisOffset, 0f)), transform.forward + transform.TransformDirection(Vector3.zero), out ZPosHit, 0.5f))
         {
-            /*
-            // On vérifie que le joueur n'est pas au sol
-            if (!playerMovement.isGrounded())
+            RaycastHit LeftHit;
+            RaycastHit RightHit;
+
+            // LeftHandIKCheck
+            if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(leftXOffset, yAxisHandsOffset, zAxisHandsOffset)), -transform.up + transform.TransformDirection(new Vector3(-0.5f, 0f, 0f)), out LeftHit, 1f))
             {
                 leftHandIK = true;
 
@@ -145,26 +106,13 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
                 leftHandRot = Quaternion.LookRotation(transform.forward, LeftHit.normal);
             }
-            */
-            
-            leftHandIK = true;
+            else
+            {
+                //leftHandIK = false;
+            }
 
-            leftHandPos = new Vector3(LeftHit.point.x, LeftHit.point.y, ZPosHit.point.z) - transform.TransformDirection(leftPosOffset);
-
-            leftHandRot = Quaternion.LookRotation(transform.forward, LeftHit.normal);
-        }
-        else
-        {
-            leftHandIK = false;
-        }
-
-
-        // RightHandIKCheck
-        if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(0f, 1.7f, 0f)), transform.forward + transform.TransformDirection(Vector3.zero), out ZPosHit, 0.5f) && Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(rightXOffset, 2f, 0.3f)), -transform.up + transform.TransformDirection(new Vector3(0.5f, 0f, 0f)), out RightHit, 1f))
-        {
-            /*
-            // On vérifie que le joueur n'est pas au sol
-            if (!playerMovement.isGrounded())
+            // RightHandIKCheck
+            if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(rightXOffset, yAxisHandsOffset, zAxisHandsOffset)), -transform.up + transform.TransformDirection(new Vector3(0.5f, 0f, 0f)), out RightHit, 1f))
             {
                 rightHandIK = true;
 
@@ -172,17 +120,39 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
                 rightHandRot = Quaternion.LookRotation(transform.forward, RightHit.normal);
             }
-            */
+            else
+            {
+                //rightHandIK = false;
+            }
 
-            rightHandIK = true;
-
-            rightHandPos = new Vector3(RightHit.point.x, RightHit.point.y, ZPosHit.point.z) - transform.TransformDirection(rightPosOffset);
-
-            rightHandRot = Quaternion.LookRotation(transform.forward, RightHit.normal);
+            if (leftHandIK && rightHandIK)
+            {
+                isClimbing = true;
+            }
         }
         else
         {
+            leftHandIK = false;
             rightHandIK = false;
+
+            isClimbing = false;
+        }
+    }
+    #endregion
+
+    private void OnClimb()
+    {
+        // Ici on va venir freeze le joueur sur l'axe Y et On va venir empecher la rotation sur cet axe lorsqu'il est en position d'IK
+        if (isClimbing)
+        {
+            playerTransform.position = transform.position;
+            freezePos.y = playerTransform.position.y;
+
+            frozen = true;
+        }
+        else
+        {
+            frozen = false;
         }
     }
 
@@ -201,8 +171,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
             anim.SetBool("ClimbBool", true);
 
             // On freeze le joueur
-            FreezePlayer();
-            //playerFreeze = true;
+            //FreezePlayer();
 
             // Capsule Collider du joueur ajustement
             cc.height = Mathf.Lerp(cc.height, 1.25f, 0.3f);
@@ -266,7 +235,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
     private void ClimbingStateSecurity()
     {
         climbStateSwitcher = false;
-        frozen = false;
+        //frozen = false;
     }
 
     /// <summary>
@@ -294,7 +263,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
         // On débloque la rotation du joueur car il n'est plus accroché
         climbStateSwitcher = false;
-        frozen = false;
+        //frozen = false;
 
         anim.applyRootMotion = false;
 
@@ -303,6 +272,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
         anim.ResetTrigger("TrClimbDropGround");
     }
 
+    #region IK
     private void OnAnimatorIK()
     {
         if (leftHandIK)
@@ -316,6 +286,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
             anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1f);
         }
 
+
         if (rightHandIK)
         {
             // Position
@@ -326,19 +297,19 @@ public class PlayerNewClimbSystem : MonoBehaviour
             anim.SetIKRotation(AvatarIKGoal.RightHand, rightHandRot);
             anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1f);
         }
-
     }
+    #endregion
 
     #region Visual Debugger
     private void ShowRay()
     {
         // LeftRay
-        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(leftXOffset, 2f, 0.3f)), -transform.up + transform.TransformDirection(new Vector3(-0.5f, 0f, 0f)), Color.green);
+        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(leftXOffset, yAxisHandsOffset, zAxisHandsOffset)), -transform.up + transform.TransformDirection(new Vector3(-0.5f, 0f, 0f)), Color.green);
         // RightRay
-        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(rightXOffset, 2f, 0.3f)), -transform.up + transform.TransformDirection(new Vector3(0.5f, 0f, 0f)), Color.green);
+        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(rightXOffset, yAxisHandsOffset, zAxisHandsOffset)), -transform.up + transform.TransformDirection(new Vector3(0.5f, 0f, 0f)), Color.green);
 
         // ZPosRay
-        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(0f, 1.7f, 0f)), transform.forward + transform.TransformDirection(Vector3.zero), Color.cyan);
+        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(0f, zAxisOffset, 0f)), transform.forward + transform.TransformDirection(Vector3.zero), Color.cyan);
     }
     #endregion
 }
