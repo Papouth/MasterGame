@@ -67,6 +67,9 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
     private void Update()
     {
+        // Si activé, on n'a plus l'effet de tremblement au détriment d'avoir l'IK qui fonctionne correctement par dessus l'animation
+        //InverseKine();
+
         OnClimb();
 
         ShowRay();
@@ -149,10 +152,16 @@ public class PlayerNewClimbSystem : MonoBehaviour
             freezePos.y = playerTransform.position.y;
 
             frozen = true;
+
+            // On joue l'animation d'Idle de climb
+            anim.SetBool("ClimbBool", true);
         }
         else
         {
             frozen = false;
+
+            // On arrête l'animation d'Idle de climb
+            anim.SetBool("ClimbBool", false);
         }
     }
 
@@ -273,6 +282,33 @@ public class PlayerNewClimbSystem : MonoBehaviour
     }
 
     #region IK
+
+    private void InverseKine()
+    {
+        if (leftHandIK)
+        {
+            // Position
+            anim.SetIKPosition(AvatarIKGoal.LeftHand, leftHandPos);
+            anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1f);
+
+            // Rotation
+            anim.SetIKRotation(AvatarIKGoal.LeftHand, leftHandRot);
+            anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1f);
+        }
+
+
+        if (rightHandIK)
+        {
+            // Position
+            anim.SetIKPosition(AvatarIKGoal.RightHand, rightHandPos);
+            anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1f);
+
+            // Rotation
+            anim.SetIKRotation(AvatarIKGoal.RightHand, rightHandRot);
+            anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1f);
+        }
+    }
+
     private void OnAnimatorIK()
     {
         if (leftHandIK)
