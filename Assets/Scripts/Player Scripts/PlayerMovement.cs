@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController cc;
     private PlayerInput playerInput;
     public Animator animator;
+    private PlayerNewClimbSystem playerNewClimbSystem;
 
     #endregion
 
@@ -52,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         cc = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         animator = GetComponent<Animator>();
+        playerNewClimbSystem = GetComponent<PlayerNewClimbSystem>();
 
         foreach (RaycastCheck raycast in raycastsGrounds)
         {
@@ -93,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
         directionInput.Set(playerInput.MoveInput.x, 0, playerInput.MoveInput.y);
         //Debug.Log(directionInput.x + directionInput.z);
 
-        if (directionInput.magnitude >= 0.1f/* && !playerNewClimbSystem.climbStateSwitcher*/)
+        if (directionInput.magnitude >= 0.1f && !playerNewClimbSystem.isClimbing)
         {
             float targetAngle = Mathf.Atan2(directionInput.x, directionInput.z) * Mathf.Rad2Deg +
                 cam.transform.eulerAngles.y;

@@ -719,7 +719,7 @@ GameObject:
   - component: {fileID: 52891538}
   - component: {fileID: 52891537}
   - component: {fileID: 52891536}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmallPlateforme (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1205,7 +1205,7 @@ GameObject:
   - component: {fileID: 152944830}
   - component: {fileID: 152944829}
   - component: {fileID: 152944828}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BigPlateforme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1653,7 +1653,7 @@ GameObject:
   - component: {fileID: 420923143}
   - component: {fileID: 420923142}
   - component: {fileID: 420923141}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmallPlateforme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1774,7 +1774,7 @@ GameObject:
   - component: {fileID: 538033639}
   - component: {fileID: 538033638}
   - component: {fileID: 538033637}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmallPlateforme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2192,7 +2192,7 @@ GameObject:
   - component: {fileID: 796404349}
   - component: {fileID: 796404348}
   - component: {fileID: 796404347}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmallPlateforme (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3081,6 +3081,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5488210363937726674, guid: 7504c171e29102f4da2897b560aac698,
         type: 3}
+      propertyPath: climbLayer.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 5488210363937726674, guid: 7504c171e29102f4da2897b560aac698,
+        type: 3}
       propertyPath: raycastsClimb.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -3596,7 +3601,7 @@ GameObject:
   - component: {fileID: 1195099926}
   - component: {fileID: 1195099925}
   - component: {fileID: 1195099924}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BigPlateforme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4408,7 +4413,7 @@ GameObject:
   - component: {fileID: 1836134476}
   - component: {fileID: 1836134475}
   - component: {fileID: 1836134474}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmallPlateforme (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4716,7 +4721,7 @@ GameObject:
   - component: {fileID: 1909879804}
   - component: {fileID: 1909879803}
   - component: {fileID: 1909879802}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BigPlateforme (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5114,12 +5119,12 @@ PrefabInstance:
     - target: {fileID: 717258714208610850, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.000000039607944
+      value: -0.0000000028387177
       objectReference: {fileID: 0}
     - target: {fileID: 717258714208610850, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.000000009877009
+      value: 7.0788886e-10
       objectReference: {fileID: 0}
     - target: {fileID: 717258714208610850, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
@@ -5134,12 +5139,12 @@ PrefabInstance:
     - target: {fileID: 717258715556111211, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.000000008186768
+      value: 0.00000002531184
       objectReference: {fileID: 0}
     - target: {fileID: 717258715556111211, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0000000019256
+      value: -0.0000000059535754
       objectReference: {fileID: 0}
     - target: {fileID: 717258715556111211, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
@@ -5169,12 +5174,12 @@ PrefabInstance:
     - target: {fileID: 717258715682608598, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.000000016533397
+      value: 0.000000016533397
       objectReference: {fileID: 0}
     - target: {fileID: 717258715682608598, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.000000004765118
+      value: 0.000000004765118
       objectReference: {fileID: 0}
     - target: {fileID: 717258715682608598, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}

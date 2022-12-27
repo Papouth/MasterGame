@@ -6,6 +6,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
 {
     #region Variables
     [Header("IK")]
+    public LayerMask climbLayer;
     [SerializeField] private bool leftHandIK;
     [SerializeField] private bool rightHandIK;
 
@@ -28,8 +29,8 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
 
     [Header("ClimbStates")]
-    [SerializeField] private bool isClimbing;
-    public bool climbStateSwitcher;
+    public bool isClimbing;
+    //public bool climbStateSwitcher;
     [SerializeField] private bool crossState;
     [SerializeField] private bool groundState;
 
@@ -67,9 +68,6 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
     private void Update()
     {
-        // Si activé, on n'a plus l'effet de tremblement au détriment d'avoir l'IK qui fonctionne correctement par dessus l'animation
-        //InverseKine();
-
         OnClimb();
 
         ShowRay();
@@ -101,7 +99,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
             RaycastHit RightHit;
 
             // LeftHandIKCheck
-            if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(leftXOffset, yAxisHandsOffset, zAxisHandsOffset)), -transform.up + transform.TransformDirection(new Vector3(-0.5f, 0f, 0f)), out LeftHit, 1f))
+            if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(leftXOffset, yAxisHandsOffset, zAxisHandsOffset)), -transform.up + transform.TransformDirection(new Vector3(-0.5f, 0f, 0f)), out LeftHit, 1f, climbLayer))
             {
                 leftHandIK = true;
 
@@ -115,7 +113,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
             }
 
             // RightHandIKCheck
-            if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(rightXOffset, yAxisHandsOffset, zAxisHandsOffset)), -transform.up + transform.TransformDirection(new Vector3(0.5f, 0f, 0f)), out RightHit, 1f))
+            if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(rightXOffset, yAxisHandsOffset, zAxisHandsOffset)), -transform.up + transform.TransformDirection(new Vector3(0.5f, 0f, 0f)), out RightHit, 1f, climbLayer))
             {
                 rightHandIK = true;
 
@@ -170,6 +168,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
     /// </summary>
     private void ClimbState()
     {
+        /*
         if (leftHandIK || rightHandIK)
         {
             // On bloque la rotation du joueur quand il est accroché
@@ -195,12 +194,13 @@ public class PlayerNewClimbSystem : MonoBehaviour
         {
             Debug.Log("ClimbingState en faux car plus de contact avec l'IK");
         }
+        */
 
         if (!leftHandIK && !rightHandIK/* && climbStateSwitcher*/)
         {
             Invoke("ClimbingStateSecurity", 0.2f);
         }
-
+        /*
         // 1) Le joueur à escaladé la structure
         if (climbStateSwitcher && playerMovement.directionInput.z == 1 && crossState)
         {
@@ -220,7 +220,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
             StartCoroutine(ClimbStop());
         }
 
-
+        
         // 2) Le joueur à décider de descendre de la structure
         if (climbStateSwitcher && playerMovement.directionInput.z == -1 && groundState)
         {
@@ -239,11 +239,12 @@ public class PlayerNewClimbSystem : MonoBehaviour
             // On reitre le apply root motion
             StartCoroutine(ClimbStop());
         }
+        */
     }
 
     private void ClimbingStateSecurity()
     {
-        climbStateSwitcher = false;
+        //climbStateSwitcher = false;
         //frozen = false;
     }
 
@@ -252,11 +253,13 @@ public class PlayerNewClimbSystem : MonoBehaviour
     /// </summary>
     private void ClimbMovement()
     {
+        /*
         if (climbStateSwitcher)
         {
             // Déplacements latéraux
             anim.SetFloat("ClimbMove", playerMovement.directionInput.x);
         }
+        */
     }
 
     /// <summary>
@@ -271,7 +274,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
         crossState = true;
 
         // On débloque la rotation du joueur car il n'est plus accroché
-        climbStateSwitcher = false;
+        //climbStateSwitcher = false;
         //frozen = false;
 
         anim.applyRootMotion = false;
@@ -282,33 +285,6 @@ public class PlayerNewClimbSystem : MonoBehaviour
     }
 
     #region IK
-
-    private void InverseKine()
-    {
-        if (leftHandIK)
-        {
-            // Position
-            anim.SetIKPosition(AvatarIKGoal.LeftHand, leftHandPos);
-            anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1f);
-
-            // Rotation
-            anim.SetIKRotation(AvatarIKGoal.LeftHand, leftHandRot);
-            anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1f);
-        }
-
-
-        if (rightHandIK)
-        {
-            // Position
-            anim.SetIKPosition(AvatarIKGoal.RightHand, rightHandPos);
-            anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1f);
-
-            // Rotation
-            anim.SetIKRotation(AvatarIKGoal.RightHand, rightHandRot);
-            anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1f);
-        }
-    }
-
     private void OnAnimatorIK()
     {
         if (leftHandIK)

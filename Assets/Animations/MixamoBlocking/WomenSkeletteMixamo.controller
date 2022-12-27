@@ -17,6 +17,7 @@ AnimatorState:
   - {fileID: 5389601668796249197}
   - {fileID: 1831632738708036940}
   - {fileID: 35562509391806413}
+  - {fileID: 7459544279056125454}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -497,6 +498,7 @@ AnimatorState:
   - {fileID: 3519624562193047600}
   - {fileID: -1762041892581635087}
   - {fileID: -4660566222958924913}
+  - {fileID: -1990668801261088868}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -513,6 +515,31 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1101 &-1990668801261088868
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: ClimbBool
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 0}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 1
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.89285713
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &-1785399248208036824
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -552,9 +579,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: ClimbBool
     m_EventTreshold: 0
-  - m_ConditionMode: 3
-    m_ConditionEvent: Movement
-    m_EventTreshold: 0.1
+  - m_ConditionMode: 4
+    m_ConditionEvent: ClimbMove
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7290117171637286038}
   m_Solo: 0
@@ -1223,8 +1250,8 @@ AnimatorStateTransition:
     m_ConditionEvent: ClimbBool
     m_EventTreshold: 0
   - m_ConditionMode: 3
-    m_ConditionEvent: Movement
-    m_EventTreshold: 0.1
+    m_ConditionEvent: ClimbMove
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8235026648822557508}
   m_Solo: 0
@@ -1717,6 +1744,34 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1101 &7459544279056125454
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: ClimbBool
+    m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: Movement
+    m_EventTreshold: 0.1
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -2252594168060290301}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.6590909
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1109 &7648248018414149130
 AnimatorTransition:
   m_ObjectHideFlags: 1

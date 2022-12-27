@@ -1901,7 +1901,7 @@ MonoBehaviour:
   - {fileID: 4839972091949608616}
   layersGround:
     serializedVersion: 2
-    m_Bits: 3649
+    m_Bits: 3777
   rangeMaxGrounded: 0.1
   stepGround: -0.1
   raycastLenghtCheck: 1
@@ -2168,6 +2168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7dc84c403ce39448bacbe4d10a89f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  climbLayer:
+    serializedVersion: 2
+    m_Bits: 0
   leftHandIK: 0
   rightHandIK: 0
   leftXOffset: 0
@@ -2181,9 +2184,11 @@ MonoBehaviour:
   rightHandPos: {x: 0, y: 0, z: 0}
   leftHandRot: {x: 0, y: 0, z: 0, w: 0}
   rightHandRot: {x: 0, y: 0, z: 0, w: 0}
+  isClimbing: 0
   climbStateSwitcher: 0
   crossState: 0
   groundState: 0
+  frozen: 0
 --- !u!1 &4839972091060060276
 GameObject:
   m_ObjectHideFlags: 0
