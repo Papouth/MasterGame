@@ -1908,8 +1908,8 @@ MonoBehaviour:
   jumpForce: 5
   coyoteTimer: 0.1
   crouchSpeed: 0.3
-  standHeight: 2
-  crouchHeight: 1
+  standHeight: 1.8
+  crouchHeight: 0.9
   raycastCanStandUp:
   - {fileID: 4839972092012486088}
   - {fileID: 4839972092160782972}
@@ -2168,18 +2168,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7dc84c403ce39448bacbe4d10a89f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useIK: 0
   leftHandIK: 0
   rightHandIK: 0
-  leftXOffset: -0.12
-  rightXOffset: 0.12
-  ZPosOffset: 0.065
-  XRotOffset: -15
-  YRotOffset: 180
+  leftXOffset: 0
+  rightXOffset: 0
+  yAxisHandsOffset: 1.8
+  zAxisHandsOffset: 0.35
+  zAxisOffset: 1.2
+  rightPosOffset: {x: -0.1, y: 0, z: 0}
+  leftPosOffset: {x: 0.1, y: 0, z: 0}
   leftHandPos: {x: 0, y: 0, z: 0}
   rightHandPos: {x: 0, y: 0, z: 0}
   leftHandRot: {x: 0, y: 0, z: 0, w: 0}
   rightHandRot: {x: 0, y: 0, z: 0, w: 0}
+  climbStateSwitcher: 0
+  crossState: 0
+  groundState: 0
 --- !u!1 &4839972091060060276
 GameObject:
   m_ObjectHideFlags: 0

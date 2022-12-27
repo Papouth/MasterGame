@@ -44,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController cc;
     private PlayerInput playerInput;
     public Animator animator;
-    private PlayerNewClimbSystem playerNewClimbSystem;
 
     #endregion
 
@@ -53,7 +52,6 @@ public class PlayerMovement : MonoBehaviour
         cc = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         animator = GetComponent<Animator>();
-        playerNewClimbSystem = GetComponent<PlayerNewClimbSystem>();
 
         foreach (RaycastCheck raycast in raycastsGrounds)
         {
@@ -95,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
         directionInput.Set(playerInput.MoveInput.x, 0, playerInput.MoveInput.y);
         //Debug.Log(directionInput.x + directionInput.z);
 
-        if (directionInput.magnitude >= 0.1f && !playerNewClimbSystem.climbStateSwitcher)
+        if (directionInput.magnitude >= 0.1f/* && !playerNewClimbSystem.climbStateSwitcher*/)
         {
             float targetAngle = Mathf.Atan2(directionInput.x, directionInput.z) * Mathf.Rad2Deg +
                 cam.transform.eulerAngles.y;
@@ -171,10 +169,8 @@ public class PlayerMovement : MonoBehaviour
                 // Animator Jump
                 animator.SetTrigger("TrJump");
 
-                if (!playerNewClimbSystem.climbStateSwitcher)
-                {
-                    ySpeed = jumpForce;
-                }
+                ySpeed = jumpForce;
+
                 coyoteTime = coyoteTimer;
             }
 
@@ -237,7 +233,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("Crouch", false);
 
 
-        if (cc.height != desiredHeight && CanStandUp() && !playerNewClimbSystem.climbStateSwitcher)
+        if (cc.height != desiredHeight && CanStandUp()/* && !playerNewClimbSystem.climbStateSwitcher*/)
         {
             AdjustHeight(desiredHeight);
         }
