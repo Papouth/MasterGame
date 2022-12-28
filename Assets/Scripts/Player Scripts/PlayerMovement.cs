@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Player Movement")]
     public float moveSpeed = 3f;
+    public float climbSpeedReducer = 2.2f;
     public Vector3 directionInput;
     private Vector3 movement;
     [SerializeField] private float turnSmoothTime = 0.1f;
@@ -36,8 +37,6 @@ public class PlayerMovement : MonoBehaviour
     public RaycastCheck[] raycastCanStandUp;
     public LayerMask layersCanStandUp;
     public float rangeMaxStandUp = 1.05f;
-
-    [Header("Player Capacity")]
 
     [Header("Player Component")]
     public Camera cam;
@@ -76,6 +75,8 @@ public class PlayerMovement : MonoBehaviour
 
         Locomotion();
 
+        DropDown();
+
         if (OnSteepSlope()) SteepSlopeMovement();
 
         Crouching();
@@ -93,7 +94,6 @@ public class PlayerMovement : MonoBehaviour
         if (!playerInput) return;
 
         directionInput.Set(playerInput.MoveInput.x, 0, playerInput.MoveInput.y);
-        //Debug.Log(directionInput.x + directionInput.z);
 
         if (directionInput.magnitude >= 0.1f && !playerNewClimbSystem.isClimbing)
         {
@@ -107,7 +107,28 @@ public class PlayerMovement : MonoBehaviour
             directionInput = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         }
 
-        movement = directionInput.normalized * (moveSpeed * Time.deltaTime);
+        if (!playerNewClimbSystem.isClimbing)
+        {
+            movement = directionInput.normalized * (moveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            // On inverse les controles lors du climb et on viens réduire la vitesse de déplacement du joueur
+            movement = -directionInput.normalized * (moveSpeed/climbSpeedReducer * Time.deltaTime);
+
+            //Debug.Log(directionInput.x + directionInput.z);
+        }
+    }
+
+    /// <summary>
+    /// Si on appuie sur S en climb, alors on descend
+    /// </summary>
+    private void DropDown()
+    {
+        if(directionInput.z <= -0.1 && playerNewClimbSystem.isClimbing)
+        {
+            playerNewClimbSystem.isClimbing = false;
+        }
     }
 
     private bool OnSteepSlope()
@@ -169,6 +190,7 @@ public class PlayerMovement : MonoBehaviour
             if (playerInput.CanJump)
             {
                 // Animator Jump
+                animator.ResetTrigger("TrJump");
                 animator.SetTrigger("TrJump");
 
                 ySpeed = jumpForce;
@@ -181,7 +203,6 @@ public class PlayerMovement : MonoBehaviour
         movement.y = ySpeed * Time.deltaTime;
 
         cc.Move(movement);
-        animator.ResetTrigger("TrJump");
     }
 
     /// <summary>
@@ -235,7 +256,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("Crouch", false);
 
 
-        if (cc.height != desiredHeight && CanStandUp()/* && !playerNewClimbSystem.climbStateSwitcher*/)
+        if (cc.height != desiredHeight && CanStandUp() && !playerNewClimbSystem.isClimbing)
         {
             AdjustHeight(desiredHeight);
         }
@@ -281,6 +302,7 @@ public class PlayerMovement : MonoBehaviour
     private void SetAnimator()
     {
         animator.SetFloat("Movement", directionInput.magnitude);
+        animator.SetFloat("ClimbMove", directionInput.x);
     }
 
     private void OnDrawGizmos()
