@@ -1835,7 +1835,6 @@ GameObject:
   - component: {fileID: 4839972090948213079}
   - component: {fileID: 4839972090948213070}
   - component: {fileID: 4839972090948213069}
-  - component: {fileID: 4839972090948213068}
   - component: {fileID: 4839972090948213067}
   - component: {fileID: 4839972090948213066}
   - component: {fileID: 4839972090948213056}
@@ -1891,6 +1890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   climbSpeedReducer: 6
+  climbJumpBuffer: 1.1
   directionInput: {x: 0, y: 0, z: 0}
   turnSmoothTime: 0.1
   turnSmoothVelocity: 0.1
@@ -1921,8 +1921,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 375
   rangeMaxStandUp: 0.9
-  haveClimbed: 0
+  climbJumpTimer: 1.1
   climbUpAnimation: 2.2
+  climbingSecurityTimer: 0
+  timeBeforeClimbJump: 0
   cam: {fileID: 0}
   animator: {fileID: 0}
 --- !u!114 &4839972090948213069
@@ -1945,24 +1947,6 @@ MonoBehaviour:
   interactableCount: 0
   playerInput: {fileID: 0}
   hands: {fileID: 2101819051}
---- !u!114 &4839972090948213068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4839972090948213078}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bcc492b4f50f284ca54a448efc1ab2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isClimbing: 0
-  raycastsClimb:
-  - {fileID: 196465454}
-  - {fileID: 553970977}
-  - {fileID: 1750462333}
-  raycastGood: 0
 --- !u!114 &4839972090948213067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2180,7 +2164,7 @@ MonoBehaviour:
   rightXOffset: 0
   yAxisHandsOffset: 1.8
   zAxisHandsOffset: 0.35
-  zAxisOffset: 1.2
+  zAxisOffset: 1.3
   rightPosOffset: {x: -0.1, y: 0, z: 0}
   leftPosOffset: {x: 0.1, y: 0, z: 0}
   leftHandPos: {x: 0, y: 0, z: 0}
@@ -2188,6 +2172,7 @@ MonoBehaviour:
   leftHandRot: {x: 0, y: 0, z: 0, w: 0}
   rightHandRot: {x: 0, y: 0, z: 0, w: 0}
   isClimbing: 0
+  haveClimbed: 0
   frozen: 0
 --- !u!1 &4839972091060060276
 GameObject:

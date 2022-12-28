@@ -89,6 +89,15 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ClimbJump"",
+                    ""type"": ""Button"",
+                    ""id"": ""433f6d40-bd3c-4fe0-9f41-b69aa3bc5915"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -212,6 +221,17 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                     ""action"": ""Osmose"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a1b24094-fbd2-423f-9281-04530cb9dc5b"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ClimbJump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,6 +247,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         m_PlayerMap_Tempo = m_PlayerMap.FindAction("Tempo", throwIfNotFound: true);
         m_PlayerMap_Break = m_PlayerMap.FindAction("Break", throwIfNotFound: true);
         m_PlayerMap_Osmose = m_PlayerMap.FindAction("Osmose", throwIfNotFound: true);
+        m_PlayerMap_ClimbJump = m_PlayerMap.FindAction("ClimbJump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +314,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMap_Tempo;
     private readonly InputAction m_PlayerMap_Break;
     private readonly InputAction m_PlayerMap_Osmose;
+    private readonly InputAction m_PlayerMap_ClimbJump;
     public struct PlayerMapActions
     {
         private @PlayerMovementInput m_Wrapper;
@@ -304,6 +326,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         public InputAction @Tempo => m_Wrapper.m_PlayerMap_Tempo;
         public InputAction @Break => m_Wrapper.m_PlayerMap_Break;
         public InputAction @Osmose => m_Wrapper.m_PlayerMap_Osmose;
+        public InputAction @ClimbJump => m_Wrapper.m_PlayerMap_ClimbJump;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -334,6 +357,9 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                 @Osmose.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOsmose;
                 @Osmose.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOsmose;
                 @Osmose.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOsmose;
+                @ClimbJump.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnClimbJump;
+                @ClimbJump.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnClimbJump;
+                @ClimbJump.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnClimbJump;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -359,6 +385,9 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                 @Osmose.started += instance.OnOsmose;
                 @Osmose.performed += instance.OnOsmose;
                 @Osmose.canceled += instance.OnOsmose;
+                @ClimbJump.started += instance.OnClimbJump;
+                @ClimbJump.performed += instance.OnClimbJump;
+                @ClimbJump.canceled += instance.OnClimbJump;
             }
         }
     }
@@ -372,5 +401,6 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         void OnTempo(InputAction.CallbackContext context);
         void OnBreak(InputAction.CallbackContext context);
         void OnOsmose(InputAction.CallbackContext context);
+        void OnClimbJump(InputAction.CallbackContext context);
     }
 }
