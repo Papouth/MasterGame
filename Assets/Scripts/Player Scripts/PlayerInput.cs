@@ -11,6 +11,7 @@ public class PlayerInput : MonoBehaviour
     private bool canChangeTempo;
     private bool canDestroy;
     private bool canOsmose;
+    private bool canClimbJump;
     #endregion
 
 
@@ -46,6 +47,11 @@ public class PlayerInput : MonoBehaviour
         set { canOsmose = value; }
     }
 
+    public bool CanClimbJump
+    {
+        get { return canClimbJump; }
+        set { canClimbJump = value; }
+    }
     #endregion
 
 
@@ -94,5 +100,10 @@ public class PlayerInput : MonoBehaviour
         canOsmose = true;
     }
 
+    public void OnClimbJump()
+    {
+        // Récupération de l'input
+        canClimbJump = true;
+    }
     #endregion
 }

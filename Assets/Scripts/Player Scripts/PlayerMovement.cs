@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Player Movement")]
     public float moveSpeed = 3f;
     public float climbSpeedReducer = 2.2f;
+    [SerializeField] private float climbJumpBuffer;
     public Vector3 directionInput;
     private Vector3 movement;
     [SerializeField] private float turnSmoothTime = 0.1f;
@@ -40,7 +41,11 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Climb Parameters")]
     //public bool haveClimbed;
+    //[SerializeField] private bool haveClimbJumped;
+    [SerializeField] private float climbJumpTimer;
     [SerializeField] private float climbUpAnimation;
+    [SerializeField] private bool climbingSecurityTimer;
+    [SerializeField] private float timeBeforeClimbJump;
 
     [Header("Player Component")]
     public Camera cam;
@@ -80,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
 
         DropDown();
 
-        ClimbUp();
+        //ClimbUp();
 
         if (OnSteepSlope()) SteepSlopeMovement();
 
@@ -119,7 +124,8 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             // On inverse les controles lors du climb et on viens réduire la vitesse de déplacement du joueur
-            movement = -directionInput.normalized * (moveSpeed / climbSpeedReducer * Time.deltaTime);
+            movement = directionInput.normalized * (moveSpeed / climbSpeedReducer * Time.deltaTime);
+            movement = transform.TransformDirection(movement);
 
             //Debug.Log(directionInput.x + directionInput.z);
         }
@@ -214,6 +220,7 @@ public class PlayerMovement : MonoBehaviour
     {
         ySpeed += Physics.gravity.y * Time.deltaTime;
 
+        // Au sol
         if (isGrounded())
         {
             //Fonction Check Step Slope ground Return bool
@@ -234,9 +241,59 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        // En état de climb
+        if (playerNewClimbSystem.isClimbing && !climbingSecurityTimer)
+        {
+            playerInput.CanClimbJump = false;
+            // Sécurité afin d'éviter un double jump
+            Invoke("ClimbSecurityChecker", timeBeforeClimbJump);
+        }
+        else if (playerNewClimbSystem.isClimbing && playerInput.CanClimbJump && climbingSecurityTimer)
+        {
+            climbingSecurityTimer = false;
+
+            playerNewClimbSystem.isClimbing = false;
+            animator.applyRootMotion = true;
+
+            // Sécurité animator
+            animator.SetBool("ClimbBool", false);
+
+            animator.ResetTrigger("TrClimbJump");
+            animator.SetTrigger("TrClimbJump");
+
+            StartCoroutine(ClimbJumpTimer());
+
+            ySpeed = jumpForce * climbJumpBuffer;
+        }
+        else if (!playerNewClimbSystem.isClimbing)
+        {
+            // Si le joueur n'est plus en climb on reset en faux
+            climbingSecurityTimer = false;
+        }
+
         movement.y = ySpeed * Time.deltaTime;
 
         cc.Move(movement);
+    }
+
+    private void ClimbSecurityChecker()
+    {    
+        climbingSecurityTimer = true;
+    }
+
+    /// <summary>
+    /// Refaire un saut pendant le climb
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator ClimbJumpTimer()
+    {
+        yield return new WaitForSeconds(climbJumpTimer * 1.1f);
+
+        // Sécurité animator
+        animator.ResetTrigger("TrClimbJump");
+
+        animator.applyRootMotion = false;
+        playerInput.CanClimbJump = false;
     }
 
     /// <summary>
@@ -256,6 +313,7 @@ public class PlayerMovement : MonoBehaviour
         if (raycastGood > 0) //La je touche le sol
         {
             animator.ResetTrigger("TrJump");
+            animator.ResetTrigger("TrClimbJump");
 
             coyoteTime = 0;
             return true;
