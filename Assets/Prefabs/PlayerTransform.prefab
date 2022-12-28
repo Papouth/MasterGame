@@ -1890,6 +1890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
+  climbSpeedReducer: 6
   directionInput: {x: 0, y: 0, z: 0}
   turnSmoothTime: 0.1
   turnSmoothVelocity: 0.1
@@ -1920,6 +1921,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 375
   rangeMaxStandUp: 0.9
+  haveClimbed: 0
+  climbUpAnimation: 2.2
   cam: {fileID: 0}
   animator: {fileID: 0}
 --- !u!114 &4839972090948213069
@@ -1949,7 +1952,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4839972090948213078}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bcc492b4f50f284ca54a448efc1ab2d, type: 3}
   m_Name: 
@@ -2170,7 +2173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   climbLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   leftHandIK: 0
   rightHandIK: 0
   leftXOffset: 0
@@ -2185,9 +2188,6 @@ MonoBehaviour:
   leftHandRot: {x: 0, y: 0, z: 0, w: 0}
   rightHandRot: {x: 0, y: 0, z: 0, w: 0}
   isClimbing: 0
-  climbStateSwitcher: 0
-  crossState: 0
-  groundState: 0
   frozen: 0
 --- !u!1 &4839972091060060276
 GameObject:

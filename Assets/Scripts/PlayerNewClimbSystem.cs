@@ -30,9 +30,8 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
     [Header("ClimbStates")]
     public bool isClimbing;
+    public bool haveClimbed;
     //public bool climbStateSwitcher;
-    [SerializeField] private bool crossState;
-    [SerializeField] private bool groundState;
 
 
     [Header("Freeze Position")]
@@ -43,22 +42,15 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
     [Header("Player Component")]
     private Animator anim;
-    private PlayerMovement playerMovement;
     private CharacterController cc;
-
     #endregion
 
     #region Built In Methods
     private void Start()
     {
         anim = GetComponent<Animator>();
-        playerMovement = GetComponent<PlayerMovement>();
         cc = GetComponent<CharacterController>();
         playerTransform = GetComponent<Transform>();
-
-        // Booléens permettant de vérifier que l'action s'éxécute une seule et unique fois
-        crossState = true;
-        groundState = true;
     }
 
     private void FixedUpdate()
@@ -79,7 +71,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (frozen)
+        if (frozen && !haveClimbed)
         {
             transform.position = new Vector3(transform.position.x, freezePos.y, transform.position.z);
         }
@@ -141,6 +133,13 @@ public class PlayerNewClimbSystem : MonoBehaviour
     }
     #endregion
 
+    private void ColliderModifier()
+    {
+        // Capsule Collider du joueur ajustement
+        cc.height = Mathf.Lerp(cc.height, 1.3f, 0.3f);
+        cc.center = Vector3.Lerp(cc.center, new Vector3(0, 0.6f, 0), 0.3f);
+    }
+
     private void OnClimb()
     {
         // Ici on va venir freeze le joueur sur l'axe Y et On va venir empecher la rotation sur cet axe lorsqu'il est en position d'IK
@@ -153,6 +152,8 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
             // On joue l'animation d'Idle de climb
             anim.SetBool("ClimbBool", true);
+
+            ColliderModifier();
         }
         else
         {
@@ -196,7 +197,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
         }
         */
 
-        if (!leftHandIK && !rightHandIK/* && climbStateSwitcher*/)
+        if (!leftHandIK && !rightHandIK)
         {
             Invoke("ClimbingStateSecurity", 0.2f);
         }
@@ -245,7 +246,6 @@ public class PlayerNewClimbSystem : MonoBehaviour
     private void ClimbingStateSecurity()
     {
         //climbStateSwitcher = false;
-        //frozen = false;
     }
 
     /// <summary>
@@ -270,12 +270,8 @@ public class PlayerNewClimbSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
 
-        groundState = true;
-        crossState = true;
-
         // On débloque la rotation du joueur car il n'est plus accroché
         //climbStateSwitcher = false;
-        //frozen = false;
 
         anim.applyRootMotion = false;
 
