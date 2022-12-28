@@ -30,6 +30,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
     [Header("ClimbStates")]
     public bool isClimbing;
+    public bool haveClimbed;
     //public bool climbStateSwitcher;
 
 
@@ -41,9 +42,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
     [Header("Player Component")]
     private Animator anim;
-
     private CharacterController cc;
-
     #endregion
 
     #region Built In Methods
@@ -72,7 +71,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (frozen)
+        if (frozen && !haveClimbed)
         {
             transform.position = new Vector3(transform.position.x, freezePos.y, transform.position.z);
         }

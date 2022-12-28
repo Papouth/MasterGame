@@ -1921,6 +1921,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 375
   rangeMaxStandUp: 0.9
+  haveClimbed: 0
+  climbUpAnimation: 2.2
   cam: {fileID: 0}
   animator: {fileID: 0}
 --- !u!114 &4839972090948213069
