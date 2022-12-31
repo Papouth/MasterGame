@@ -9,11 +9,11 @@ public class LiftableObject : CustomsTriggers
         base.Awake();
     }
 
-    public override bool Interact(PlayerInteractor playerInteractor)
+    public override void Interact()
     {
         //Debug.Log("cube");
         //GoToHand(playerInteractor.hands, playerInteractor.playerInput);
-        return true;
+        return;
     }
     
     /*

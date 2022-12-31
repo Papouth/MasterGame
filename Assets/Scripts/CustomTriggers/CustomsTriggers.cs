@@ -5,7 +5,7 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    public bool Interact(PlayerInteractor playerInteractor);
+    public void Interact();
 }
 
 public abstract class CustomsTriggers : MonoBehaviour, IInteractable
@@ -13,8 +13,12 @@ public abstract class CustomsTriggers : MonoBehaviour, IInteractable
     [SerializeField] protected float weight;
     [SerializeField] protected Rigidbody rb;
 
+    private PlayerInteractorDistance playerInteractorDistance;
     public virtual void Awake()
     {
+        if (PlayerInteractor.playerInteractorInstance.GetComponent<PlayerInteractorDistance>() != null)
+            playerInteractorDistance = PlayerInteractor.playerInteractorInstance.GetComponent<PlayerInteractorDistance>();
+
         rb = GetComponent<Rigidbody>();
 
         if (rb == null) return;
@@ -22,15 +26,16 @@ public abstract class CustomsTriggers : MonoBehaviour, IInteractable
         weight = rb.mass;
     }
 
-    public virtual bool Interact(PlayerInteractor playerInteractor)
+    public virtual void Interact()
     {
+        Debug.Log("Here 2 ?");
         //Debug.Log(onInteractText);
-        return true;
+        return;
     }
 
     public virtual void TextInfo()
     {
-       // Debug.Log(interactText);
+        // Debug.Log(interactText);
     }
 
     public virtual void OnTriggerEnter(Collider other)
@@ -39,5 +44,25 @@ public abstract class CustomsTriggers : MonoBehaviour, IInteractable
         {
             TextInfo();
         }
+    }
+
+    /// <summary>
+    /// Called when is visble by a camera
+    /// Override if we don't want them to be in the interaction
+    /// </summary>
+    public virtual void OnBecameVisible()
+    {
+        if (playerInteractorDistance != null)
+            playerInteractorDistance.AddList(this);
+    }
+
+    /// <summary>
+    /// Called when is invisble  by a camera
+    /// Override if we don't want them to be in the interaction
+    /// </summary>
+    public virtual void OnBecameInvisible()
+    {
+        if (playerInteractorDistance != null)
+            playerInteractorDistance.RemoveList(this);
     }
 }

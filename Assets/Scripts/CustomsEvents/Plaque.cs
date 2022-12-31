@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Plaque : CustomsTriggers
+public class Plaque : MonoBehaviour
 {
     public LayerMask cubeColor;
     public bool valid;
@@ -25,6 +25,5 @@ public class Plaque : CustomsTriggers
             valid = false;
         }
     }
-
     
 }

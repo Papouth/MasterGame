@@ -31,4 +31,6 @@ public class Door : MonoBehaviour
         doorAnimator.enabled = true;
         return true;
     }
+
+    
 }
