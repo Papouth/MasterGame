@@ -15,6 +15,8 @@ public class PlayerInput : MonoBehaviour
     private bool canClimbJump;
     private bool canTelekinesy;
     private bool canSelect;
+
+    public static bool telekinesyKeyOn;
     #endregion
 
 
@@ -130,12 +132,14 @@ public class PlayerInput : MonoBehaviour
     public void OnTelekinesy()
     {
         canTelekinesy = true;
+        telekinesyKeyOn = true;
         Invoke("TelekinesyTimer", 5f);
     }
 
     private void TelekinesyTimer()
     {
         canTelekinesy = false;
+        telekinesyKeyOn = false;
     }
 
     public void OnSelect()
