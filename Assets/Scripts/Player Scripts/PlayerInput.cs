@@ -5,6 +5,7 @@ public class PlayerInput : MonoBehaviour
 {
     #region Variables
     private Vector2 moveInput;
+    private Vector2 mousePosition;
     private bool canJump;
     private bool crouching;
     private bool canInteract;
@@ -12,11 +13,15 @@ public class PlayerInput : MonoBehaviour
     private bool canDestroy;
     private bool canOsmose;
     private bool canClimbJump;
+    private bool canTelekinesy;
+    private bool canSelect;
     #endregion
 
 
     #region Bool Functions
     public Vector2 MoveInput => moveInput;
+    public Vector2 MousePosition => mousePosition;
+
     public bool CanJump
     {
         get { return canJump; }
@@ -52,6 +57,18 @@ public class PlayerInput : MonoBehaviour
         get { return canClimbJump; }
         set { canClimbJump = value; }
     }
+
+    public bool CanTelekinesy
+    {
+        get { return canTelekinesy; }
+        set { canTelekinesy = value; }
+    }
+
+    public bool CanSelect
+    {
+        get { return canSelect; }
+        set { canSelect = value; }
+    }
     #endregion
 
 
@@ -60,6 +77,11 @@ public class PlayerInput : MonoBehaviour
     {
         // On récupère la valeur du mouvement qu'on stock dans un Vector2
         moveInput = value.Get<Vector2>();
+    }
+
+    public void OnMousePosition(InputValue value)
+    {
+        mousePosition = value.Get<Vector2>();
     }
 
     public void OnJump()
@@ -102,8 +124,29 @@ public class PlayerInput : MonoBehaviour
 
     public void OnClimbJump()
     {
-        // Récupération de l'input
         canClimbJump = true;
+    }
+
+    public void OnTelekinesy()
+    {
+        canTelekinesy = true;
+        Invoke("TelekinesyTimer", 5f);
+    }
+
+    private void TelekinesyTimer()
+    {
+        canTelekinesy = false;
+    }
+
+    public void OnSelect()
+    {
+        canSelect = true;
+        Invoke("SelectTimer", 0.1f);
+    }
+
+    private void SelectTimer()
+    {
+        canSelect = false;
     }
     #endregion
 }
