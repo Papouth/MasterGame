@@ -10,13 +10,13 @@ public class GetStat : CustomsTriggers
     public Animation statAnim;
 
 
-    public override bool Interact(PlayerInteractor playerInteractor)
+    public override void Interact()
     {
         //Debug.Log(onInteractText);
 
         if (!statState) statEvent.Invoke();
 
-        return true;
+        return;
     }
 
     public void AnimSuperForce()

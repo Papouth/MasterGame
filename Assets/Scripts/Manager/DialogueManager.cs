@@ -101,6 +101,7 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     public void EndDialogue()
     {
+        if(UIInstance == null) return;
         UIInstance.EnableTextDialogue(false);
     }
 }
