@@ -1363,7 +1363,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e88a93148f69984e968ecc92408960f, type: 2}
+  - {fileID: 2100000, guid: 74117f645ca87544896e430b75e9a316, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1405,6 +1405,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2bc41e26c2e27546b5cd5313acc3b86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedMat: {fileID: 2100000, guid: c90074b1908846b49966e8d8fa4e129d, type: 2}
+  telekinesyLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &335562580 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7438899249348398367, guid: ba9fcb8ce940c0f4f97bffe69b7225aa,
@@ -2827,7 +2831,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 74117f645ca87544896e430b75e9a316, type: 2}
+  - {fileID: 2100000, guid: a4b62a69d54e80347bd546999c6d4b9e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3294,7 +3298,7 @@ PrefabInstance:
     - target: {fileID: 4839972090948213079, guid: 7504c171e29102f4da2897b560aac698,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -34
+      value: -38.52
       objectReference: {fileID: 0}
     - target: {fileID: 4839972090948213079, guid: 7504c171e29102f4da2897b560aac698,
         type: 3}
@@ -3522,7 +3526,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 74117f645ca87544896e430b75e9a316, type: 2}
+  - {fileID: 2100000, guid: a4b62a69d54e80347bd546999c6d4b9e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5091,12 +5095,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b889adf20f8dc741b2229258c99a5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  telekinesyLayer:
-    serializedVersion: 2
-    m_Bits: 4096
-  objectRend: {fileID: 0}
-  storedMat: {fileID: 0}
-  selectedMat: {fileID: 2100000, guid: c90074b1908846b49966e8d8fa4e129d, type: 2}
 --- !u!1 &1782941901
 GameObject:
   m_ObjectHideFlags: 0
@@ -5777,7 +5775,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 74117f645ca87544896e430b75e9a316, type: 2}
+  - {fileID: 2100000, guid: a4b62a69d54e80347bd546999c6d4b9e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6196,7 +6194,7 @@ PrefabInstance:
     - target: {fileID: 717258714201837777, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -27.64
+      value: -32.16
       objectReference: {fileID: 0}
     - target: {fileID: 717258714201837783, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
@@ -6231,12 +6229,12 @@ PrefabInstance:
     - target: {fileID: 717258715556111211, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.00000008554848
+      value: -0.000000052049856
       objectReference: {fileID: 0}
     - target: {fileID: 717258715556111211, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000020121773
+      value: 0.0000000122425945
       objectReference: {fileID: 0}
     - target: {fileID: 717258715556111211, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
@@ -6261,17 +6259,17 @@ PrefabInstance:
     - target: {fileID: 717258715682608598, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -27.64
+      value: -32.16
       objectReference: {fileID: 0}
     - target: {fileID: 717258715682608598, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.00000009289787
+      value: -0.000000059831066
       objectReference: {fileID: 0}
     - target: {fileID: 717258715682608598, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.000000026774245
+      value: -0.000000017244007
       objectReference: {fileID: 0}
     - target: {fileID: 717258715682608598, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
