@@ -11,13 +11,13 @@ public class Leviers : CustomsTriggers
     public Animation theDoorAnim;
 
 
-    public override bool Interact(PlayerInteractor playerInteractor)
+    public override void Interact()
     {
         //Debug.Log("Levier");
 
         if (!doorOpen) leverEvent.Invoke();
 
-        return true;
+        return;
     }
 
     public void OpenDoor()

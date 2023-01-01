@@ -7,15 +7,20 @@ public class PlayerOsmose : MonoBehaviour
     private PlayerInput playerInput;
     public bool stateOsmose;
 
+    private PlayerInteractor playerInteractor;
 
-    // Démo Osmose Technologique
+    private PlayerInteractorDistance playerInteractorDistance;
+
+
+    // Dï¿½mo Osmose Technologique
     public GameObject[] scenesPrefabs;
-
 
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        playerInteractor = GetComponent<PlayerInteractor>();
+        playerInteractorDistance = GetComponent<PlayerInteractorDistance>();
     }
 
     private void Update()
@@ -23,7 +28,7 @@ public class PlayerOsmose : MonoBehaviour
         UseOsmose();
     }
 
-    private bool UseOsmose()
+    private void UseOsmose()
     {
         if (playerInput.CanOsmose)
         {
@@ -33,6 +38,11 @@ public class PlayerOsmose : MonoBehaviour
 
             if (stateOsmose == true)
             {
+
+                playerInteractor.enabled = false;
+                playerInteractorDistance.enabled = true;
+                
+                if(scenesPrefabs == null) return ;
                 foreach (var prefab in scenesPrefabs)
                 {
                     var rendMat = prefab.GetComponent<Renderer>().material;
@@ -43,6 +53,10 @@ public class PlayerOsmose : MonoBehaviour
             }
             else if (stateOsmose == false)
             {
+
+                playerInteractor.enabled = true;
+                playerInteractorDistance.enabled = false;
+
                 foreach (var prefab in scenesPrefabs)
                 {
                     var rendMat = prefab.GetComponent<Renderer>().material;
@@ -53,10 +67,10 @@ public class PlayerOsmose : MonoBehaviour
             }
 
             playerInput.CanOsmose = false;
-            return true;
+            return;
         }
 
-        return false;
+        return;
     }
 
 

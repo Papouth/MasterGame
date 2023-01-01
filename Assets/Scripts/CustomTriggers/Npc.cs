@@ -20,13 +20,13 @@ public class Npc : CustomsTriggers
         topCube.SetActive(false);
     }
 
-    public override bool Interact(PlayerInteractor playerInteractor)
+    public override void Interact()
     {
-        //Debug.Log("Comment puis-je vous aider ?");
-        base.Interact(playerInteractor);
+        Debug.Log("Comment puis-je vous aider ?");
+        base.Interact();
         Instantiate(cube, spawnPos.position, spawnPos.rotation);
 
-        return true;
+        return;
     }
 
     public override void TextInfo()

@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Player Movement")]
     public float moveSpeed = 3f;
+    public float climbSpeedReducer = 2.2f;
+    [SerializeField] private float climbJumpBuffer;
     public Vector3 directionInput;
     private Vector3 movement;
     [SerializeField] private float turnSmoothTime = 0.1f;
@@ -37,14 +39,20 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask layersCanStandUp;
     public float rangeMaxStandUp = 1.05f;
 
-    [Header("Player Capacity")]
+    [Header("Climb Parameters")]
+    //public bool haveClimbed;
+    //[SerializeField] private bool haveClimbJumped;
+    [SerializeField] private float climbJumpTimer;
+    [SerializeField] private float climbUpAnimation;
+    [SerializeField] private bool climbingSecurityTimer;
+    [SerializeField] private float timeBeforeClimbJump;
 
     [Header("Player Component")]
     public Camera cam;
     private CharacterController cc;
     private PlayerInput playerInput;
     public Animator animator;
-
+    private PlayerNewClimbSystem playerNewClimbSystem;
     #endregion
 
     private void Awake()
@@ -52,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
         cc = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         animator = GetComponent<Animator>();
+        playerNewClimbSystem = GetComponent<PlayerNewClimbSystem>();
 
         foreach (RaycastCheck raycast in raycastsGrounds)
         {
@@ -74,6 +83,10 @@ public class PlayerMovement : MonoBehaviour
 
         Locomotion();
 
+        DropDown();
+
+        //ClimbUp();
+
         if (OnSteepSlope()) SteepSlopeMovement();
 
         Crouching();
@@ -92,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
 
         directionInput.Set(playerInput.MoveInput.x, 0, playerInput.MoveInput.y);
 
-        if (directionInput.magnitude >= 0.1f)
+        if (directionInput.magnitude >= 0.1f && !playerNewClimbSystem.isClimbing)
         {
             float targetAngle = Mathf.Atan2(directionInput.x, directionInput.z) * Mathf.Rad2Deg +
                 cam.transform.eulerAngles.y;
@@ -104,8 +117,65 @@ public class PlayerMovement : MonoBehaviour
             directionInput = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         }
 
-        movement = directionInput.normalized * (moveSpeed * Time.deltaTime);
+        if (!playerNewClimbSystem.isClimbing)
+        {
+            movement = directionInput.normalized * (moveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            // On inverse les controles lors du climb et on viens réduire la vitesse de déplacement du joueur
+            movement = directionInput.normalized * (moveSpeed / climbSpeedReducer * Time.deltaTime);
+            movement = transform.TransformDirection(movement);
+
+            //Debug.Log(directionInput.x + directionInput.z);
+        }
     }
+
+    #region ClimbMovement
+    /// <summary>
+    /// Si on appuie sur S en climb, alors on descend
+    /// </summary>
+    private void DropDown()
+    {
+        if (directionInput.z <= -0.1 && playerNewClimbSystem.isClimbing)
+        {
+            playerNewClimbSystem.isClimbing = false;
+        }
+    }
+
+    /// <summary>
+    /// Si on appuie sur Z en climb, alors on grimpe
+    /// </summary>
+    private void ClimbUp()
+    {
+        if (directionInput.z >= 0.1 && playerNewClimbSystem.isClimbing && !playerNewClimbSystem.haveClimbed)
+        {
+            // Permet de faire s'exécuter l'action une unique fois
+            playerNewClimbSystem.haveClimbed = true;
+
+            animator.applyRootMotion = true;
+
+            animator.ResetTrigger("TrClimbUp");
+            animator.SetTrigger("TrClimbUp");
+
+            StartCoroutine("TimerClimbUp");
+        }
+    }
+
+    private IEnumerator TimerClimbUp()
+    {
+        // On patiente le temps de l'animation
+        yield return new WaitForSeconds(climbUpAnimation);
+
+        // On repasse en faux l'applyRootMotion
+        animator.applyRootMotion = false;
+
+        // Ajout d'une sécurité pour le trigger
+        animator.ResetTrigger("TrClimbUp");
+
+        playerNewClimbSystem.haveClimbed = false;
+    }
+    #endregion
 
     private bool OnSteepSlope()
     {
@@ -140,23 +210,21 @@ public class PlayerMovement : MonoBehaviour
 
         cc.Move(movement * Time.deltaTime);
     }
-
     #endregion
 
     #region PlayerJump
-
     /// <summary>
-    /// activation du jump
+    /// Activation du jump
     /// </summary>
     public void Jump()
     {
         ySpeed += Physics.gravity.y * Time.deltaTime;
 
+        // Au sol
         if (isGrounded())
         {
             //Fonction Check Step Slope ground Return bool
             //=> Fonction Check step slope void 
-
 
             if (ySpeed <= stepGround)
             {
@@ -165,18 +233,67 @@ public class PlayerMovement : MonoBehaviour
 
             if (playerInput.CanJump)
             {
-                // Animator Jump
                 animator.SetTrigger("TrJump");
 
                 ySpeed = jumpForce;
+
                 coyoteTime = coyoteTimer;
             }
+        }
 
+        // En état de climb
+        if (playerNewClimbSystem.isClimbing && !climbingSecurityTimer)
+        {
+            playerInput.CanClimbJump = false;
+            // Sécurité afin d'éviter un double jump
+            Invoke("ClimbSecurityChecker", timeBeforeClimbJump);
+        }
+        else if (playerNewClimbSystem.isClimbing && playerInput.CanClimbJump && climbingSecurityTimer)
+        {
+            climbingSecurityTimer = false;
+
+            playerNewClimbSystem.isClimbing = false;
+            animator.applyRootMotion = true;
+
+            // Sécurité animator
+            animator.SetBool("ClimbBool", false);
+
+            animator.ResetTrigger("TrClimbJump");
+            animator.SetTrigger("TrClimbJump");
+
+            StartCoroutine(ClimbJumpTimer());
+
+            ySpeed = jumpForce * climbJumpBuffer;
+        }
+        else if (!playerNewClimbSystem.isClimbing)
+        {
+            // Si le joueur n'est plus en climb on reset en faux
+            climbingSecurityTimer = false;
         }
 
         movement.y = ySpeed * Time.deltaTime;
 
         cc.Move(movement);
+    }
+
+    private void ClimbSecurityChecker()
+    {    
+        climbingSecurityTimer = true;
+    }
+
+    /// <summary>
+    /// Refaire un saut pendant le climb
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator ClimbJumpTimer()
+    {
+        yield return new WaitForSeconds(climbJumpTimer * 1.1f);
+
+        // Sécurité animator
+        animator.ResetTrigger("TrClimbJump");
+
+        animator.applyRootMotion = false;
+        playerInput.CanClimbJump = false;
     }
 
     /// <summary>
@@ -186,6 +303,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded()
     {
         int raycastGood = 0;
+
         foreach (RaycastCheck raycast in raycastsGrounds)
         {
             if (raycast.RaycastTest()) raycastGood++;
@@ -194,6 +312,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (raycastGood > 0) //La je touche le sol
         {
+            animator.ResetTrigger("TrJump");
+            animator.ResetTrigger("TrClimbJump");
+
             coyoteTime = 0;
             return true;
         }
@@ -203,20 +324,19 @@ public class PlayerMovement : MonoBehaviour
 
             if (coyoteTime >= coyoteTimer) //Temps écoulé
             {
-                // On emp�che le joueur de re-sauter instantan�ment au contact du sol
+                // On empeche le joueur de re-sauter instantanement au contact du sol
                 playerInput.CanJump = false;
                 return false;
             }
             else return true; //Encore le temps de sauté
         }
     }
-
     #endregion
 
     #region PlayerCrouched
 
     /// <summary>
-    /// Adjuste la taille du joueur selon l'input
+    /// Ajuste la taille du joueur selon l'input
     /// </summary>
     private void Crouching()
     {
@@ -229,7 +349,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("Crouch", false);
 
 
-        if (cc.height != desiredHeight && CanStandUp())
+        if (cc.height != desiredHeight && CanStandUp() && !playerNewClimbSystem.isClimbing)
         {
             AdjustHeight(desiredHeight);
         }
@@ -247,6 +367,7 @@ public class PlayerMovement : MonoBehaviour
             // On check si le joueur est accroupis
             int raycastGood = 0;
 
+
             foreach (RaycastCheck raycast in raycastCanStandUp)
                 if (raycast.RaycastTest()) raycastGood++;
 
@@ -257,23 +378,22 @@ public class PlayerMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// Adjuste la taille du joueur, la collider, le scale (animation)
+    /// Ajuste la taille du joueur via son collider
     /// </summary>
     /// <param name="height"></param>
     private void AdjustHeight(float height)
     {
         float center = height / 2;
 
-
         cc.height = Mathf.Lerp(cc.height, height, crouchSpeed);
         cc.center = Vector3.Lerp(cc.center, new Vector3(0, center, 0), crouchSpeed);
     }
-
     #endregion
 
     private void SetAnimator()
     {
         animator.SetFloat("Movement", directionInput.magnitude);
+        animator.SetFloat("ClimbMove", directionInput.x);
     }
 
     private void OnDrawGizmos()

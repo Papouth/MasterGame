@@ -13,13 +13,13 @@ TagManager:
   - Water
   - UI
   - Grounded
-  - 
+  - ClimbLayer
   - Interactable
   - GreenCube
   - BlackCube
   - OrangeCube
+  - TelekinesyObject
   - 
-  - Highlight
   - 
   - 
   - 
