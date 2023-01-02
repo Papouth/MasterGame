@@ -12,9 +12,12 @@ public class OnMouseEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     #region Variables
     [Header("Telekinesy Parameters")]
     private Renderer objectRend;
+    [Tooltip("Matériau affiché au passage de la souris")]
+    [SerializeField] private Material mouseOverMat;
+    [Tooltip("Matériau affiché après sélection")]
     [SerializeField] private Material selectedMat;
     private Material storedMat;
-    [SerializeField] private LayerMask telekinesyLayer;
+    private bool onSelect;
     #endregion
 
 
@@ -24,21 +27,51 @@ public class OnMouseEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         storedMat = objectRend.material;
     }
 
+    private void Update()
+    {
+        Reset();
+    }
+
+    private void Reset()
+    {
+        if (PlayerTelekinesie.telekinesyObject != gameObject)
+        {
+            onSelect = false;
+        }
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        objectRend.material = selectedMat;
+        if (!onSelect)
+        {
+            objectRend.material = mouseOverMat;
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        objectRend.material = storedMat;
+        if (!onSelect)
+        {
+            objectRend.material = storedMat;
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if (PlayerInput.telekinesyKeyOn)
         {
-            PlayerTelekinesie.telekinesyObject = gameObject;
+            onSelect = !onSelect;
+
+            if (onSelect)
+            {
+                PlayerTelekinesie.telekinesyObject = gameObject;
+                objectRend.material = selectedMat;
+            }
+            else if (!onSelect)
+            {
+                PlayerTelekinesie.telekinesyObject = null;
+                objectRend.material = mouseOverMat;
+            }
         }
     }
 }
