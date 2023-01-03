@@ -4782,6 +4782,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5574854370575994561, guid: d5058d445039b764f8898f3e8c96c24e,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5574854370575994575, guid: d5058d445039b764f8898f3e8c96c24e,
         type: 3}
       propertyPath: m_Name
@@ -4817,6 +4822,11 @@ PrefabInstance:
     - target: {fileID: -4509094780484176487, guid: 6e24c86fbf4cd074c87bad4478a373b1,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214608972392419224, guid: 6e24c86fbf4cd074c87bad4478a373b1,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3303819239183858022, guid: 6e24c86fbf4cd074c87bad4478a373b1,
@@ -4923,6 +4933,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685609807112040289, guid: 6e24c86fbf4cd074c87bad4478a373b1,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8004049898428584434, guid: 6e24c86fbf4cd074c87bad4478a373b1,
         type: 3}

@@ -35,8 +35,6 @@ public class PlayerPush : MonoBehaviour
     public virtual void Update()
     {
         PushAnimator();
-
-        
     }
 
     #region Push
