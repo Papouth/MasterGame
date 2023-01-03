@@ -13,7 +13,9 @@ public abstract class CustomsTriggers : MonoBehaviour, IInteractable
     [SerializeField] protected float weight;
     [SerializeField] protected Rigidbody rb;
 
-    private PlayerInteractorDistance playerInteractorDistance;
+    public PlayerInteractorDistance playerInteractorDistance;
+
+
     public virtual void Awake()
     {
         if (PlayerInteractor.playerInteractorInstance.GetComponent<PlayerInteractorDistance>() != null)
@@ -47,13 +49,13 @@ public abstract class CustomsTriggers : MonoBehaviour, IInteractable
     }
 
     /// <summary>
-    /// Called when is visble by a camera
+    /// Called when is visible by a camera
     /// Override if we don't want them to be in the interaction
     /// </summary>
     public virtual void OnBecameVisible()
     {
         if (playerInteractorDistance != null)
-            playerInteractorDistance.AddList(this);
+            playerInteractorDistance.AddList(this); 
     }
 
     /// <summary>
