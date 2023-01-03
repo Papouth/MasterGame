@@ -89,6 +89,42 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ClimbJump"",
+                    ""type"": ""Button"",
+                    ""id"": ""433f6d40-bd3c-4fe0-9f41-b69aa3bc5915"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Telekinesy"",
+                    ""type"": ""Button"",
+                    ""id"": ""67edaba9-e781-44a7-bdf5-14e311c1329e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""854916ba-61ea-4f85-addd-09a3d29217f6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""4ace2314-4d1a-44ee-9a8a-99d2a2b28cc4"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -212,6 +248,50 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                     ""action"": ""Osmose"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a1b24094-fbd2-423f-9281-04530cb9dc5b"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ClimbJump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b8a8900a-dfcf-40c0-a86b-dd8c3fcace43"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Telekinesy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ee1ddacf-2ca2-42c4-9ff8-742d6e6fb5a2"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""691375fc-0d65-4978-b702-27a37e177240"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,6 +307,10 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         m_PlayerMap_Tempo = m_PlayerMap.FindAction("Tempo", throwIfNotFound: true);
         m_PlayerMap_Break = m_PlayerMap.FindAction("Break", throwIfNotFound: true);
         m_PlayerMap_Osmose = m_PlayerMap.FindAction("Osmose", throwIfNotFound: true);
+        m_PlayerMap_ClimbJump = m_PlayerMap.FindAction("ClimbJump", throwIfNotFound: true);
+        m_PlayerMap_Telekinesy = m_PlayerMap.FindAction("Telekinesy", throwIfNotFound: true);
+        m_PlayerMap_Select = m_PlayerMap.FindAction("Select", throwIfNotFound: true);
+        m_PlayerMap_MousePosition = m_PlayerMap.FindAction("MousePosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +377,10 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMap_Tempo;
     private readonly InputAction m_PlayerMap_Break;
     private readonly InputAction m_PlayerMap_Osmose;
+    private readonly InputAction m_PlayerMap_ClimbJump;
+    private readonly InputAction m_PlayerMap_Telekinesy;
+    private readonly InputAction m_PlayerMap_Select;
+    private readonly InputAction m_PlayerMap_MousePosition;
     public struct PlayerMapActions
     {
         private @PlayerMovementInput m_Wrapper;
@@ -304,6 +392,10 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         public InputAction @Tempo => m_Wrapper.m_PlayerMap_Tempo;
         public InputAction @Break => m_Wrapper.m_PlayerMap_Break;
         public InputAction @Osmose => m_Wrapper.m_PlayerMap_Osmose;
+        public InputAction @ClimbJump => m_Wrapper.m_PlayerMap_ClimbJump;
+        public InputAction @Telekinesy => m_Wrapper.m_PlayerMap_Telekinesy;
+        public InputAction @Select => m_Wrapper.m_PlayerMap_Select;
+        public InputAction @MousePosition => m_Wrapper.m_PlayerMap_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -334,6 +426,18 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                 @Osmose.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOsmose;
                 @Osmose.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOsmose;
                 @Osmose.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOsmose;
+                @ClimbJump.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnClimbJump;
+                @ClimbJump.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnClimbJump;
+                @ClimbJump.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnClimbJump;
+                @Telekinesy.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnTelekinesy;
+                @Telekinesy.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnTelekinesy;
+                @Telekinesy.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnTelekinesy;
+                @Select.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSelect;
+                @Select.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSelect;
+                @Select.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSelect;
+                @MousePosition.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMousePosition;
+                @MousePosition.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMousePosition;
+                @MousePosition.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMousePosition;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -359,6 +463,18 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                 @Osmose.started += instance.OnOsmose;
                 @Osmose.performed += instance.OnOsmose;
                 @Osmose.canceled += instance.OnOsmose;
+                @ClimbJump.started += instance.OnClimbJump;
+                @ClimbJump.performed += instance.OnClimbJump;
+                @ClimbJump.canceled += instance.OnClimbJump;
+                @Telekinesy.started += instance.OnTelekinesy;
+                @Telekinesy.performed += instance.OnTelekinesy;
+                @Telekinesy.canceled += instance.OnTelekinesy;
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
+                @MousePosition.started += instance.OnMousePosition;
+                @MousePosition.performed += instance.OnMousePosition;
+                @MousePosition.canceled += instance.OnMousePosition;
             }
         }
     }
@@ -372,5 +488,9 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         void OnTempo(InputAction.CallbackContext context);
         void OnBreak(InputAction.CallbackContext context);
         void OnOsmose(InputAction.CallbackContext context);
+        void OnClimbJump(InputAction.CallbackContext context);
+        void OnTelekinesy(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
 }

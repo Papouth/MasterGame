@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerInteractor : MonoBehaviour
 {
+    public static PlayerInteractor playerInteractorInstance;
+
     public Transform interactionPoint;
     public float radius;
     public LayerMask interactableLayer;
@@ -12,17 +14,19 @@ public class PlayerInteractor : MonoBehaviour
 
     [Header("Composant")]
     private Collider[] colliders = new Collider[5];
-    private Interactable interactable;
+    public IInteractable interactable;
 
     [HideInInspector] public PlayerInput playerInput;
     public GameObject hands;
 
     private void Awake()
     {
+        playerInteractorInstance = this;
+        
         playerInput = this.GetComponent<PlayerInput>();
     }
 
-    private void Update()
+    public virtual void Update()
     {
         if (playerInput.CanInteract)
         {
@@ -33,7 +37,7 @@ public class PlayerInteractor : MonoBehaviour
     /// <summary>
     /// Détecte la présence d'interactable autour du joueurs
     /// </summary>
-    public void Detector()
+    public virtual void Detector()
     {
         interactableCount = Physics.OverlapSphereNonAlloc(interactionPoint.position, radius, colliders, interactableLayer);
 
@@ -42,10 +46,9 @@ public class PlayerInteractor : MonoBehaviour
         {
             interactable = NearestCollider(colliders);
 
-
-            if (interactable) //Sécurité au cas ou
+            if (interactable != null) //Sécurité au cas ou
             {
-                interactable.Interact(this);
+                interactable.Interact();
             }
         }
 
@@ -58,7 +61,7 @@ public class PlayerInteractor : MonoBehaviour
     /// </summary>
     /// <param name="cols"></param>
     /// <returns></returns>
-    private Interactable NearestCollider(Collider[] cols)
+    private IInteractable NearestCollider(Collider[] cols)
     {
         float nearestInteractable = 9999;
         Collider nearestCol = null;
@@ -74,7 +77,11 @@ public class PlayerInteractor : MonoBehaviour
                 nearestCol = col;
             }
         }
-        return nearestCol.GetComponent<Interactable>();
+        if (nearestCol.GetComponent(typeof(IInteractable)) != null)
+        {
+            return nearestCol.GetComponent<IInteractable>();
+        }
+        else return null;
     }
 
     private void OnDrawGizmos()

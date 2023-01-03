@@ -14,7 +14,7 @@ public class DialogueManager : MonoBehaviour
     public UIManager UIInstance;
 
 
-    void Start()
+    void Awake()
     {
         InstanceDialogue = this;
         UIInstance = UIManager.UIInstance;
@@ -101,6 +101,7 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     public void EndDialogue()
     {
+        if(UIInstance == null) return;
         UIInstance.EnableTextDialogue(false);
     }
 }
