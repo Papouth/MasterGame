@@ -76,8 +76,6 @@ public class PlayerPush : MonoBehaviour
             if (raycast.RaycastTest()) raycastPushGood++;
         }
 
-        Debug.Log(raycastPushGood);
-
         if (raycastPushGood == 1)
             return true;
         else

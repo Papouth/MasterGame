@@ -7,8 +7,8 @@ public class PlayerInteractorDistance : PlayerInteractor
     public List<CustomsTriggers> objectsOnCamera = new List<CustomsTriggers>();
     private GameObject[] gameObjects = new GameObject[5];
 
-    private float securityDelay = 0.01f;
-    private float securityDelayTimer = 0;
+    //private float securityDelay = 0.01f;
+    //private float securityDelayTimer = 0;
 
 
     public override void Update()
