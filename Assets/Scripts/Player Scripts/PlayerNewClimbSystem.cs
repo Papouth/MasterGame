@@ -31,7 +31,11 @@ public class PlayerNewClimbSystem : MonoBehaviour
     [Header("ClimbStates")]
     public bool isClimbing;
     public bool haveClimbed;
-    //public bool climbStateSwitcher;
+
+    [Header("Capsule Collider")]
+    [SerializeField] private float height = 1.3f;
+    [SerializeField] private float center = 0.6f;
+    [SerializeField] private float centerZ;
 
 
     [Header("Freeze Position")]
@@ -63,10 +67,6 @@ public class PlayerNewClimbSystem : MonoBehaviour
         OnClimb();
 
         ShowRay();
-
-        //ClimbState();
-
-        //ClimbMovement();
     }
 
     private void LateUpdate()
@@ -136,8 +136,8 @@ public class PlayerNewClimbSystem : MonoBehaviour
     private void ColliderModifier()
     {
         // Capsule Collider du joueur ajustement
-        cc.height = Mathf.Lerp(cc.height, 1.3f, 0.3f);
-        cc.center = Vector3.Lerp(cc.center, new Vector3(0, 0.6f, 0), 0.3f);
+        cc.height = Mathf.Lerp(cc.height, height, 0.3f);
+        cc.center = Vector3.Lerp(cc.center, new Vector3(0, center, centerZ), 0.3f);
     }
 
     private void OnClimb()
@@ -162,104 +162,6 @@ public class PlayerNewClimbSystem : MonoBehaviour
             // On arrête l'animation d'Idle de climb
             anim.SetBool("ClimbBool", false);
         }
-    }
-
-    /// <summary>
-    /// Gère les animations
-    /// </summary>
-    private void ClimbState()
-    {
-        /*
-        if (leftHandIK || rightHandIK)
-        {
-            // On bloque la rotation du joueur quand il est accroché
-            climbStateSwitcher = true;
-
-            // On peut donc jouer l'animation d'idle de climb
-            anim.applyRootMotion = true;
-            anim.SetBool("ClimbBool", true);
-
-            // On freeze le joueur
-            //FreezePlayer();
-
-            // Capsule Collider du joueur ajustement
-            cc.height = Mathf.Lerp(cc.height, 1.25f, 0.3f);
-            cc.center = Vector3.Lerp(cc.center, new Vector3(0, 1.3f, 0), 0.3f);
-
-
-            Debug.Log("On est en IdleClimb");
-            // Si une des deux mains est en IK, alors ça veut dire que l'on est en train de grimper
-        }
-
-        if (!climbStateSwitcher)
-        {
-            Debug.Log("ClimbingState en faux car plus de contact avec l'IK");
-        }
-        */
-
-        if (!leftHandIK && !rightHandIK)
-        {
-            Invoke("ClimbingStateSecurity", 0.2f);
-        }
-        /*
-        // 1) Le joueur à escaladé la structure
-        if (climbStateSwitcher && playerMovement.directionInput.z == 1 && crossState)
-        {
-            crossState = false;
-            groundState = false;
-            Debug.Log("On escalade");
-
-            // Fin de l'animation d'Idle Climb
-            anim.SetBool("ClimbBool", false);
-
-
-            // On joue l'animation d'escalade
-            anim.SetTrigger("TrClimbCross");
-
-
-            // On reitre le apply root motion
-            StartCoroutine(ClimbStop());
-        }
-
-        
-        // 2) Le joueur à décider de descendre de la structure
-        if (climbStateSwitcher && playerMovement.directionInput.z == -1 && groundState)
-        {
-            groundState = false;
-            crossState = false;
-            Debug.Log("On redescend");
-
-            // Fin de l'animation d'Idle Climb
-            anim.SetBool("ClimbBool", false);
-
-
-            // On joue l'animation de drop
-            anim.SetTrigger("TrClimbDropGround");
-
-
-            // On reitre le apply root motion
-            StartCoroutine(ClimbStop());
-        }
-        */
-    }
-
-    private void ClimbingStateSecurity()
-    {
-        //climbStateSwitcher = false;
-    }
-
-    /// <summary>
-    /// Déplacement en état de climb via l'apply root motion
-    /// </summary>
-    private void ClimbMovement()
-    {
-        /*
-        if (climbStateSwitcher)
-        {
-            // Déplacements latéraux
-            anim.SetFloat("ClimbMove", playerMovement.directionInput.x);
-        }
-        */
     }
 
     /// <summary>
