@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class PlayerInteractorDistance : PlayerInteractor
 {
-
-    private List<CustomsTriggers> objectsOnCamera = new List<CustomsTriggers>();
+    public List<CustomsTriggers> objectsOnCamera = new List<CustomsTriggers>();
+    private GameObject[] gameObjects = new GameObject[5];
 
     private float securityDelay = 0.01f;
     private float securityDelayTimer = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
     public override void Update()
     {
         base.Update();
@@ -24,8 +18,6 @@ public class PlayerInteractorDistance : PlayerInteractor
 
     public override void Detector()
     {
-        Debug.Log("Here");
-
         interactable = NearestCollider(objectsOnCamera);
 
         if (interactable != null) //Sécurité au cas ou
@@ -39,6 +31,8 @@ public class PlayerInteractorDistance : PlayerInteractor
 
     private IInteractable NearestCollider(List<CustomsTriggers> customsTriggers)
     {
+        if (customsTriggers.Count == 0) return null;
+
         float nearestInteractable = 9999;
         CustomsTriggers nearestCol = null;
 
@@ -47,6 +41,7 @@ public class PlayerInteractorDistance : PlayerInteractor
             if (trigger == null) continue;
 
             float currentDistance = Vector3.Distance(trigger.transform.position, transform.position);
+
             if (currentDistance <= nearestInteractable)
             {
                 nearestInteractable = currentDistance;
