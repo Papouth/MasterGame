@@ -23,6 +23,11 @@ public class PlayerSuperForce : PlayerPush
         if (!this.enabled) return;
         rbCol = hit.collider.attachedRigidbody;
 
+        if (rbCol.mass >= 100)
+        {
+            rbCol.isKinematic = false;
+        }
+
         if (rbCol != null && !rbCol.isKinematic)
         {
             // On joue l'animation pour pousser qui correspond au poids de l'objet
