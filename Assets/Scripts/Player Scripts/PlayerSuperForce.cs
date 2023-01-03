@@ -23,7 +23,7 @@ public class PlayerSuperForce : PlayerPush
         if (!this.enabled) return;
         rbCol = hit.collider.attachedRigidbody;
 
-        if (rbCol.mass >= 100)
+        if (rbCol.mass < 100)
         {
             rbCol.isKinematic = false;
         }
@@ -45,8 +45,6 @@ public class PlayerSuperForce : PlayerPush
             }
             else if (rbCol.mass >= 22 && rbCol.mass < 32)
             {
-                Debug.Log("passe");
-
                 animator.SetBool("HardPush", true);
 
                 rbCol.velocity = hit.moveDirection * 0.5f;
