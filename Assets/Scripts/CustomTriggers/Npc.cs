@@ -43,7 +43,7 @@ public class Npc : CustomsTriggers
         base.OnTriggerEnter(other);
         if (other.CompareTag("Player"))
         {
-            //topCube.SetActive(true);
+            topCube.SetActive(true);
 
             manager.StartDialogue(dialogues);
         }
@@ -55,7 +55,7 @@ public class Npc : CustomsTriggers
     {
         if (other.CompareTag("Player"))
         {
-            //topCube.SetActive(false);
+            topCube.SetActive(false);
 
             manager.EndDialogue();
         }
