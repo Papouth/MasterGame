@@ -17,7 +17,6 @@ public class PlayerClimb : MonoBehaviour
     private PlayerInteractor playerInteractor;
 
 
-
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
