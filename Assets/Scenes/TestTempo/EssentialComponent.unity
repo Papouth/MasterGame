@@ -137,6 +137,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1092801138, guid: 7504c171e29102f4da2897b560aac698, type: 3}
+      propertyPath: hands
+      value: 
+      objectReference: {fileID: 1092801138}
+    - target: {fileID: 1092801138, guid: 7504c171e29102f4da2897b560aac698, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -225,6 +229,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0952cb3747b35348bbc0e041f8806a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1092801138 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2101819051, guid: 7504c171e29102f4da2897b560aac698,
+    type: 3}
+  m_PrefabInstance: {fileID: 1092801135}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1258497131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -270,12 +280,12 @@ PrefabInstance:
     - target: {fileID: 717258715556111211, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.00000001723837
+      value: -0.000000050736976
       objectReference: {fileID: 0}
     - target: {fileID: 717258715556111211, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0000000040546166
+      value: 0.000000011933793
       objectReference: {fileID: 0}
     - target: {fileID: 717258715556111211, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
@@ -300,12 +310,12 @@ PrefabInstance:
     - target: {fileID: 717258715682608598, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.000000025468314
+      value: -0.000000058535104
       objectReference: {fileID: 0}
     - target: {fileID: 717258715682608598, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0000000073402653
+      value: -0.0000000168705
       objectReference: {fileID: 0}
     - target: {fileID: 717258715682608598, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}

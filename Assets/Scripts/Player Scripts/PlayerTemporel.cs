@@ -15,12 +15,14 @@ public class PlayerTemporel : MonoBehaviour
 
     [Header("Player Component")]
     private PlayerInput playerInput;
+    private PlayerInteractor playerInteractor;
     #endregion
 
     #region Built In Methods
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        playerInteractor = GetComponent<PlayerInteractor>();
 
         if (past == null || present == null) return;
 
@@ -54,13 +56,12 @@ public class PlayerTemporel : MonoBehaviour
         }
     }
 
-
     /// <summary>
     /// Change the scene to load/unload when player hit the input
     /// </summary>
     private void ChangeTempo()
     {
-        if (playerInput.ChangeTempo)
+        if (playerInput.ChangeTempo && playerInteractor.hands.transform.childCount == 0)
         {
             // On change de temporalit�
             LoadingScene();
