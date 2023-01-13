@@ -7,6 +7,7 @@ public class PastToPresent : MonoBehaviour
     #region Variables
     [Header("Component")]
     [SerializeField] private Rigidbody rb;
+    public bool canLift;
 
     [Tooltip("Le prefab du passé")]
     public GameObject pastPrefab;
@@ -33,11 +34,22 @@ public class PastToPresent : MonoBehaviour
         // On commence dans le présent
         isPresent = true;
 
+        /*
         if (prefabState)
         {
             // On désactive le prefab du passé
             pastPrefab.SetActive(false);
             prefabState = !prefabState;
+        }
+        */
+    }
+
+    private void Start()
+    {
+        if (isPresent)
+        {
+            pastPrefab.SetActive(false);
+            presentPrefab.SetActive(true);
         }
     }
 
@@ -46,6 +58,8 @@ public class PastToPresent : MonoBehaviour
         SceneFinder();
 
         PushOnOff();
+
+        LiftOnOff();
     }
     #endregion
 
@@ -90,11 +104,20 @@ public class PastToPresent : MonoBehaviour
 
 
     /// <summary>
-    /// Fais en sorte que le joueur puisse ou non pousser l'objet en fonction de la temporalité dans laquelle il se trouve
+    /// Le joueur peut pousser l'objet dans le passé
     /// </summary>
     private void PushOnOff()
     {
         if (isPresent) rb.isKinematic = true;
-        else if (!isPresent) rb.isKinematic = false;
+        else if (!isPresent && !canLift) rb.isKinematic = false;
+    }
+
+    /// <summary>
+    /// Le joueur ne peux pas porter l'objet dans le présent
+    /// </summary>
+    private void LiftOnOff()
+    {
+        if (isPresent) canLift = false;
+        else if (!isPresent) canLift = true;
     }
 }
