@@ -45,7 +45,7 @@ public class PlayerPush : MonoBehaviour
         rbCol = hit.collider.attachedRigidbody;
 
 
-        if (rbCol != null && !rbCol.isKinematic)
+        if (rbCol != null && !rbCol.isKinematic && CanPush())
         {
             // On joue l'animation pour pousser qui correspond au poids de l'objet
             if (rbCol.mass < 12)
@@ -76,8 +76,7 @@ public class PlayerPush : MonoBehaviour
             if (raycast.RaycastTest()) raycastPushGood++;
         }
 
-
-        if (raycastPushGood == 0)
+        if (raycastPushGood == 1)
             return true;
         else
             return false;

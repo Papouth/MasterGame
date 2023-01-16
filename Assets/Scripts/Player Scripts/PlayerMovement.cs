@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     public RaycastCheck[] raycastCanStandUp;
     public LayerMask layersCanStandUp;
     public float rangeMaxStandUp = 1.05f;
+    public float centerZ;
 
     [Header("Climb Parameters")]
     //public bool haveClimbed;
@@ -386,7 +387,7 @@ public class PlayerMovement : MonoBehaviour
         float center = height / 2;
 
         cc.height = Mathf.Lerp(cc.height, height, crouchSpeed);
-        cc.center = Vector3.Lerp(cc.center, new Vector3(0, center, 0), crouchSpeed);
+        cc.center = Vector3.Lerp(cc.center, new Vector3(0, center, centerZ), crouchSpeed);
     }
     #endregion
 

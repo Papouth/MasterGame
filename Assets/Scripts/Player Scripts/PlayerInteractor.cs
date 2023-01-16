@@ -13,7 +13,7 @@ public class PlayerInteractor : MonoBehaviour
     public int interactableCount;
 
     [Header("Composant")]
-    private Collider[] colliders = new Collider[5];
+    public Collider[] colliders = new Collider[5];
     public IInteractable interactable;
 
     [HideInInspector] public PlayerInput playerInput;
@@ -48,6 +48,7 @@ public class PlayerInteractor : MonoBehaviour
 
             if (interactable != null) //Sécurité au cas ou
             {
+                Debug.Log("here" + interactable);
                 interactable.Interact();
             }
         }

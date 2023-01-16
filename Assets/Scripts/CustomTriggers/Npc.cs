@@ -18,6 +18,10 @@ public class Npc : CustomsTriggers
         else Debug.LogError("Pas de dialogue manager ?");
         
         topCube.SetActive(false);
+
+        if (PlayerInteractor.playerInteractorInstance.GetComponent<PlayerInteractorDistance>() != null)
+            playerInteractorDistance = PlayerInteractor.playerInteractorInstance.GetComponent<PlayerInteractorDistance>();
+
     }
 
     public override void Interact()
@@ -39,7 +43,7 @@ public class Npc : CustomsTriggers
         base.OnTriggerEnter(other);
         if (other.CompareTag("Player"))
         {
-            topCube.SetActive(true);
+            //topCube.SetActive(true);
 
             manager.StartDialogue(dialogues);
         }
@@ -51,7 +55,7 @@ public class Npc : CustomsTriggers
     {
         if (other.CompareTag("Player"))
         {
-            topCube.SetActive(false);
+            //topCube.SetActive(false);
 
             manager.EndDialogue();
         }

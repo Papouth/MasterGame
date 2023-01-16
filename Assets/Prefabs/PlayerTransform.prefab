@@ -162,7 +162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &613852920
 Transform:
   m_ObjectHideFlags: 0
@@ -1845,6 +1845,7 @@ GameObject:
   - component: {fileID: 1092801138}
   - component: {fileID: 3498642365606399822}
   - component: {fileID: 5488210363937726674}
+  - component: {fileID: 302600281813078651}
   m_Layer: 3
   m_Name: PlayerTransform
   m_TagString: Player
@@ -2087,7 +2088,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4839972090948213078}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0da0f42855b5f7d429430e7aaaa5fe7b, type: 3}
   m_Name: 
@@ -2174,6 +2175,18 @@ MonoBehaviour:
   isClimbing: 0
   haveClimbed: 0
   frozen: 0
+--- !u!114 &302600281813078651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4839972090948213078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b889adf20f8dc741b2229258c99a5aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4839972091060060276
 GameObject:
   m_ObjectHideFlags: 0
