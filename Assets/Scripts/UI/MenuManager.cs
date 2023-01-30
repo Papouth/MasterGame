@@ -169,10 +169,10 @@ public class MenuManager : MonoBehaviour
     /// <param name="docToDisable">The UI Doc to disable</param>
     private void EnableMenu(UIDocument docToActivate, UIDocument docToDisable)
     {
-        Debug.Log("Enable menu : " + docToActivate.gameObject.name);
 
         if (docToActivate != null)
         {
+            Debug.Log("Enable menu : " + docToActivate.gameObject.name);
             docToActivate.rootVisualElement.style.display = DisplayStyle.Flex;
         }
 
