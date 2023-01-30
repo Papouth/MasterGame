@@ -1,0 +1,115 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/USS%20UXML/StyleSheet.uss?fileID=7433441132597879392&amp;guid=84247b6fcebb78a4da80a7e8dd63af02&amp;type=3#StyleSheet" />
+    <ui:VisualElement name="Screen" style="height: 100%; width: 100%; align-items: center; justify-content: flex-end; -unity-font: none; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); left: 0; top: 0; right: 0; bottom: 0; position: relative; opacity: 1; flex-direction: column; flex-grow: 1; flex-wrap: nowrap; padding-bottom: 0; margin-bottom: 30px;">
+        <ui:VisualElement name="CenterBar" style="background-image: none; height: 100%; align-items: center; justify-content: space-between; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-top-left-radius: 23px; border-bottom-left-radius: 23px; border-top-right-radius: 23px; border-bottom-right-radius: 23px; border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; width: 100%; padding-left: 50px; padding-right: 50px; padding-top: 50px; padding-bottom: 50px; flex-grow: 1; background-color: rgba(85, 142, 194, 0); flex-direction: row;">
+            <ui:VisualElement name="LeftBar" style="flex-grow: 1; align-items: stretch; justify-content: space-around;">
+                <ui:VisualElement name="Nicolas" style="flex-grow: 0; justify-content: space-around; align-items: center;">
+                    <ui:VisualElement name="Titre" style="flex-grow: 0; align-items: center; justify-content: space-around; flex-direction: row; flex-shrink: 1;">
+                        <ui:Label text="Nicolas Rouze" display-tooltip-when-elided="true" class="FontLabel" style="flex-grow: 0; flex-shrink: 0;" />
+                        <ui:VisualElement class="PepoSize" style="background-color: rgba(255, 255, 255, 0); flex-grow: 1; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; justify-content: space-around; width: 120px; height: 120px; background-image: url(&apos;project://database/Assets/UI/Asset/Pepos/PepoEquipeNico.png?fileID=2800000&amp;guid=9ff52b909fc5a7c49a4a4d4e8430fb5c&amp;type=3#PepoEquipeNico&apos;);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Poste" style="flex-grow: 1; justify-content: space-around; align-items: center;">
+                        <ui:Label text="FX Artist" display-tooltip-when-elided="true" name="Poste1" class="FontLabel FontLabelPosteCredit" style="-unity-text-align: upper-center; font-size: 40px;" />
+                        <ui:Label text="UI/UX Designer" display-tooltip-when-elided="true" name="Poste2" class="FontLabel FontLabelPosteCredit" style="font-size: 40px;" />
+                        <ui:Label text="Game Artist" display-tooltip-when-elided="true" name="Poste3" class="FontLabel FontLabelPosteCredit" style="font-size: 40px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Louis" style="flex-grow: 0; justify-content: space-around; align-items: center;">
+                    <ui:VisualElement name="Titre" style="flex-grow: 0; align-items: center; justify-content: space-around; flex-direction: row; flex-shrink: 1;">
+                        <ui:Label text="Louis Dupas" display-tooltip-when-elided="true" class="FontLabel" style="flex-grow: 0; flex-shrink: 0;" />
+                        <ui:VisualElement class="PepoSize" style="background-color: rgba(255, 0, 0, 0); flex-grow: 1; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; justify-content: space-around; background-image: url(&apos;project://database/Assets/UI/Asset/Pepos/PepoEquipeLouis.png?fileID=2800000&amp;guid=e6adcb1439779a8479c5f03f82bd5dff&amp;type=3#PepoEquipeLouis&apos;);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Poste" style="flex-grow: 1; justify-content: space-around; align-items: center;">
+                        <ui:Label text="Lead Programmer" display-tooltip-when-elided="true" name="Poste1" class="FontLabel FontLabelPosteCredit" style="-unity-text-align: upper-center;" />
+                        <ui:Label text="Gameplay Programmer" display-tooltip-when-elided="true" name="Poste2" class="FontLabel FontLabelPosteCredit" />
+                        <ui:Label text="--" display-tooltip-when-elided="true" name="Poste3" class="FontLabel FontLabelPosteCredit" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Oceane" style="flex-grow: 0; justify-content: space-around; align-items: center;">
+                    <ui:VisualElement name="Titre" style="flex-grow: 0; align-items: center; justify-content: space-around; flex-direction: row; flex-shrink: 1;">
+                        <ui:Label text="Océane Senden" display-tooltip-when-elided="true" class="FontLabel" style="flex-grow: 0; flex-shrink: 0;" />
+                        <ui:VisualElement class="PepoSize" style="flex-grow: 1; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; justify-content: space-around; background-image: url(&apos;project://database/Assets/UI/Asset/Pepos/PepoEquipemoi.png?fileID=2800000&amp;guid=4077e523e7f0ba143b7f92cdb224b4b2&amp;type=3#PepoEquipemoi&apos;);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Poste" style="flex-grow: 1; justify-content: space-around; align-items: center;">
+                        <ui:Label text="Character Designer" display-tooltip-when-elided="true" name="Poste1" class="FontLabel FontLabelPosteCredit" style="-unity-text-align: upper-center;" />
+                        <ui:Label text="Game Artist" display-tooltip-when-elided="true" name="Poste2" class="FontLabel FontLabelPosteCredit" />
+                        <ui:Label text="Concept Artist" display-tooltip-when-elided="true" name="Poste3" class="FontLabel FontLabelPosteCredit" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="MiddleBar" style="flex-grow: 1; align-items: stretch; justify-content: space-around;">
+                <ui:VisualElement name="Guillaume" style="flex-grow: 0; justify-content: space-around; align-items: center;">
+                    <ui:VisualElement name="Titre" style="flex-grow: 0; align-items: center; justify-content: space-around; flex-direction: row; flex-shrink: 1;">
+                        <ui:Label text="Guillaume Vinchent" display-tooltip-when-elided="true" class="FontLabel" style="flex-grow: 0; flex-shrink: 0;" />
+                        <ui:VisualElement class="PepoSize" style="background-color: rgba(255, 255, 255, 0); flex-grow: 1; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; justify-content: space-around; width: 120px; height: 120px; background-image: url(&apos;project://database/Assets/UI/Asset/Pepos/PepoEquipeGuillaume.png?fileID=2800000&amp;guid=c3ccd60d08ec1a848bf3893787d6b538&amp;type=3#PepoEquipeGuillaume&apos;);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Poste" style="flex-grow: 1; justify-content: space-around; align-items: center;">
+                        <ui:Label text="Game Artist" display-tooltip-when-elided="true" name="Poste1" class="FontLabel FontLabelPosteCredit" style="-unity-text-align: upper-center; font-size: 40px;" />
+                        <ui:Label text="Environment Artist" display-tooltip-when-elided="true" name="Poste2" class="FontLabel FontLabelPosteCredit" style="font-size: 40px;" />
+                        <ui:Label text="--" display-tooltip-when-elided="true" name="Poste3" class="FontLabel FontLabelPosteCredit" style="font-size: 40px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Theo" style="flex-grow: 0; justify-content: space-around; align-items: center;">
+                    <ui:VisualElement name="Titre" style="flex-grow: 0; align-items: center; justify-content: space-around; flex-direction: row; flex-shrink: 1;">
+                        <ui:Label text="Théo Lécluse" display-tooltip-when-elided="true" class="FontLabel" style="flex-grow: 0; flex-shrink: 0;" />
+                        <ui:VisualElement class="PepoSize" style="background-color: rgba(255, 0, 0, 0); flex-grow: 1; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; justify-content: space-around; background-image: url(&apos;project://database/Assets/UI/Asset/Pepos/PepoEquipeTheo.png?fileID=2800000&amp;guid=7b909e111b7ea1e4abfc15a483c67e92&amp;type=3#PepoEquipeTheo&apos;);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Poste" style="flex-grow: 1; justify-content: space-around; align-items: center;">
+                        <ui:Label text="Scrum Master" display-tooltip-when-elided="true" name="Poste1" class="FontLabel FontLabelPosteCredit" style="-unity-text-align: upper-center;" />
+                        <ui:Label text="Level Designer" display-tooltip-when-elided="true" name="Poste2" class="FontLabel FontLabelPosteCredit" />
+                        <ui:Label text="Programmer" display-tooltip-when-elided="true" name="Poste3" class="FontLabel FontLabelPosteCredit" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Mathis" style="flex-grow: 0; justify-content: space-around; align-items: center;">
+                    <ui:VisualElement name="Titre" style="flex-grow: 0; align-items: center; justify-content: space-around; flex-direction: row; flex-shrink: 1;">
+                        <ui:Label text="Mathis Humez" display-tooltip-when-elided="true" class="FontLabel" style="flex-grow: 0; flex-shrink: 0;" />
+                        <ui:VisualElement class="PepoSize" style="flex-grow: 1; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; justify-content: space-around; background-image: url(&apos;project://database/Assets/UI/Asset/Pepos/PepoEquipeMathis.png?fileID=2800000&amp;guid=26cbfee83f6fdbd4a9bc507e5f85fdb6&amp;type=3#PepoEquipeMathis&apos;);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Poste" style="flex-grow: 1; justify-content: space-around; align-items: center;">
+                        <ui:Label text="Lead Animator" display-tooltip-when-elided="true" name="Poste1" class="FontLabel FontLabelPosteCredit" style="-unity-text-align: upper-center; height: 60px;" />
+                        <ui:Label text="Cinematic Animator" display-tooltip-when-elided="true" name="Poste2" class="FontLabel FontLabelPosteCredit" />
+                        <ui:Label text="--" display-tooltip-when-elided="true" name="Poste3" class="FontLabel FontLabelPosteCredit" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Rightbar" style="flex-grow: 1; align-items: stretch; justify-content: space-around;">
+                <ui:VisualElement name="Andy" style="flex-grow: 0; justify-content: space-around; align-items: center;">
+                    <ui:VisualElement name="Titre" style="flex-grow: 0; align-items: center; justify-content: space-around; flex-direction: row; flex-shrink: 1;">
+                        <ui:Label text="Andy Lallau" display-tooltip-when-elided="true" class="FontLabel" style="flex-grow: 0; flex-shrink: 0;" />
+                        <ui:VisualElement class="PepoSize" style="background-color: rgba(255, 255, 255, 0); flex-grow: 1; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; justify-content: space-around; width: 120px; height: 120px; background-image: url(&apos;project://database/Assets/UI/Asset/Pepos/PepoEquipeAndy.png?fileID=2800000&amp;guid=ca355618aafa32f4c9ae1479467f4d02&amp;type=3#PepoEquipeAndy&apos;);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Poste" style="flex-grow: 1; justify-content: space-around; align-items: center;">
+                        <ui:Label text="Character Designer" display-tooltip-when-elided="true" name="Poste1" class="FontLabel FontLabelPosteCredit" style="-unity-text-align: upper-center; font-size: 40px;" />
+                        <ui:Label text="Gameplay Animator" display-tooltip-when-elided="true" name="Poste2" class="FontLabel FontLabelPosteCredit" style="font-size: 40px;" />
+                        <ui:Label text="Rigger / Skinner" display-tooltip-when-elided="true" name="Poste3" class="FontLabel FontLabelPosteCredit" style="font-size: 40px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Isa" style="flex-grow: 0; justify-content: space-around; align-items: center;">
+                    <ui:VisualElement name="Titre" style="flex-grow: 0; align-items: center; justify-content: space-around; flex-direction: row; flex-shrink: 1;">
+                        <ui:Label text="Isabelle Robin" display-tooltip-when-elided="true" class="FontLabel" style="flex-grow: 0; flex-shrink: 0;" />
+                        <ui:VisualElement class="PepoSize" style="background-color: rgba(255, 0, 0, 0); flex-grow: 1; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; justify-content: space-around; background-image: url(&apos;project://database/Assets/UI/Asset/Pepos/PepoEquipeIsabelle.png?fileID=2800000&amp;guid=885507cb4f9e16e498d29186f3390cd2&amp;type=3#PepoEquipeIsabelle&apos;);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Poste" style="flex-grow: 1; justify-content: space-around; align-items: center;">
+                        <ui:Label text="Lead Artist" display-tooltip-when-elided="true" name="Poste1" class="FontLabel FontLabelPosteCredit" style="-unity-text-align: upper-center;" />
+                        <ui:Label text="Game Artist" display-tooltip-when-elided="true" name="Poste2" class="FontLabel FontLabelPosteCredit" />
+                        <ui:Label text="--" display-tooltip-when-elided="true" name="Poste3" class="FontLabel FontLabelPosteCredit" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Coline" style="flex-grow: 0; justify-content: space-around; align-items: center;">
+                    <ui:VisualElement name="Titre" style="flex-grow: 0; align-items: center; justify-content: space-around; flex-direction: row; flex-shrink: 1;">
+                        <ui:Label text="Coline Fasquelle" display-tooltip-when-elided="true" class="FontLabel" style="flex-grow: 0; flex-shrink: 0;" />
+                        <ui:VisualElement class="PepoSize" style="flex-grow: 1; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; justify-content: space-around; background-image: url(&apos;project://database/Assets/UI/Asset/Pepos/PepoEquipeColine.png?fileID=2800000&amp;guid=2ecc7b0ead2dafb45b501ad728949f15&amp;type=3#PepoEquipeColine&apos;);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Poste" style="flex-grow: 1; justify-content: space-around; align-items: center;">
+                        <ui:Label text="Game Designer" display-tooltip-when-elided="true" name="Poste1" class="FontLabel FontLabelPosteCredit" style="-unity-text-align: upper-center;" />
+                        <ui:Label text="Level Designer" display-tooltip-when-elided="true" name="Poste2" class="FontLabel FontLabelPosteCredit" />
+                        <ui:Label text="Game Artist" display-tooltip-when-elided="true" name="Poste3" class="FontLabel FontLabelPosteCredit" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="BotBar" style="background-image: none; height: 10%; align-items: center; justify-content: space-around; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-top-left-radius: 23px; border-bottom-left-radius: 23px; border-top-right-radius: 23px; border-bottom-right-radius: 23px; border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; width: 100%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; flex-grow: 1; background-color: rgba(85, 142, 194, 0); left: auto;">
+            <ui:Button text="Quitter" display-tooltip-when-elided="true" name="Leave" class="BaseButton HoverButton ActiveButton FontLabel" style="flex-grow: 1; width: 20%; align-items: flex-start; flex-direction: column; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; left: 0;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

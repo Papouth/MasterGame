@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/USS%20UXML/StyleSheet.uss?fileID=7433441132597879392&amp;guid=84247b6fcebb78a4da80a7e8dd63af02&amp;type=3#StyleSheet" />
+    <ui:VisualElement name="Screen" style="height: 100%; width: 100%; align-items: stretch; justify-content: space-around; -unity-font: none; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); left: 0; top: 0; right: 0; bottom: 0; position: relative; opacity: 1; flex-direction: column; flex-grow: 1;">
+        <ui:VisualElement name="SideBar" style="background-image: none; height: 100%; align-items: stretch; justify-content: space-around; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-top-left-radius: 23px; border-bottom-left-radius: 23px; border-top-right-radius: 23px; border-bottom-right-radius: 23px; border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; width: 40%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; flex-grow: 1; background-color: rgba(85, 142, 194, 0);">
+            <ui:VisualElement name="TopBar" class="SizeBar" style="align-items: center; justify-content: center; flex-grow: 1; height: 33%; padding-top: 10px; padding-bottom: 10px; flex-wrap: nowrap; flex-direction: column; overflow: visible; top: 40px;">
+                <ui:VisualElement name="Logo" style="background-image: url(&apos;project://database/Assets/UI/Asset/Logo_Final.png?fileID=2800000&amp;guid=3defeed32e4fc7c44a02d532528cc97a&amp;type=3#Logo_Final&apos;); width: 90%; height: 60%; flex-direction: column; align-items: auto; flex-grow: 0; margin-top: 0; margin-bottom: 0; padding-top: 0; top: -30px; margin-left: 0; margin-right: 0;" />
+                <ui:VisualElement name="BarUnderLogo" style="background-image: none; width: 110%; height: 2%; flex-direction: column; align-items: auto; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 2px; border-bottom-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; flex-wrap: nowrap; background-color: rgb(255, 255, 255); -unity-background-image-tint-color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; -unity-slice-left: 0; flex-grow: 0; left: -63px; overflow: visible;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="MiddleBar" class="ButtonSizeBar" style="overflow: visible;">
+                <ui:Button text="Nouvelle partie" display-tooltip-when-elided="true" name="NewGame" class="BaseButton HoverButton ActiveButton FontLabel" />
+                <ui:Button text="Options" display-tooltip-when-elided="true" name="Options" class="BaseButton HoverButton ActiveButton FontLabel" />
+                <ui:Button text="Crédits" display-tooltip-when-elided="true" name="Credits" class="BaseButton HoverButton ActiveButton FontLabel" />
+            </ui:VisualElement>
+            <ui:VisualElement name="BotBar" class="ButtonSizeBar" style="visibility: visible;">
+                <ui:Button text="Quitter" display-tooltip-when-elided="true" name="Leave" class="BaseButton HoverButton ActiveButton FontLabel" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

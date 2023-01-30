@@ -1,0 +1,110 @@
+.SizeBar {
+    width: auto;
+    height: 33%;
+    opacity: 1;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+.ButtonSizeBar {
+    height: 33%;
+    align-items: stretch;
+    justify-content: space-around;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.BaseButton {
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    transition-duration: 0.1s;
+    transform-origin: center;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    align-items: center;
+    justify-content: flex-end;
+    max-width: none;
+    min-width: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    flex-grow: 0;
+    overflow: visible;
+}
+
+.BaseButton.HoverButton:hover {
+    background-color: rgb(123, 174, 188);
+    border-left-color: rgba(255, 255, 255, 0);
+    border-right-color: rgba(255, 255, 255, 0);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    transition-duration: 0.2s;
+    scale: 1.1 1.1;
+    -unity-slice-left: 0;
+    -unity-slice-top: 0;
+}
+
+.BaseButton.ActiveButton:active {
+    background-color: rgb(123, 174, 188);
+    border-left-color: rgba(255, 255, 255, 0);
+    border-right-color: rgba(255, 255, 255, 0);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-left-width: 2px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    transition-duration: 0.2s;
+    scale: 1.1 1.1;
+}
+
+.FontLabel {
+    -unity-font: url('project://database/Assets/UI/Fonts/K2D-Regular.ttf?fileID=12800000&guid=72b06b05fb7adfd469896e659aedad3f&type=3#K2D-Regular');
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/K2D-Regular%20SDF.asset?fileID=11400000&guid=990df2fed332a6f4e88870caef0c307a&type=2#K2D-Regular SDF');
+    -unity-font-style: normal;
+    font-size: 50px;
+    color: rgb(193, 208, 221);
+    text-shadow: 0.5px 0.5px 0 rgba(0, 0, 0, 0.33);
+}
+
+.FontLabel.TittleLabel {
+    font-size: 150px;
+}
+
+.Toggle {
+}
+
+.FontLabelPosteCredit {
+    font-size: 40px;
+}
+
+.PepoSize {
+    width: 120px;
+    height: 120px;
+    justify-content: flex-start;
+    flex-grow: 0;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 255);
+}
