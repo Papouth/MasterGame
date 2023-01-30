@@ -26,8 +26,6 @@ public class PlayerTemporel : MonoBehaviour
 
         if (past == null || present == null) return;
 
-        SceneManager.LoadScene(past, LoadSceneMode.Additive);
-        SceneManager.LoadScene(present, LoadSceneMode.Additive);
     }
 
     private void Start()
@@ -36,6 +34,8 @@ public class PlayerTemporel : MonoBehaviour
 
         scenesToLoad = past;
         scenesToUnload = present;
+        SceneManager.LoadScene(past, LoadSceneMode.Additive);
+        SceneManager.LoadScene(present, LoadSceneMode.Additive);
     }
 
     private void Update()
