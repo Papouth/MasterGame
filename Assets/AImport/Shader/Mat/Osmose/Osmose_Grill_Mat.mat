@@ -50,6 +50,7 @@ Material:
     - _Float: 1
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Scan_Effect_Opacity: 0
     - _Scan_Square_Opacity: 1
     - _Scan_Square_Tiling: 0.05
     - _SrcBlend: 5
