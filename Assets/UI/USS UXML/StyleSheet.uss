@@ -106,5 +106,9 @@
     height: 120px;
     justify-content: flex-start;
     flex-grow: 0;
-    -unity-background-image-tint-color: rgba(255, 255, 255, 255);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}
+
+.BackGround {
+    background-image: url('project://database/Assets/UI/Asset/UI_Background.png?fileID=2800000&guid=f27ec30bd1be3bf488ce916ac4fa489d&type=3#UI_Background');
 }
