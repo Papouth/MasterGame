@@ -13,17 +13,18 @@ public class PlayerInteractor : MonoBehaviour
     public int interactableCount;
 
     [Header("Composant")]
-    private Collider[] colliders = new Collider[5];
+    public Collider[] colliders = new Collider[5];
     public IInteractable interactable;
 
     [HideInInspector] public PlayerInput playerInput;
     public GameObject hands;
 
+
     private void Awake()
     {
         playerInteractorInstance = this;
         
-        playerInput = this.GetComponent<PlayerInput>();
+        playerInput = GetComponent<PlayerInput>();
     }
 
     public virtual void Update()
@@ -48,6 +49,7 @@ public class PlayerInteractor : MonoBehaviour
 
             if (interactable != null) //Sécurité au cas ou
             {
+                Debug.Log("here" + interactable);
                 interactable.Interact();
             }
         }
@@ -57,7 +59,7 @@ public class PlayerInteractor : MonoBehaviour
     }
 
     /// <summary>
-    /// Récupére Le collider le plus proche du joueurs selon un radius et un layers spécifique
+    /// Le collider le plus proche du joueur selon un radius et un layer
     /// </summary>
     /// <param name="cols"></param>
     /// <returns></returns>

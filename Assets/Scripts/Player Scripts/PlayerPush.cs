@@ -35,8 +35,6 @@ public class PlayerPush : MonoBehaviour
     public virtual void Update()
     {
         PushAnimator();
-
-        
     }
 
     #region Push
@@ -77,8 +75,6 @@ public class PlayerPush : MonoBehaviour
 
             if (raycast.RaycastTest()) raycastPushGood++;
         }
-
-        Debug.Log(raycastPushGood);
 
         if (raycastPushGood == 1)
             return true;

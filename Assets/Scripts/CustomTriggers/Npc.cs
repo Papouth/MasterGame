@@ -18,6 +18,10 @@ public class Npc : CustomsTriggers
         else Debug.LogError("Pas de dialogue manager ?");
         
         topCube.SetActive(false);
+
+        if (PlayerInteractor.playerInteractorInstance.GetComponent<PlayerInteractorDistance>() != null)
+            playerInteractorDistance = PlayerInteractor.playerInteractorInstance.GetComponent<PlayerInteractorDistance>();
+
     }
 
     public override void Interact()
