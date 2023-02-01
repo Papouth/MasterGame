@@ -61,6 +61,8 @@
     scale: 1.1 1.1;
     -unity-slice-left: 0;
     -unity-slice-top: 0;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgb(112, 151, 159);
 }
 
 .BaseButton.ActiveButton:active {
