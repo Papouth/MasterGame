@@ -21,11 +21,17 @@ public class PlayerTemporel : MonoBehaviour
     #region Built In Methods
     private void Awake()
     {
+
         playerInput = GetComponent<PlayerInput>();
         playerInteractor = GetComponent<PlayerInteractor>();
 
         if (past == null || present == null) return;
 
+
+        // A remettre pour faire fonctionner le script
+
+        //SceneManager.LoadScene(past, LoadSceneMode.Additive);
+        //SceneManager.LoadScene(present, LoadSceneMode.Additive);
     }
 
     private void Start()
@@ -34,8 +40,6 @@ public class PlayerTemporel : MonoBehaviour
 
         scenesToLoad = past;
         scenesToUnload = present;
-        SceneManager.LoadScene(past, LoadSceneMode.Additive);
-        SceneManager.LoadScene(present, LoadSceneMode.Additive);
     }
 
     private void Update()
