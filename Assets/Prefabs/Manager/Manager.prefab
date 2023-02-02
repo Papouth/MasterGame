@@ -90,5 +90,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kali: {fileID: 0}
   cam: {fileID: 0}
-  startScene: Tutoriel_01_Passe
+  startScene: Tutoriel_01_Present
   menuScene: MainMenuScene

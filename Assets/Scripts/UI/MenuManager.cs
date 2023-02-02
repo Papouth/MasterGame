@@ -30,6 +30,8 @@ public class MenuManager : MonoBehaviour
 
     private VisualElement currentVisualElement;
     private UIDocument lastMenuCheck;
+    [SerializeField] private PlayerInput playerInput;
+    private bool activeMenuGame;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -57,6 +59,11 @@ public class MenuManager : MonoBehaviour
         docSettingsMenu.rootVisualElement.style.display = DisplayStyle.None;
         docCreditMenu.rootVisualElement.style.display = DisplayStyle.None;
         docPlayMenu.rootVisualElement.style.display = DisplayStyle.None;
+    }
+
+    private void Update()
+    {
+        EnableMenu();
     }
 
     /// <summary>
@@ -136,7 +143,7 @@ public class MenuManager : MonoBehaviour
         Button optionButton = rootPlayMenu.Q<Button>("Options");
         Button leaveButton = rootPlayMenu.Q<Button>("Leave");
 
-        resumeButton.clickable.clicked += () => { EnableMenu(null, docPlayMenu); };
+        resumeButton.clickable.clicked += () => { EnableMenu(null, docPlayMenu); Time.timeScale = 1; activeMenuGame = true; };
         optionButton.clickable.clicked += () => { EnableMenu(docSettingsMenu, docPlayMenu); };
         leaveButton.clickable.clicked += () => { EnableMenu(docMainMenu, docPlayMenu); };
 
@@ -177,15 +184,17 @@ public class MenuManager : MonoBehaviour
     /// <param name="docToDisable">The UI Doc to disable</param>
     private void EnableMenu(UIDocument docToActivate, UIDocument docToDisable)
     {
-
         if (docToActivate != null)
         {
             Debug.Log("Enable menu : " + docToActivate.gameObject.name);
             docToActivate.rootVisualElement.style.display = DisplayStyle.Flex;
         }
 
-        docToDisable.rootVisualElement.style.display = DisplayStyle.None;
-        lastMenuCheck = docToDisable;
+        if (docToDisable != null)
+        {
+            docToDisable.rootVisualElement.style.display = DisplayStyle.None;
+            lastMenuCheck = docToDisable;
+        }
     }
 
 
@@ -205,8 +214,26 @@ public class MenuManager : MonoBehaviour
         Debug.Log("Enable Visual : " + visualElementToActivate.name);
         visualElementToActivate.style.display = DisplayStyle.Flex;
         currentVisualElement = visualElementToActivate;
-
-
     }
 
+    private void EnableMenu()
+    {
+        if (playerInput.CanMenu)
+        {
+            if (activeMenuGame)
+            {
+                Time.timeScale = 0;
+                EnableMenu(docPlayMenu, null);
+                activeMenuGame = false;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                EnableMenu(null, docPlayMenu);
+                activeMenuGame = true;
+            }
+
+            playerInput.CanMenu = false;
+        }
+    }
 }
