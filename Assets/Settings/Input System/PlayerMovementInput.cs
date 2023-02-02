@@ -125,6 +125,15 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""59e35b97-edc7-4315-b323-ae826e95ab9e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -292,6 +301,17 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                     ""action"": ""MousePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6bbb0b76-a655-4bea-b3dc-cdffd24ef413"",
+                    ""path"": ""<Keyboard>/semicolon"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -311,6 +331,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         m_PlayerMap_Telekinesy = m_PlayerMap.FindAction("Telekinesy", throwIfNotFound: true);
         m_PlayerMap_Select = m_PlayerMap.FindAction("Select", throwIfNotFound: true);
         m_PlayerMap_MousePosition = m_PlayerMap.FindAction("MousePosition", throwIfNotFound: true);
+        m_PlayerMap_Menu = m_PlayerMap.FindAction("Menu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -381,6 +402,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMap_Telekinesy;
     private readonly InputAction m_PlayerMap_Select;
     private readonly InputAction m_PlayerMap_MousePosition;
+    private readonly InputAction m_PlayerMap_Menu;
     public struct PlayerMapActions
     {
         private @PlayerMovementInput m_Wrapper;
@@ -396,6 +418,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         public InputAction @Telekinesy => m_Wrapper.m_PlayerMap_Telekinesy;
         public InputAction @Select => m_Wrapper.m_PlayerMap_Select;
         public InputAction @MousePosition => m_Wrapper.m_PlayerMap_MousePosition;
+        public InputAction @Menu => m_Wrapper.m_PlayerMap_Menu;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -438,6 +461,9 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                 @MousePosition.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMousePosition;
                 @MousePosition.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMousePosition;
                 @MousePosition.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMousePosition;
+                @Menu.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMenu;
+                @Menu.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMenu;
+                @Menu.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMenu;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -475,6 +501,9 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                 @MousePosition.started += instance.OnMousePosition;
                 @MousePosition.performed += instance.OnMousePosition;
                 @MousePosition.canceled += instance.OnMousePosition;
+                @Menu.started += instance.OnMenu;
+                @Menu.performed += instance.OnMenu;
+                @Menu.canceled += instance.OnMenu;
             }
         }
     }
@@ -492,5 +521,6 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         void OnTelekinesy(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
     }
 }
