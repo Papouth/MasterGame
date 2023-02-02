@@ -123,6 +123,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &148808596 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8233528653410943343, guid: 2a9ab10c458166441821c0e6b953420b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1991796795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &378822206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 717258715791264471, guid: d917841d4ce8f914eb39f6c4252e611f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1258497131}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1258497131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -450,6 +462,11 @@ PrefabInstance:
       propertyPath: scenesPrefabs.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7005642557742281055, guid: 2a9ab10c458166441821c0e6b953420b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8233528653410943343, guid: 2a9ab10c458166441821c0e6b953420b,
         type: 3}
       propertyPath: m_Name
@@ -545,7 +562,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1991796795}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 148808596}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0952cb3747b35348bbc0e041f8806a2, type: 3}
@@ -760,12 +777,27 @@ PrefabInstance:
     - target: {fileID: 1825157332981286718, guid: 2a9aafa6c91bcf043a8a53ba35632476,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3979667620478582850, guid: 2a9aafa6c91bcf043a8a53ba35632476,
         type: 3}
       propertyPath: playerInput
       value: 
       objectReference: {fileID: 1991796809}
+    - target: {fileID: 7944367006314413097, guid: 2a9aafa6c91bcf043a8a53ba35632476,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 378822206}
+    - target: {fileID: 7944367006314413097, guid: 2a9aafa6c91bcf043a8a53ba35632476,
+        type: 3}
+      propertyPath: kali
+      value: 
+      objectReference: {fileID: 148808596}
+    - target: {fileID: 7944367006314413097, guid: 2a9aafa6c91bcf043a8a53ba35632476,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a9aafa6c91bcf043a8a53ba35632476, type: 3}

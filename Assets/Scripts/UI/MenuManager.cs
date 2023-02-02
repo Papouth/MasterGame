@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class MenuManager : MonoBehaviour
     [Header("Main Menu")]
     [SerializeField]
     private UIDocument docMainMenu;
+    public string sceneIntro;
+    public string mainMenuScene;
     private VisualElement rootMainMenu;
 
     [Header("Settings Menu")]
@@ -68,7 +71,7 @@ public class MenuManager : MonoBehaviour
         Button creditsButton = rootMainMenu.Q<Button>("Credits");
         Button leaveButton = rootMainMenu.Q<Button>("Leave");
 
-        newGameButton.clickable.clicked += () => { LauchGame(); EnableMenu(docPlayMenu, docMainMenu); };
+        newGameButton.clickable.clicked += () => { LauchGame(); };
         optionButton.clickable.clicked += () => { EnableMenu(docSettingsMenu, docMainMenu); };
         creditsButton.clickable.clicked += () => { EnableMenu(docCreditMenu, docMainMenu); };
         leaveButton.clickable.clicked += LeaveGame;
@@ -148,7 +151,11 @@ public class MenuManager : MonoBehaviour
     private void LauchGame()
     {
         Debug.Log("Game Lauch");
+        SceneManager.UnloadScene(mainMenuScene);
 
+        EnableMenu(null, docMainMenu);
+        Time.timeScale = 1;
+        SceneManager.LoadScene(sceneIntro, LoadSceneMode.Additive);
     }
 
     /// <summary>
@@ -157,6 +164,7 @@ public class MenuManager : MonoBehaviour
     private void LeaveGame()
     {
         Debug.Log("You leave the game");
+        Application.Quit();
     }
 
     #endregion
