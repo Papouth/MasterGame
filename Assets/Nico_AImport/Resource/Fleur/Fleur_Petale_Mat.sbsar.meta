@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 87d89ff54dfcb6543b5041fb606c4833
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _instancesCopy:
+  - {fileID: 11400000, guid: b0f78aecd333faa4086fdc63b68f4ea7, type: 2}
+  _fileAsset: {fileID: 6013892654665635331, guid: 87d89ff54dfcb6543b5041fb606c4833,
+    type: 3}
+  _assetPath: Assets/AImport/Resource/Fleur/Fleur_Petale_Mat.sbsar
