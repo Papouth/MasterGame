@@ -2515,10 +2515,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 32.291666666666664
+    m_Start: 32.041666666666664
     m_ClipIn: 0
     m_Asset: {fileID: 8535391967171092696}
-    m_Duration: 15.333333333333336
+    m_Duration: 15.583333333333336
     m_TimeScale: 1
     m_ParentTrack: {fileID: -460435133563402647}
     m_EaseInDuration: 0
@@ -3398,7 +3398,7 @@ MonoBehaviour:
   m_Name: RecorderClip
   m_EditorClassIdentifier: 
   enabled: 1
-  take: 4
+  take: 6
   captureEveryNthFrame: 1
   fileNameGenerator:
     m_Path:
@@ -3406,7 +3406,7 @@ MonoBehaviour:
       m_Leaf: Recordings
       m_ForceAssetFolder: 0
       m_AbsolutePath: 
-    m_FileName: TakeInsideTravail
+    m_FileName: TakeInsideKali
   outputFormat: 0
   videoBitRateMode: 2
   captureAlpha: 0
