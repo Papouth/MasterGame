@@ -34,6 +34,9 @@ public class Plateforme : MonoBehaviour
     [SerializeField]
     private bool isEnable = false;
 
+    private Rigidbody rb;
+    private Vector3 currentPos;
+    private CharacterController cc;
     #endregion
 
     #region Built In methods
@@ -42,10 +45,11 @@ public class Plateforme : MonoBehaviour
     void Start()
     {
         depart = destination = transform.position;
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         EditPlateforme();
     }
@@ -65,24 +69,12 @@ public class Plateforme : MonoBehaviour
     /// <param name="other">The other Collider involved in this collision.</param>
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 3) //Player
-        {
-            other.gameObject.transform.SetParent(this.transform);
-            Debug.Log("Here");
-        }
+        if (other.CompareTag("Player")) cc = other.GetComponent<CharacterController>();
     }
 
-    /// <summary>
-    /// OnTriggerExit is called when the Collider other has stopped touching the trigger.
-    /// </summary>
-    /// <param name="other">The other Collider involved in this collision.</param>
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == 3) //Player
-        {
-            other.gameObject.transform.SetParent(null);
-            Debug.Log("Here2");
-        }
+        if (other.CompareTag("Player")) cc.Move(rb.velocity * Time.deltaTime);
     }
 
     #endregion
@@ -121,7 +113,8 @@ public class Plateforme : MonoBehaviour
     private void MovePlateforme()
     {
         currentTimeLerp += Time.deltaTime * TimeToReach / 1000;
-        transform.position = Vector3.Lerp(transform.position, destination, currentTimeLerp);
+        currentPos = Vector3.Lerp(transform.position, destination, currentTimeLerp); // transform.position
+        rb.MovePosition(currentPos);
 
         if (DestinationReached())
         {
