@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6934712560464505644}
   - component: {fileID: 6505149819216026818}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: TriggerCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3339809173531434300}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: PlateformeComplet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 3339809174155831568}
   - component: {fileID: 3339809174155831571}
   - component: {fileID: 4600688625347694933}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Plateforme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3339809174766042913}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: End Waypoint
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 4723901919129936504}
   - component: {fileID: 7127138558134864869}
   - component: {fileID: 7127138558134864870}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PlateformeMouvante
   m_TagString: Untagged
   m_Icon: {fileID: 0}
