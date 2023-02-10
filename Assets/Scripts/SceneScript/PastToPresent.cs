@@ -7,6 +7,7 @@ public class PastToPresent : MonoBehaviour
     #region Variables
     [Header("Component")]
     [SerializeField] private Rigidbody rb;
+    [HideInInspector]
     public bool canLift;
 
     [Tooltip("Le prefab du passé")]
@@ -30,6 +31,7 @@ public class PastToPresent : MonoBehaviour
         playerTemporel = FindObjectOfType<PlayerTemporel>();
 
         rb = GetComponent<Rigidbody>();
+        if (rb == null) rb = GetComponentInChildren<Rigidbody>();
 
         // On commence dans le présent
         isPresent = true;

@@ -18,8 +18,9 @@ public abstract class CustomsTriggers : MonoBehaviour, IInteractable
 
     public virtual void Awake()
     {
-        if (PlayerInteractor.playerInteractorInstance.GetComponent<PlayerInteractorDistance>() != null)
-            playerInteractorDistance = PlayerInteractor.playerInteractorInstance.GetComponent<PlayerInteractorDistance>();
+        PlayerInteractor player = PlayerInteractor.playerInteractorInstance;
+
+        playerInteractorDistance = player.gameObject.GetComponent<PlayerInteractorDistance>();
 
         rb = GetComponent<Rigidbody>();
 
