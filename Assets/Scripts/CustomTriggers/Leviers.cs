@@ -30,9 +30,12 @@ public class Leviers : CustomsTriggers
         // On ouvre la porte qui correspond
         doorOpen = true;
 
-        if(theDoorAnim != null) theDoorAnim.Play();
-        else { Destroy(doorToDestroy); }
+        if (theDoorAnim != null)
+        {
+            theDoorAnim.Play();
 
-        animLever.SetBool("leverOn", true);
+            animLever.SetBool("leverOn", true);
+        }
+        else { Destroy(doorToDestroy); }
     }
 }
