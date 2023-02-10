@@ -15,6 +15,7 @@ public class PlayerInput : MonoBehaviour
     private bool canClimbJump;
     private bool canTelekinesy;
     private bool canSelect;
+    private bool canMenu;
 
     public static bool telekinesyKeyOn;
     #endregion
@@ -40,6 +41,12 @@ public class PlayerInput : MonoBehaviour
     {
         get { return canChangeTempo; }
         set { canChangeTempo = value; }
+    }
+
+    public bool CanMenu
+    {
+        get { return canMenu; }
+        set { canMenu = value; }
     }
 
     public bool CanDestroy
@@ -101,6 +108,11 @@ public class PlayerInput : MonoBehaviour
     public void OnInteract()
     {
         canInteract = true;
+    }
+
+    public void OnMenu()
+    {
+        canMenu = true;
     }
 
     public void OnTempo()

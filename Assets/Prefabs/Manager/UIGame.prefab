@@ -577,6 +577,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   docMainMenu: {fileID: 7002063706603143758}
+  sceneIntro: Anim_Intro 1
+  mainMenuScene: MainMenuScene
   docSettingsMenu: {fileID: 4096987795496007176}
   docCreditMenu: {fileID: 4168460932081520217}
   docPlayMenu: {fileID: 556297946189769144}

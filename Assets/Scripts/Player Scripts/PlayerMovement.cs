@@ -229,7 +229,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (ySpeed <= stepGround)
             {
-                ySpeed = -0.2f;
+                ySpeed = cc.velocity.y;
             }
 
             if (playerInput.CanJump)

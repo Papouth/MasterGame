@@ -8,13 +8,18 @@ public class Leviers : CustomsTriggers
 {
     public UnityEvent leverEvent;
     private bool doorOpen;
-    public Animation theDoorAnim;
+    [SerializeField] private Animation theDoorAnim;
+    [SerializeField] private GameObject doorToDestroy;
+    private Animator animLever;
 
+
+    private void Start()
+    {
+        animLever = GetComponent<Animator>();
+    }
 
     public override void Interact()
     {
-        //Debug.Log("Levier");
-
         if (!doorOpen) leverEvent.Invoke();
 
         return;
@@ -24,7 +29,10 @@ public class Leviers : CustomsTriggers
     {
         // On ouvre la porte qui correspond
         doorOpen = true;
-        theDoorAnim.Play();
-    }
 
+        if(theDoorAnim != null) theDoorAnim.Play();
+        else { Destroy(doorToDestroy); }
+
+        animLever.SetBool("leverOn", true);
+    }
 }
