@@ -19548,8 +19548,8 @@ MonoBehaviour:
         m_CallState: 2
   theDoorAnim: {fileID: 0}
   doorToDestroy: {fileID: 0}
---- !u!65 &9212683775235166148
-BoxCollider:
+--- !u!64 &9212683775235166148
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -19558,6 +19558,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.45389476, y: 0.14759114, z: 0.47808492}
-  m_Center: {x: -0.05892466, y: 0.048823263, z: -0.18575796}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6330002731263832826, guid: b4f33379a4af40a4a8c047f5c8644088, type: 3}

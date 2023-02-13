@@ -1027,7 +1027,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &808633868
 Transform:
   m_ObjectHideFlags: 0
@@ -2061,7 +2061,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!23 &1704116865
 MeshRenderer:
@@ -3015,6 +3015,7 @@ GameObject:
   - component: {fileID: 7882055349124758431}
   - component: {fileID: 2441638996798413008}
   - component: {fileID: 2286986465251835637}
+  - component: {fileID: 7882055349124758432}
   m_Layer: 0
   m_Name: Barriere.002
   m_TagString: Untagged
@@ -7147,6 +7148,7 @@ GameObject:
   - component: {fileID: 8679672224094341341}
   - component: {fileID: 4653332985899121763}
   - component: {fileID: 7986703693630575921}
+  - component: {fileID: 8679672224094341342}
   m_Layer: 0
   m_Name: Bureau.005
   m_TagString: Untagged
@@ -9671,6 +9673,7 @@ GameObject:
   - component: {fileID: 682537391473458004}
   - component: {fileID: 2975850309043467427}
   - component: {fileID: 4305312872283899177}
+  - component: {fileID: 7446222393098574929}
   m_Layer: 0
   m_Name: Rembarde.009
   m_TagString: Untagged
@@ -9678,6 +9681,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &7446222393098574929
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7446222393098574928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6410646948887194506, guid: f778fe578e7b33449b1713846bcff3c0, type: 3}
 --- !u!4 &7468639075944321936
 Transform:
   m_ObjectHideFlags: 0
@@ -10405,6 +10422,20 @@ Transform:
   m_Father: {fileID: 3470922529820363201}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &7882055349124758432
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892865787873628948}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3317533052026878204, guid: f778fe578e7b33449b1713846bcff3c0, type: 3}
 --- !u!4 &7904550064801022648
 Transform:
   m_ObjectHideFlags: 0
@@ -11047,6 +11078,20 @@ Transform:
   m_Father: {fileID: 3470922529820363201}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &8679672224094341342
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4948073824840904923}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6648374461400120315, guid: f778fe578e7b33449b1713846bcff3c0, type: 3}
 --- !u!33 &8700863987773348149
 MeshFilter:
   m_ObjectHideFlags: 0
