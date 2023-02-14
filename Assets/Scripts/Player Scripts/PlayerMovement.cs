@@ -93,6 +93,9 @@ public class PlayerMovement : MonoBehaviour
         Crouching();
 
         SetAnimator();
+
+        //ySpeed = Mathf.Clamp(cc.velocity.y, 0, -9.81f);
+
     }
 
     #region PlayerMove
@@ -229,7 +232,8 @@ public class PlayerMovement : MonoBehaviour
 
             if (ySpeed <= stepGround)
             {
-                ySpeed = cc.velocity.y;
+                ySpeed = -.2f;
+                //ySpeed = cc.velocity.y;
             }
 
             if (playerInput.CanJump)

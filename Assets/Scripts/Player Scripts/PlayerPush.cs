@@ -40,10 +40,9 @@ public class PlayerPush : MonoBehaviour
     #region Push
     public virtual void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (!this.enabled) return;
+        if (!enabled) return;
 
         rbCol = hit.collider.attachedRigidbody;
-
 
         if (rbCol != null && !rbCol.isKinematic && CanPush())
         {
@@ -84,7 +83,7 @@ public class PlayerPush : MonoBehaviour
 
     public virtual void PushAnimator()
     {
-        if (playerMovement.directionInput.magnitude == 0 || CanPush())
+        if (playerMovement.directionInput.magnitude == 0 || !CanPush())
         {
             animator.SetBool("LowPush", false);
             animator.SetBool("MediumPush", false);
