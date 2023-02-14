@@ -44,7 +44,6 @@ public class PlayerPush : MonoBehaviour
 
         rbCol = hit.collider.attachedRigidbody;
 
-
         if (rbCol != null && !rbCol.isKinematic && CanPush())
         {
             // On joue l'animation pour pousser qui correspond au poids de l'objet
