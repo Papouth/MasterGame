@@ -125,8 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b7eaffa3dd14949bdd750217ea177d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullMove: 1
-  TimeToReach: 1
+  fullMove: 0
+  TimeToReach: 5
   depart: {x: 0, y: 0, z: 0}
   finish: {fileID: 3339809174766042913}
   timerWaiting: 2
@@ -171,7 +171,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3339809174766042926}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.33, y: 0, z: 8.8}
+  m_LocalPosition: {x: 7, y: 0, z: 8.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

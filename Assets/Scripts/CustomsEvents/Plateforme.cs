@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Plateforme : MonoBehaviour
 {
-
     #region Variables
 
     [Header("States")]
@@ -26,13 +25,11 @@ public class Plateforme : MonoBehaviour
     private Vector3 destination;
 
     [Header("Waiting Time")]
-    [SerializeField]
-    private float timerWaiting = 1;
+    [SerializeField] private float timerWaiting = 1;
 
     [Header("Avec Levier")]
-    [Tooltip("Bool qui doit être mis sur true par un levier")]
-    [SerializeField]
-    private bool isEnable = false;
+    //[Tooltip("Bool qui doit être mis sur true par un levier")]
+    [HideInInspector] public bool isEnable;
 
     private Rigidbody rb;
     private Vector3 currentPos;
@@ -41,14 +38,12 @@ public class Plateforme : MonoBehaviour
 
     #region Built In methods
 
-    // Start is called before the first frame update
     void Start()
     {
         depart = destination = transform.position;
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         EditPlateforme();
@@ -100,7 +95,7 @@ public class Plateforme : MonoBehaviour
             if (isEnable)
             {
                 StartCoroutine(WaitingTime());
-                isEnable = false;
+                //isEnable = false;
             }
         }
         if (canMove)
@@ -113,7 +108,7 @@ public class Plateforme : MonoBehaviour
     private void MovePlateforme()
     {
         currentTimeLerp += Time.deltaTime * TimeToReach / 1000;
-        currentPos = Vector3.Lerp(transform.position, destination, currentTimeLerp); // transform.position
+        currentPos = Vector3.Lerp(transform.position, destination, currentTimeLerp);
         rb.MovePosition(currentPos);
 
         if (DestinationReached())
