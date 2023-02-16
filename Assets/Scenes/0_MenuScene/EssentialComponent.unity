@@ -135,6 +135,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1258497131}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &704343300 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7958574811045972529, guid: d7d006d32955a2243a494198e43d16f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1685430317268072518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1226679956 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7848148577982186754, guid: d7d006d32955a2243a494198e43d16f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1685430317268072518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1258497131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -225,7 +243,7 @@ PrefabInstance:
     - target: {fileID: 717258715556111211, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.076984584
+      value: 0.07698459
       objectReference: {fileID: 0}
     - target: {fileID: 717258715556111211, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
@@ -260,7 +278,7 @@ PrefabInstance:
     - target: {fileID: 717258715682608598, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.028329138
+      value: -0.028329141
       objectReference: {fileID: 0}
     - target: {fileID: 717258715682608598, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
@@ -270,7 +288,7 @@ PrefabInstance:
     - target: {fileID: 717258715682608598, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.13214216
+      value: -0.13214217
       objectReference: {fileID: 0}
     - target: {fileID: 717258715791264468, guid: d917841d4ce8f914eb39f6c4252e611f,
         type: 3}
@@ -572,11 +590,6 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1662727967}
-    - target: {fileID: 8721376823822195688, guid: 2a9ab10c458166441821c0e6b953420b,
-        type: 3}
-      propertyPath: layersGround.m_Bits
-      value: 4033
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a9ab10c458166441821c0e6b953420b, type: 3}
 --- !u!4 &1991796796 stripped
@@ -618,7 +631,7 @@ PrefabInstance:
     - target: {fileID: 815673834959402551, guid: d7d006d32955a2243a494198e43d16f3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1425063383162111231, guid: d7d006d32955a2243a494198e43d16f3,
         type: 3}
@@ -740,6 +753,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7176276970426238473, guid: d7d006d32955a2243a494198e43d16f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7848148577982186754, guid: d7d006d32955a2243a494198e43d16f3,
+        type: 3}
+      propertyPath: m_colorMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7848148577982186754, guid: d7d006d32955a2243a494198e43d16f3,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7d006d32955a2243a494198e43d16f3, type: 3}
 --- !u!1001 &7151837471769941959
@@ -819,6 +847,16 @@ PrefabInstance:
       propertyPath: playerInput
       value: 
       objectReference: {fileID: 1991796809}
+    - target: {fileID: 5701154445860037012, guid: 2a9aafa6c91bcf043a8a53ba35632476,
+        type: 3}
+      propertyPath: dialogueUI
+      value: 
+      objectReference: {fileID: 704343300}
+    - target: {fileID: 5701154445860037012, guid: 2a9aafa6c91bcf043a8a53ba35632476,
+        type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 1226679956}
     - target: {fileID: 7944367006314413097, guid: 2a9aafa6c91bcf043a8a53ba35632476,
         type: 3}
       propertyPath: cam
