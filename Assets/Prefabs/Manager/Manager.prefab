@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e8378302f8a5341ba22a8def2b0c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  havePass: 0
 --- !u!114 &5701154445860037012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,9 +74,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e3bfefa1460d443913526a1a616387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedDisplay: 0
+  speedDisplay: 0.05
   playerInput: {fileID: 0}
-  UIInstance: {fileID: 5701154445860037012}
 --- !u!114 &7944367006314413097
 MonoBehaviour:
   m_ObjectHideFlags: 0

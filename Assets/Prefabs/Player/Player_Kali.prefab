@@ -891,7 +891,7 @@ CharacterController:
   m_Height: 1.5
   m_Radius: 0.25
   m_SlopeLimit: 45
-  m_StepOffset: 0.5
+  m_StepOffset: 0.4
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.75, z: 0.08}
@@ -933,7 +933,7 @@ MonoBehaviour:
   rangeMaxPush: 0.42
   layersCanPush:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
 --- !u!114 &7005642557742281055
 MonoBehaviour:
   m_ObjectHideFlags: 0
