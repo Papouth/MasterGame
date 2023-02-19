@@ -10,27 +10,20 @@ public class PlayerNewClimbSystem : MonoBehaviour
     [SerializeField] private bool leftHandIK;
     [SerializeField] private bool rightHandIK;
 
-    [Header("Position de la main")]
-    [SerializeField] private float leftXOffset;
-    [SerializeField] private float rightXOffset;
-    [SerializeField] private float yAxisHandsOffset;
-    [SerializeField] private float zAxisHandsOffset;
-    [SerializeField] private float zAxisOffset;
 
-    [SerializeField] private Vector3 rightPosOffset;
-    [SerializeField] private Vector3 leftPosOffset;
-
-    public Vector3 leftHandPos;
-    public Vector3 rightHandPos;
-
-    [Header("Rotation de la main")]
-    public Quaternion leftHandRot;
-    public Quaternion rightHandRot;
+    [Header("Climb Hand Sphere")]
+    [SerializeField] private Transform leftPos;
+    [SerializeField] private Transform rightPos;
+    [SerializeField] private float radiusHand;
+    [SerializeField] private Collider[] colliderHand = new Collider[1];
+    private int leftCount;
+    private int rightCount;
 
 
     [Header("ClimbStates")]
     public bool isClimbing;
     public bool haveClimbed;
+
 
     [Header("Capsule Collider")]
     [SerializeField] private float height = 1.3f;
@@ -49,6 +42,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
     private CharacterController cc;
     #endregion
 
+
     #region Built In Methods
     private void Start()
     {
@@ -65,8 +59,6 @@ public class PlayerNewClimbSystem : MonoBehaviour
     private void Update()
     {
         OnClimb();
-
-        ShowRay();
     }
 
     private void LateUpdate()
@@ -79,57 +71,24 @@ public class PlayerNewClimbSystem : MonoBehaviour
     #endregion
 
 
-    #region IK Function
+    #region IK Function Check
     private void HandClimbCheck()
     {
-        RaycastHit ZPosHit;
+        leftCount = Physics.OverlapSphereNonAlloc(leftPos.position, radiusHand, colliderHand, climbLayer);
 
-        // ZRayCheck
-        if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(0f, zAxisOffset, 0f)), transform.forward + transform.TransformDirection(Vector3.zero), out ZPosHit, 0.5f))
-        {
-            RaycastHit LeftHit;
-            RaycastHit RightHit;
+        rightCount = Physics.OverlapSphereNonAlloc(rightPos.position, radiusHand, colliderHand, climbLayer);
 
-            // LeftHandIKCheck
-            if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(leftXOffset, yAxisHandsOffset, zAxisHandsOffset)), -transform.up + transform.TransformDirection(new Vector3(-0.5f, 0f, 0f)), out LeftHit, 1f, climbLayer))
-            {
-                leftHandIK = true;
 
-                leftHandPos = new Vector3(LeftHit.point.x, LeftHit.point.y, ZPosHit.point.z) - transform.TransformDirection(leftPosOffset);
+        if (leftCount > 0) leftHandIK = true;
+        else leftHandIK = false;
 
-                leftHandRot = Quaternion.LookRotation(transform.forward, LeftHit.normal);
-            }
-            else
-            {
-                //leftHandIK = false;
-            }
 
-            // RightHandIKCheck
-            if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(rightXOffset, yAxisHandsOffset, zAxisHandsOffset)), -transform.up + transform.TransformDirection(new Vector3(0.5f, 0f, 0f)), out RightHit, 1f, climbLayer))
-            {
-                rightHandIK = true;
+        if (rightCount > 0) rightHandIK = true;
+        else rightHandIK = false;
 
-                rightHandPos = new Vector3(RightHit.point.x, RightHit.point.y, ZPosHit.point.z) - transform.TransformDirection(rightPosOffset);
 
-                rightHandRot = Quaternion.LookRotation(transform.forward, RightHit.normal);
-            }
-            else
-            {
-                //rightHandIK = false;
-            }
-
-            if (leftHandIK && rightHandIK)
-            {
-                isClimbing = true;
-            }
-        }
-        else
-        {
-            leftHandIK = false;
-            rightHandIK = false;
-
-            isClimbing = false;
-        }
+        if (leftHandIK && rightHandIK) isClimbing = true;
+        else isClimbing = false;
     }
     #endregion
 
@@ -164,62 +123,12 @@ public class PlayerNewClimbSystem : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Permet d'enlever le apply root motion de l'animator
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator ClimbStop()
-    {
-        yield return new WaitForSeconds(1.2f);
-
-        // On débloque la rotation du joueur car il n'est plus accroché
-        //climbStateSwitcher = false;
-
-        anim.applyRootMotion = false;
-
-        // Reset des triggers d'animation
-        anim.ResetTrigger("TrClimbCross");
-        anim.ResetTrigger("TrClimbDropGround");
-    }
-
-    #region IK
-    private void OnAnimatorIK()
-    {
-        if (leftHandIK)
-        {
-            // Position
-            anim.SetIKPosition(AvatarIKGoal.LeftHand, leftHandPos);
-            anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1f);
-
-            // Rotation
-            anim.SetIKRotation(AvatarIKGoal.LeftHand, leftHandRot);
-            anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1f);
-        }
-
-
-        if (rightHandIK)
-        {
-            // Position
-            anim.SetIKPosition(AvatarIKGoal.RightHand, rightHandPos);
-            anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1f);
-
-            // Rotation
-            anim.SetIKRotation(AvatarIKGoal.RightHand, rightHandRot);
-            anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1f);
-        }
-    }
-    #endregion
-
     #region Visual Debugger
-    private void ShowRay()
+    private void OnDrawGizmos()
     {
-        // LeftRay
-        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(leftXOffset, yAxisHandsOffset, zAxisHandsOffset)), -transform.up + transform.TransformDirection(new Vector3(-0.5f, 0f, 0f)), Color.green);
-        // RightRay
-        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(rightXOffset, yAxisHandsOffset, zAxisHandsOffset)), -transform.up + transform.TransformDirection(new Vector3(0.5f, 0f, 0f)), Color.green);
-
-        // ZPosRay
-        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(0f, zAxisOffset, 0f)), transform.forward + transform.TransformDirection(Vector3.zero), Color.cyan);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(leftPos.position, radiusHand);
+        Gizmos.DrawWireSphere(rightPos.position, radiusHand);
     }
     #endregion
 }
