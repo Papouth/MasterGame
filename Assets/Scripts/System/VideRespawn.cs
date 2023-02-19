@@ -16,7 +16,6 @@ public class VideRespawn : MonoBehaviour
         {
             other.GetComponentInChildren<RespawnSystem>().Respawn();
         }
-
     }
 
     #endregion

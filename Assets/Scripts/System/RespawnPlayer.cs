@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class RespawnPlayer : RespawnSystem
 {
+    private CharacterController cc;
+
+
     #region Customs Methods
+    private void Start()
+    {
+        cc = GetComponent<CharacterController>();
+    }
+
 
     /// <summary>
     /// Cree le respawn des objets au dernier points connu et à jour
@@ -13,10 +21,10 @@ public class RespawnPlayer : RespawnSystem
     {
         Debug.Log("Respawn Player");
 
-        this.GetComponent<CharacterController>().enabled = false;
-        this.gameObject.transform.position = respawnPoint.transform.position;
+        cc.enabled = false;
+        gameObject.transform.position = respawnPoint.transform.position;
 
-        this.GetComponent<CharacterController>().enabled = true;
+        cc.enabled = true;
     }
 
     #endregion
