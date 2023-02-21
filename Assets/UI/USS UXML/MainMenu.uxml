@@ -5,19 +5,20 @@
             <ui:VisualElement name="Image_Menu_Titre" style="background-image: url(&apos;project://database/Assets/UI/Image/Menu_Forme_Logo.png?fileID=2800000&amp;guid=09f75eb7ace22db438dcc9731cb29df1&amp;type=3#Menu_Forme_Logo&apos;); width: 820px; height: 338px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; position: absolute; opacity: 1;" />
             <ui:VisualElement name="Image_Menu_Selection" style="background-image: url(&apos;project://database/Assets/UI/Image/Menu_Forme_Selection.png?fileID=2800000&amp;guid=adc6ac40272f4c24396f002a0cf8abe6&amp;type=3#Menu_Forme_Selection&apos;); width: 637px; height: 684px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; position: absolute; transform-origin: center; top: 396px; left: 0;" />
             <ui:VisualElement name="SideBar" style="background-image: none; height: 100%; align-items: stretch; justify-content: space-around; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-top-left-radius: 23px; border-bottom-left-radius: 23px; border-top-right-radius: 23px; border-bottom-right-radius: 23px; border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; width: 100%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; flex-grow: 1; background-color: rgba(85, 142, 194, 0);">
-                <ui:VisualElement name="TopBar" class="SizeBar" style="align-items: center; justify-content: center; flex-grow: 1; height: 33%; padding-top: 10px; padding-bottom: 10px; flex-wrap: nowrap; flex-direction: column; overflow: visible; top: 40px; background-color: rgba(0, 0, 0, 0);">
+                <ui:VisualElement name="TopBar" class="SizeBar" style="align-items: center; justify-content: center; flex-grow: 1; height: 0; padding-top: 19px; padding-bottom: 96px; flex-wrap: nowrap; flex-direction: column; overflow: visible; top: 40px; background-color: rgba(0, 0, 0, 0); padding-right: 98px; padding-left: 8px; width: 748px; margin-left: 0;">
                     <ui:VisualElement name="Logo" style="background-image: url(&apos;project://database/Assets/UI/Asset/Logo_Final.png?fileID=2800000&amp;guid=3defeed32e4fc7c44a02d532528cc97a&amp;type=3#Logo_Final&apos;); width: 90%; height: 60%; flex-direction: column; align-items: auto; flex-grow: 0; margin-top: 0; margin-bottom: 0; padding-top: 0; top: -30px; margin-left: 0; margin-right: 0;" />
-                    <ui:VisualElement name="BarUnderLogo2" class="BarUnderLogo" />
+                    <ui:VisualElement name="BarUnderLogo2" class="BarUnderLogo" style="top: 49px; left: -58px; height: 6px; display: none; visibility: visible;" />
                 </ui:VisualElement>
-                <ui:VisualElement name="MiddleBar" class="ButtonSizeBar" style="overflow: visible;">
-                    <ui:Button text="Nouvelle partie" display-tooltip-when-elided="true" name="NewGame" class="BaseButton HoverButton ActiveButton FontLabel" />
-                    <ui:Button text="Options" display-tooltip-when-elided="true" name="Options" class="BaseButton HoverButton ActiveButton FontLabel" />
-                    <ui:Button text="Crédits" display-tooltip-when-elided="true" name="Credits" class="BaseButton HoverButton ActiveButton FontLabel" />
+                <ui:VisualElement name="MiddleBar" class="ButtonSizeBar" style="overflow: visible; width: 469px; height: 46%; flex-direction: column; align-items: stretch; justify-content: center; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; flex-wrap: nowrap;">
+                    <ui:Button text="Nouvelle partie" display-tooltip-when-elided="true" name="NewGame" class="BaseButton HoverButton ActiveButton FontLabel" style="height: 115px;" />
+                    <ui:Button text="Options" display-tooltip-when-elided="true" name="Options" class="BaseButton HoverButton ActiveButton FontLabel" style="height: 115px;" />
+                    <ui:Button text="Crédits" display-tooltip-when-elided="true" name="Credits" class="BaseButton HoverButton ActiveButton FontLabel" style="height: 115px;" />
                 </ui:VisualElement>
-                <ui:VisualElement name="BotBar" class="ButtonSizeBar" style="visibility: visible;">
+                <ui:VisualElement name="BotBar" class="ButtonSizeBar" style="visibility: visible; padding-right: 129px; margin-left: 0; margin-right: 0; padding-left: 0; padding-top: 0; height: 15%;">
                     <ui:Button text="Quitter" display-tooltip-when-elided="true" name="Leave" class="BaseButton HoverButton ActiveButton FontLabel" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
+    <ui:VisualElement style="position: absolute; height: 1080px; width: 1920px; background-image: url(&apos;project://database/Assets/UI/Image/Artboard%202.png?fileID=2800000&amp;guid=364fc10820523714e8a7aff64ac37cbb&amp;type=3#Artboard 2&apos;); opacity: 0.44; display: none;" />
 </ui:UXML>
