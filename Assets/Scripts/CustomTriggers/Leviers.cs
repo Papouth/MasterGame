@@ -7,20 +7,29 @@ using UnityEngine.Events;
 public class Leviers : CustomsTriggers
 {
     public UnityEvent leverEvent;
-    private bool doorOpen;
+    private bool boolCheck;
+
+    [Header("Si c'est une porte à ouvrir")] 
     [SerializeField] private Animation theDoorAnim;
     [SerializeField] private GameObject doorToDestroy;
+
+    [Header("Si c'est une plateforme à activer")]
+    [Tooltip("Le script de la plateforme que l'on souhaite activer")]
+    [SerializeField] private Plateforme plateformeScript;
+
+
     private Animator animLever;
 
 
     private void Start()
     {
         animLever = GetComponent<Animator>();
+        //if (plateformeScript != null) plateformeScript = GetComponent<Plateforme>();
     }
 
     public override void Interact()
     {
-        if (!doorOpen) leverEvent.Invoke();
+        if (!boolCheck) leverEvent.Invoke();
 
         return;
     }
@@ -28,11 +37,22 @@ public class Leviers : CustomsTriggers
     public void OpenDoor()
     {
         // On ouvre la porte qui correspond
-        doorOpen = true;
+        boolCheck = true;
 
-        if(theDoorAnim != null) theDoorAnim.Play();
+        if (theDoorAnim != null)
+        {
+            theDoorAnim.Play();
+
+            animLever.SetBool("leverOn", true);
+        }
         else { Destroy(doorToDestroy); }
+    }
 
-        animLever.SetBool("leverOn", true);
+    public void ActivatePlatform()
+    {
+        // On active la plateforme qui correspond
+        boolCheck = true;
+
+        plateformeScript.isEnable = true;
     }
 }

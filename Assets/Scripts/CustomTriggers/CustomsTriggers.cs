@@ -10,16 +10,17 @@ public interface IInteractable
 
 public abstract class CustomsTriggers : MonoBehaviour, IInteractable
 {
-    [SerializeField] protected float weight;
-    [SerializeField] protected Rigidbody rb;
+    protected float weight;
+    protected Rigidbody rb;
 
-    public PlayerInteractorDistance playerInteractorDistance;
+    [HideInInspector] public PlayerInteractorDistance playerInteractorDistance;
 
 
     public virtual void Awake()
     {
-        if (PlayerInteractor.playerInteractorInstance.GetComponent<PlayerInteractorDistance>() != null)
-            playerInteractorDistance = PlayerInteractor.playerInteractorInstance.GetComponent<PlayerInteractorDistance>();
+        PlayerInteractor player = PlayerInteractor.playerInteractorInstance;
+
+        playerInteractorDistance = player.gameObject.GetComponent<PlayerInteractorDistance>();
 
         rb = GetComponent<Rigidbody>();
 
@@ -30,7 +31,6 @@ public abstract class CustomsTriggers : MonoBehaviour, IInteractable
 
     public virtual void Interact()
     {
-        Debug.Log("Here 2 ?");
         //Debug.Log(onInteractText);
         return;
     }

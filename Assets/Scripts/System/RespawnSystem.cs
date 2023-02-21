@@ -16,13 +16,11 @@ public class RespawnSystem : MonoBehaviour
 
     #region Built In methods
 
-    // Start is called before the first frame update
     void Start()
     {
-        respawnPoint = new GameObject("Respawn_" + this.name);
+        respawnPoint = new GameObject("Respawn_" + name);
     }
 
-    // Update is called once per frame
     void Update()
     {
         MajRespawnPoint();
@@ -65,7 +63,7 @@ public class RespawnSystem : MonoBehaviour
     public virtual void Respawn()
     {
         Debug.Log("Respawn");
-        this.gameObject.transform.position = respawnPoint.transform.position;
+        gameObject.transform.position = respawnPoint.transform.position;
     }
 
     #endregion

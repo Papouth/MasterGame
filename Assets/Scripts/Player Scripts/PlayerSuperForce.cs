@@ -20,13 +20,11 @@ public class PlayerSuperForce : PlayerPush
     #region Push
     public override void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (!this.enabled) return;
+        if (!enabled) return;
+
         rbCol = hit.collider.attachedRigidbody;
 
-        if (rbCol.mass < 100)
-        {
-            rbCol.isKinematic = false;
-        }
+        if (rbCol.mass < 100) rbCol.isKinematic = false;
 
         if (rbCol != null && !rbCol.isKinematic)
         {
