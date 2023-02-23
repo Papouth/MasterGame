@@ -11,6 +11,8 @@ public class PlayerPush : MonoBehaviour
     public float rangeMaxPush = 0.4f;
     public LayerMask layersCanPush;
 
+    private Rigidbody hitGO;
+
     [Header("Player Component")]
     protected CharacterController cc;
     protected Animator animator;
@@ -52,14 +54,14 @@ public class PlayerPush : MonoBehaviour
                 animator.SetBool("LowPush", true);
 
                 // On règle à la bonne vitesse
-                rbCol.velocity = hit.moveDirection * 2;
+                rbCol.velocity = new Vector3(hit.moveDirection.x * 2, 0, hit.moveDirection.z * 2);
             }
             else if (rbCol.mass >= 12 && rbCol.mass < 22)
             {
                 animator.SetBool("MediumPush", true);
 
                 // On règle à la bonne vitesse
-                rbCol.velocity = hit.moveDirection;
+                rbCol.velocity = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
             }
         }
     }

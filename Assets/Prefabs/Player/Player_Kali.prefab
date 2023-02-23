@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137428391}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2, y: 1.1, z: 0.3}
+  m_LocalPosition: {x: 0.2, y: 1.07, z: 0.275}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138074762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2, y: 1.1, z: 0.3}
+  m_LocalPosition: {x: -0.2, y: 1.07, z: 0.275}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1081,23 +1081,9 @@ MonoBehaviour:
     m_Bits: 128
   leftHandIK: 0
   rightHandIK: 0
-  leftXOffset: 0
-  rightXOffset: 0
-  yAxisHandsOffset: 1.525
-  zAxisHandsOffset: 0.35
-  zAxisOffset: 1.05
-  rightPosOffset: {x: -0.1, y: -0.4, z: 0}
-  leftPosOffset: {x: 0.1, y: -0.4, z: 0}
   leftPos: {fileID: 2138074763}
   rightPos: {fileID: 2137428392}
-  radiusHand: 0.1
-  colliderHand:
-  - {fileID: 0}
-  leftHandPos: {x: 0, y: 0, z: 0}
-  rightHandPos: {x: 0, y: 0, z: 0}
-  leftHandRot: {x: 0, y: 0, z: 0, w: 0}
-  rightHandRot: {x: 0, y: 0, z: 0, w: 0}
-  dimensionRay: 0.1
+  radiusHand: 0.09
   isClimbing: 0
   haveClimbed: 0
   height: 1
