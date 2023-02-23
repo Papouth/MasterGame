@@ -15,7 +15,7 @@ public class PlayerNewClimbSystem : MonoBehaviour
     [SerializeField] private Transform leftPos;
     [SerializeField] private Transform rightPos;
     [SerializeField] private float radiusHand;
-    [SerializeField] private Collider[] colliderHand = new Collider[1];
+    private Collider[] colliderHand = new Collider[1];
     private int leftCount;
     private int rightCount;
 

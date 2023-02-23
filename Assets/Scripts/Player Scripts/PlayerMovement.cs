@@ -86,16 +86,11 @@ public class PlayerMovement : MonoBehaviour
 
         DropDown();
 
-        //ClimbUp();
-
         if (OnSteepSlope()) SteepSlopeMovement();
 
         Crouching();
 
         SetAnimator();
-
-        //ySpeed = Mathf.Clamp(cc.velocity.y, 0, -9.81f);
-
     }
 
     #region PlayerMove
@@ -130,12 +125,10 @@ public class PlayerMovement : MonoBehaviour
             // On inverse les controles lors du climb et on viens réduire la vitesse de déplacement du joueur
             movement = directionInput.normalized * (moveSpeed / climbSpeedReducer * Time.deltaTime);
             movement = transform.TransformDirection(movement);
-
-            //Debug.Log(directionInput.x + directionInput.z);
         }
     }
 
-    #region ClimbMovement
+    #region Climb Drop
     /// <summary>
     /// Si on appuie sur S en climb, alors on descend
     /// </summary>
@@ -145,39 +138,6 @@ public class PlayerMovement : MonoBehaviour
         {
             playerNewClimbSystem.isClimbing = false;
         }
-    }
-
-    /// <summary>
-    /// Si on appuie sur Z en climb, alors on grimpe
-    /// </summary>
-    private void ClimbUp()
-    {
-        if (directionInput.z >= 0.1 && playerNewClimbSystem.isClimbing && !playerNewClimbSystem.haveClimbed)
-        {
-            // Permet de faire s'exécuter l'action une unique fois
-            playerNewClimbSystem.haveClimbed = true;
-
-            animator.applyRootMotion = true;
-
-            animator.ResetTrigger("TrClimbUp");
-            animator.SetTrigger("TrClimbUp");
-
-            StartCoroutine("TimerClimbUp");
-        }
-    }
-
-    private IEnumerator TimerClimbUp()
-    {
-        // On patiente le temps de l'animation
-        yield return new WaitForSeconds(climbUpAnimation);
-
-        // On repasse en faux l'applyRootMotion
-        animator.applyRootMotion = false;
-
-        // Ajout d'une sécurité pour le trigger
-        animator.ResetTrigger("TrClimbUp");
-
-        playerNewClimbSystem.haveClimbed = false;
     }
     #endregion
 
