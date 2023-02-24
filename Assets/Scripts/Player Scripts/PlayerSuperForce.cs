@@ -33,19 +33,19 @@ public class PlayerSuperForce : PlayerPush
             {
                 animator.SetBool("LowPush", true);
 
-                rbCol.velocity = hit.moveDirection * 2 * superForceMultiplier;
+                rbCol.velocity = new Vector3(hit.moveDirection.x * 2 * superForceMultiplier, 0, hit.moveDirection.z * 2 * superForceMultiplier);
             }
             else if (rbCol.mass >= 12 && rbCol.mass < 22)
             {
                 animator.SetBool("LowPush", true);
 
-                rbCol.velocity = hit.moveDirection * superForceMultiplier;
+                rbCol.velocity = new Vector3(hit.moveDirection.x * superForceMultiplier, 0, hit.moveDirection.z * superForceMultiplier);
             }
             else if (rbCol.mass >= 22 && rbCol.mass < 32)
             {
                 animator.SetBool("HardPush", true);
 
-                rbCol.velocity = hit.moveDirection * 0.5f;
+                rbCol.velocity = new Vector3(hit.moveDirection.x * 0.5f, 0, hit.moveDirection.z * 0.5f);
             }
         }
     }
