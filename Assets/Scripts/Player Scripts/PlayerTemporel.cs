@@ -16,6 +16,7 @@ public class PlayerTemporel : MonoBehaviour
     [Header("Player Component")]
     private PlayerInput playerInput;
     private PlayerInteractor playerInteractor;
+    private PlayerStats playerStats;
     #endregion
 
     #region Built In Methods
@@ -24,6 +25,7 @@ public class PlayerTemporel : MonoBehaviour
 
         playerInput = GetComponent<PlayerInput>();
         playerInteractor = GetComponent<PlayerInteractor>();
+        playerStats = GetComponent<PlayerStats>();
 
         if (past == null || present == null) return;
 
@@ -65,7 +67,7 @@ public class PlayerTemporel : MonoBehaviour
     /// </summary>
     private void ChangeTempo()
     {
-        if (playerInput.ChangeTempo && playerInteractor.hands.transform.childCount == 0)
+        if (playerInput.ChangeTempo && playerInteractor.hands.transform.childCount == 0 && playerStats.haveTempo)
         {
             // On change de temporalit�
             LoadingScene();
