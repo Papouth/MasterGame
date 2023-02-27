@@ -5,7 +5,6 @@ using Cinemachine;
 
 public class Door : MonoBehaviour
 {
-
     #region Variable
     public Generateur[] generateur;
     private Animator doorAnimator;
@@ -51,12 +50,9 @@ public class Door : MonoBehaviour
     {
         cameraDoor.m_Priority = 100;
 
-        Debug.Log("HERE");
-
         if (Vector3.Distance(Camera.main.transform.position, target) <= .1f)
         {
             doorAnimator.SetBool("IsValid", true);
-            Debug.Log("HERE 1");
         }
 
         timer += Time.deltaTime;
@@ -64,7 +60,6 @@ public class Door : MonoBehaviour
         if (timer >= timingTransition)
         {
             cameraDoor.Priority = -100;
-            Debug.Log("HERE 3");
             isFinish = true;
         }
     }
@@ -87,6 +82,4 @@ public class Door : MonoBehaviour
     }
 
     #endregion
-
-
 }
