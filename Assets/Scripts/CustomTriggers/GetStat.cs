@@ -60,7 +60,6 @@ public class GetStat : CustomsTriggers
             tempoExternPlayer = false;
             statEvent = new UnityEvent();
             statEvent.AddListener(playerStats.GetBraceletTempo);
-            playerStats.haveTempo = true;
         }
     }
 }

@@ -90,6 +90,7 @@ public class PlayerTemporel : MonoBehaviour
 
             playerInput.ChangeTempo = false;
         }
+        else if (playerInput.ChangeTempo && !playerStats.haveTempo) playerInput.ChangeTempo = false;
     }
 
     /// <summary>
