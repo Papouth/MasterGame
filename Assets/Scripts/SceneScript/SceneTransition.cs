@@ -22,7 +22,7 @@ public class SceneTransition : MonoBehaviour
     }
 
     /// <summary>
-    /// Loading the scenes of the 
+    /// Loading the scenes 
     /// </summary>
     private void LoadingScene()
     {

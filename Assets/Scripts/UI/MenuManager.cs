@@ -158,7 +158,7 @@ public class MenuManager : MonoBehaviour
     private void LauchGame()
     {
         Debug.Log("Game Lauch");
-        SceneManager.UnloadScene(mainMenuScene);
+        SceneManager.UnloadSceneAsync(mainMenuScene);
 
         EnableMenu(null, docMainMenu);
         Time.timeScale = 1;

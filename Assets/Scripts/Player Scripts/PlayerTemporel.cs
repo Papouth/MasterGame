@@ -7,11 +7,12 @@ public class PlayerTemporel : MonoBehaviour
 {
     #region Variables
     [Header("Scènes")]
-    [SerializeField] private string scenesToLoad;
-    [SerializeField] private string scenesToUnload;
-    public string past = "Passé";
-    public string present = "Présent";
+    public string scenesToLoad;
+    public string scenesToUnload;
+    public string past;
+    public string present;
     public bool sceneState;
+
 
     [Header("Player Component")]
     private PlayerInput playerInput;
@@ -22,18 +23,14 @@ public class PlayerTemporel : MonoBehaviour
     #region Built In Methods
     private void Awake()
     {
-
         playerInput = GetComponent<PlayerInput>();
         playerInteractor = GetComponent<PlayerInteractor>();
         playerStats = GetComponent<PlayerStats>();
 
         if (past == null || present == null) return;
 
-
-        // A remettre pour faire fonctionner le script
-
-        //SceneManager.LoadScene(past, LoadSceneMode.Additive);
-        //SceneManager.LoadScene(present, LoadSceneMode.Additive);
+        SceneManager.LoadScene(past, LoadSceneMode.Additive);
+        SceneManager.LoadScene(present, LoadSceneMode.Additive);
     }
 
     private void Start()
@@ -96,7 +93,7 @@ public class PlayerTemporel : MonoBehaviour
     /// <summary>
     /// Loading the scenes 
     /// </summary>
-    private void LoadingScene()
+    public void LoadingScene()
     {
         Scene scene = SceneManager.GetSceneByName(scenesToLoad);
 
