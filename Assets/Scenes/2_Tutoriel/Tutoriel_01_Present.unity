@@ -393,6 +393,7 @@ GameObject:
   - component: {fileID: 118288790}
   - component: {fileID: 118288789}
   - component: {fileID: 118288788}
+  - component: {fileID: 118288792}
   m_Layer: 9
   m_Name: CaisseMovableRight
   m_TagString: Untagged
@@ -496,6 +497,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118288786}
   m_Mesh: {fileID: -3143395120460494481, guid: b4f33379a4af40a4a8c047f5c8644088, type: 3}
+--- !u!114 &118288792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118288786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ff27b1db08f5a4588bfcdcb1d9b116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnObject:
+    serializedVersion: 2
+    m_Bits: 16384
+  respawnPoint: {fileID: 0}
+  timeUpdate: 3
 --- !u!1 &128031700
 GameObject:
   m_ObjectHideFlags: 0
@@ -3000,7 +3018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnObject:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16384
   respawnPoint: {fileID: 0}
   timeUpdate: 3
 --- !u!1 &1958781254
