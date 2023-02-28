@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 118288790}
   - component: {fileID: 118288789}
   - component: {fileID: 118288788}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: CaisseMovableRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118288786}
   m_LocalRotation: {x: -0, y: 0.17722227, z: -0, w: 0.9841709}
-  m_LocalPosition: {x: 6.806, y: 0.68, z: -70.31}
+  m_LocalPosition: {x: 6.806, y: 0.7, z: -70.31}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -439,7 +439,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118288786}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.7738579, y: 0.77385795, z: 0.77385783}
@@ -2883,7 +2883,7 @@ GameObject:
   - component: {fileID: 1911143023}
   - component: {fileID: 1911143022}
   - component: {fileID: 1911143026}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: CaisseMovableLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16014,7 +16014,9 @@ GameObject:
   - component: {fileID: 3058488780627165071}
   - component: {fileID: 7974786624171261582}
   - component: {fileID: 7974786624171261583}
-  m_Layer: 0
+  - component: {fileID: 7974786624171261584}
+  - component: {fileID: 7974786624171261585}
+  m_Layer: 8
   m_Name: MachineImplant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17288,6 +17290,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5119438, y: 1.2014203, z: 0.4834442}
   m_Center: {x: 0.0026493073, y: -0.058151245, z: 0.0027236938}
+--- !u!114 &7974786624171261584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7616886130714081500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc2e4eae1e8f25c47b2c1cea1a7c8722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInteractorDistance: {fileID: 0}
+  statEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  statAnim: {fileID: 0}
+  tempoExternPlayer: 1
+--- !u!135 &7974786624171261585
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7616886130714081500}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: -0.004011497, y: -0.046562552, z: -0.051947698}
 --- !u!33 &7977462971791563272
 MeshFilter:
   m_ObjectHideFlags: 0
