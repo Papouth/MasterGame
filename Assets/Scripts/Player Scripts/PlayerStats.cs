@@ -27,7 +27,7 @@ public class PlayerStats : MonoBehaviour
 
     public void GetSuperForce()
     {
-        Debug.Log("SuperForce récupéré");
+        //Debug.Log("SuperForce récupéré");
         playerPush.enabled = false;
         playerSuperForce.enabled = true;
         haveSuperForce = true;
@@ -35,7 +35,7 @@ public class PlayerStats : MonoBehaviour
 
     public void GetBraceletTempo()
     {
-        Debug.Log("Bracelet Tempo récupéré");
+        //Debug.Log("Bracelet Tempo récupéré");
         haveTempo = true;
     }
 }
