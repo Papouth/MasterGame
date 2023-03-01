@@ -8,8 +8,9 @@ public class RespawnPlayer : RespawnSystem
 
 
     #region Customs Methods
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         cc = GetComponent<CharacterController>();
     }
 

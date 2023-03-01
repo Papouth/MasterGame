@@ -23,12 +23,13 @@ public class Leviers : CustomsTriggers
 
     private void Start()
     {
-        animLever = GetComponent<Animator>();
-        //if (plateformeScript != null) plateformeScript = GetComponent<Plateforme>();
+        //animLever = GetComponent<Animator>();
+        if (plateformeScript != null) plateformeScript = GetComponent<Plateforme>();
     }
 
     public override void Interact()
     {
+        Debug.Log("interact");
         if (!boolCheck) leverEvent.Invoke();
 
         return;
@@ -50,6 +51,7 @@ public class Leviers : CustomsTriggers
 
     public void ActivatePlatform()
     {
+        Debug.Log("bool platform");
         // On active la plateforme qui correspond
         boolCheck = true;
 
