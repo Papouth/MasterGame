@@ -14,6 +14,10 @@ public class RespawnPlayer : RespawnSystem
         cc = GetComponent<CharacterController>();
     }
 
+    public override void Update()
+    {
+        base.Update();
+    }
 
     /// <summary>
     /// Cree le respawn des objets au dernier points connu et à jour

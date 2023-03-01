@@ -1145,7 +1145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnObject:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 65
   respawnPoint: {fileID: 0}
   timeUpdate: 3
 --- !u!1001 &7536804466871756011

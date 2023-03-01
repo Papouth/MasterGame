@@ -59,6 +59,9 @@ public class MenuManager : MonoBehaviour
         docSettingsMenu.rootVisualElement.style.display = DisplayStyle.None;
         docCreditMenu.rootVisualElement.style.display = DisplayStyle.None;
         docPlayMenu.rootVisualElement.style.display = DisplayStyle.None;
+
+
+        SceneManager.LoadScene(mainMenuScene, LoadSceneMode.Additive);
     }
 
     private void Update()
