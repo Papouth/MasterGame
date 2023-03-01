@@ -29,16 +29,16 @@ public class PlayerTemporel : MonoBehaviour
 
         if (past == null || present == null) return;
 
-        SceneManager.LoadScene(past, LoadSceneMode.Additive);
-        SceneManager.LoadScene(present, LoadSceneMode.Additive);
+        //SceneManager.LoadScene(past, LoadSceneMode.Additive);
+        //SceneManager.LoadScene(present, LoadSceneMode.Additive);
     }
 
     private void Start()
     {
-        PastSceneAtStart();
+        //PastSceneAtStart();
 
-        scenesToLoad = past;
-        scenesToUnload = present;
+        //scenesToLoad = past;
+        //scenesToUnload = present;
     }
 
     private void Update()
@@ -47,7 +47,13 @@ public class PlayerTemporel : MonoBehaviour
     }
     #endregion
 
-    private void PastSceneAtStart()
+    public void ChangeStringName(string newPast, string newPresent)
+    {
+        past = newPast;
+        present = newPresent;
+    }
+
+    public void PastSceneAtStart()
     {
         Scene pastScene = SceneManager.GetSceneByName(past);
 
@@ -57,6 +63,12 @@ public class PlayerTemporel : MonoBehaviour
         {
             item.SetActive(false);
         }
+    }
+
+    public void ChangeSceneToLoad(string newSceneToLoad, string newSceneToUnload)
+    {
+        scenesToLoad = newSceneToLoad;
+        scenesToUnload = newSceneToUnload;
     }
 
     /// <summary>
