@@ -16,7 +16,7 @@ public class RespawnSystem : MonoBehaviour
 
     #region Built In methods
 
-    void Start()
+    public virtual void Start()
     {
         respawnPoint = new GameObject("Respawn_" + name);
     }
