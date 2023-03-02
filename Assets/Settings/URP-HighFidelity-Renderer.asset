@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8359501528779492950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1c4dc650ca93e4793a7472afb9e782, type: 3}
+  m_Name: Blit
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    Event: 300
+    blitMaterial: {fileID: 2100000, guid: 347d99d63329a2e419f32d1555244c5f, type: 2}
+    blitMaterialPassIndex: 0
+    destination: 0
+    textureId: _BlitPassTexture
 --- !u!114 &-7058786390604650649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +175,8 @@ MonoBehaviour:
   - {fileID: 2704049486033704787}
   - {fileID: -2358344770232847374}
   - {fileID: -7058786390604650649}
-  m_RendererFeatureMap: adc0de57c6d2eee549a6d5dd01da3ceccc2c2f3a2ad0baaf53d71d4eaeb68625f2f35e30ed7945df67e7a5422d270a9e
+  - {fileID: -8359501528779492950}
+  m_RendererFeatureMap: adc0de57c6d2eee549a6d5dd01da3ceccc2c2f3a2ad0baaf53d71d4eaeb68625f2f35e30ed7945df67e7a5422d270a9eaa71c36da615fd8b
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}

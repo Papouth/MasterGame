@@ -11,13 +11,11 @@ public class DialogueManager : MonoBehaviour
     public float speedDisplay;
 
     public PlayerInput playerInput;
-    public UIManager UIInstance;
 
 
     void Awake()
     {
         InstanceDialogue = this;
-        UIInstance = UIManager.UIInstance;
         sentences = new Queue<string>();
     }
 
@@ -32,7 +30,7 @@ public class DialogueManager : MonoBehaviour
     {
         sentences.Clear();
         if(dialogue.sentences.Length == 0) return;
-        UIInstance.EnableTextDialogue(true);
+        UIManager.UIInstance.EnableTextDialogue(true);
 
         foreach (string sentence in dialogue.sentences)
         {
@@ -73,7 +71,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             currentSentence += letter;
-            UIInstance.MajTextDialogue(currentSentence);
+            UIManager.UIInstance.MajTextDialogue(currentSentence);
             yield return new WaitForSeconds(speedDisplay);
         }
 
@@ -101,8 +99,8 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     public void EndDialogue()
     {
-        if(UIInstance == null) return;
-        UIInstance.EnableTextDialogue(false);
+        if(UIManager.UIInstance == null) return;
+        UIManager.UIInstance.EnableTextDialogue(false);
     }
 }
 

@@ -54,10 +54,10 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Thickness: 0.2
-    - _Transition: 0.352
+    - _Thickness: 0.08
+    - _Transition: -0.1
     - _edge_1: 0.3
     - _edge_2: 0.35
     m_Colors:
-    - _Color: {r: 1.5834577, g: 3.8585405, b: 2.768005, a: 0}
+    - _Color: {r: 0.6586882, g: 1.7927843, b: 1.9129027, a: 0}
   m_BuildTextureStacks: []
