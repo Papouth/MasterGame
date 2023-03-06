@@ -89,7 +89,7 @@ Material:
     - _QueueOffset: 0
     - _ShadowBlend: 0.231
     - _ShadowSize: -0.141
-    - _ShadowTexture_Normal_Intensity: 0.57
+    - _ShadowTexture_Normal_Intensity: 1.03
     - _ShadowTexture_Normal_Offset: 0.8
     - _ShadowTexture_Opacity: 1
     - _ToonRamp_Blur: 0

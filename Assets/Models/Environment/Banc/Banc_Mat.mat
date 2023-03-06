@@ -149,10 +149,10 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _ShadowBlend: 0.212
-    - _ShadowSize: -0.566
-    - _ShadowTexture_Normal_Intensity: 1.32
-    - _ShadowTexture_Normal_Offset: 0.82
+    - _ShadowBlend: 0.278
+    - _ShadowSize: -0.679
+    - _ShadowTexture_Normal_Intensity: 0.8
+    - _ShadowTexture_Normal_Offset: 1.49
     - _ShadowTexture_Opacity: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
