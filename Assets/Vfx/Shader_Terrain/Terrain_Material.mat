@@ -95,7 +95,7 @@ Material:
     - _ToonRamp_Blur: 0
     m_Colors:
     - Color_8ddd00ec131d470b9208e25612504d9e: {r: 0, g: 0, b: 0, a: 1}
-    - Vector2_0f9af665572340848c744bd9d98cabbc: {r: 3, g: 3, b: 0, a: 0}
+    - Vector2_0f9af665572340848c744bd9d98cabbc: {r: 64, g: 64, b: 0, a: 0}
     - _Shadow_Color: {r: 0.8396226, g: 0.07524917, b: 0.7322773, a: 1}
     - _Texture_Color: {r: 1, g: 1, b: 1, a: 0}
     - _Texture_Tiling: {r: 2, g: 2, b: 0, a: 0}

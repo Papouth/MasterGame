@@ -187,7 +187,7 @@
       }
     },
     "com.unity.terrain-tools": {
-      "version": "4.0.3",
+      "version": "4.0.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {
