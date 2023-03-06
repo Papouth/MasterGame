@@ -8,11 +8,16 @@ public class RespawnPlayer : RespawnSystem
 
 
     #region Customs Methods
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         cc = GetComponent<CharacterController>();
     }
 
+    public override void Update()
+    {
+        base.Update();
+    }
 
     /// <summary>
     /// Cree le respawn des objets au dernier points connu et à jour

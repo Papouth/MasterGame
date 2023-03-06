@@ -7,28 +7,27 @@ public class PlayerTemporel : MonoBehaviour
 {
     #region Variables
     [Header("Scènes")]
-    [SerializeField] private string scenesToLoad;
-    [SerializeField] private string scenesToUnload;
-    public string past = "Passé";
-    public string present = "Présent";
+    public string scenesToLoad;
+    public string scenesToUnload;
+    public string past;
+    public string present;
     public bool sceneState;
+
 
     [Header("Player Component")]
     private PlayerInput playerInput;
     private PlayerInteractor playerInteractor;
+    private PlayerStats playerStats;
     #endregion
 
     #region Built In Methods
     private void Awake()
     {
-
         playerInput = GetComponent<PlayerInput>();
         playerInteractor = GetComponent<PlayerInteractor>();
+        playerStats = GetComponent<PlayerStats>();
 
         if (past == null || present == null) return;
-
-
-        // A remettre pour faire fonctionner le script
 
         //SceneManager.LoadScene(past, LoadSceneMode.Additive);
         //SceneManager.LoadScene(present, LoadSceneMode.Additive);
@@ -36,10 +35,10 @@ public class PlayerTemporel : MonoBehaviour
 
     private void Start()
     {
-        PastSceneAtStart();
+        //PastSceneAtStart();
 
-        scenesToLoad = past;
-        scenesToUnload = present;
+        //scenesToLoad = past;
+        //scenesToUnload = present;
     }
 
     private void Update()
@@ -48,7 +47,13 @@ public class PlayerTemporel : MonoBehaviour
     }
     #endregion
 
-    private void PastSceneAtStart()
+    public void ChangeStringName(string newPast, string newPresent)
+    {
+        past = newPast;
+        present = newPresent;
+    }
+
+    public void PastSceneAtStart()
     {
         Scene pastScene = SceneManager.GetSceneByName(past);
 
@@ -60,12 +65,18 @@ public class PlayerTemporel : MonoBehaviour
         }
     }
 
+    public void ChangeSceneToLoad(string newSceneToLoad, string newSceneToUnload)
+    {
+        scenesToLoad = newSceneToLoad;
+        scenesToUnload = newSceneToUnload;
+    }
+
     /// <summary>
     /// Change the scene to load/unload when player hit the input
     /// </summary>
     private void ChangeTempo()
     {
-        if (playerInput.ChangeTempo && playerInteractor.hands.transform.childCount == 0)
+        if (playerInput.ChangeTempo && playerInteractor.hands.transform.childCount == 0 && playerStats.haveTempo)
         {
             // On change de temporalit�
             LoadingScene();
@@ -88,12 +99,13 @@ public class PlayerTemporel : MonoBehaviour
 
             playerInput.ChangeTempo = false;
         }
+        else if (playerInput.ChangeTempo && !playerStats.haveTempo) playerInput.ChangeTempo = false;
     }
 
     /// <summary>
     /// Loading the scenes 
     /// </summary>
-    private void LoadingScene()
+    public void LoadingScene()
     {
         Scene scene = SceneManager.GetSceneByName(scenesToLoad);
 

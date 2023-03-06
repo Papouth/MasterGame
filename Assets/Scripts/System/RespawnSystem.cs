@@ -16,12 +16,12 @@ public class RespawnSystem : MonoBehaviour
 
     #region Built In methods
 
-    void Start()
+    public virtual void Start()
     {
         respawnPoint = new GameObject("Respawn_" + name);
     }
 
-    void Update()
+    public virtual void Update()
     {
         MajRespawnPoint();
     }
@@ -34,7 +34,7 @@ public class RespawnSystem : MonoBehaviour
     /// Check if it's grounded
     /// </summary>
     /// <returns></returns>
-    private bool CheckGrounded()
+    public bool CheckGrounded()
     {
         if (Physics.Raycast(transform.position, Vector3.down, 2f, respawnObject))
         {
@@ -46,7 +46,7 @@ public class RespawnSystem : MonoBehaviour
     /// <summary>
     /// Maj le point de respawn pour qu'il soit pas trop trop loins du joueurs
     /// </summary>
-    private void MajRespawnPoint()
+    public void MajRespawnPoint()
     {
         timer += Time.deltaTime;
 

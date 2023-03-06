@@ -789,6 +789,7 @@ GameObject:
   - component: {fileID: 1325104609172470757}
   - component: {fileID: 9163656343194889140}
   - component: {fileID: 7413617986049430768}
+  - component: {fileID: 3285395951064303844}
   m_Layer: 3
   m_Name: Player_Kali
   m_TagString: Player
@@ -1031,6 +1032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   haveSuperForce: 0
+  haveTempo: 0
 --- !u!114 &8584994012357103011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,6 +1131,23 @@ MonoBehaviour:
   playerInput: {fileID: 0}
   hands: {fileID: 1423044935026070009}
   objectsOnCamera: []
+--- !u!114 &3285395951064303844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8233528653410943343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7e7f191656b2b4498e32f4808070788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnObject:
+    serializedVersion: 2
+    m_Bits: 65
+  respawnPoint: {fileID: 0}
+  timeUpdate: 3
 --- !u!1001 &7536804466871756011
 PrefabInstance:
   m_ObjectHideFlags: 0
