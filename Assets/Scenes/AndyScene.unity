@@ -322,6 +322,7 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+<<<<<<< HEAD
 --- !u!1001 &2077824059325066245
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -392,6 +393,21 @@ PrefabInstance:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9b1989e053635c48b0028eb720eb36f, type: 3}
 --- !u!1001 &3806301540739991004
+=======
+--- !u!4 &2076497295 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1259986374900797889, guid: 521647e5e859867448f17e22f54f3cbf,
+    type: 3}
+  m_PrefabInstance: {fileID: 7536804466784506892}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6759169953272850388 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3843117468450485208, guid: 521647e5e859867448f17e22f54f3cbf,
+    type: 3}
+  m_PrefabInstance: {fileID: 7536804466784506892}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7536804466784506892
+>>>>>>> parent of 9ad7290 (Merge branch 'main' into Mathis)
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
