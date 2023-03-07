@@ -48,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool climbingSecurityTimer;
     [SerializeField] private float timeBeforeClimbJump;
 
-
     [Header("Player Component")]
     public Camera cam;
     private CharacterController cc;
@@ -86,6 +85,8 @@ public class PlayerMovement : MonoBehaviour
         Locomotion();
 
         DropDown();
+
+        //ClimbUp();
 
         if (OnSteepSlope()) SteepSlopeMovement();
 
@@ -127,28 +128,11 @@ public class PlayerMovement : MonoBehaviour
             movement = directionInput.normalized * (moveSpeed / climbSpeedReducer * Time.deltaTime);
             movement = transform.TransformDirection(movement);
 
-
-            // Redirection du joueur face au mur
-            RaycastHit hit;
-
-            if (Physics.Raycast(transform.position + transform.TransformDirection(new Vector3(0f, 1f, 0f)), transform.forward, out hit, 1f))
-            {
-                // On rotate le joueur correctement vers le mur
-                if (hit.normal == new Vector3(0f, 0f, 1f)) transform.rotation = Quaternion.Euler(0, 180, 0);
-                else transform.rotation = Quaternion.FromToRotation(-Vector3.forward, hit.normal);
-
-
-                //Debug.Log(hit.distance);
-                if (hit.distance > 0.25f)
-                {
-                    // Bug de jittering ici
-                    //movement.z = transform.forward.z + 0.0001f;
-                }
-            }
+            //Debug.Log(directionInput.x + directionInput.z);
         }
     }
 
-    #region Climb Drop
+    #region ClimbMovement
     /// <summary>
     /// Si on appuie sur S en climb, alors on descend
     /// </summary>
@@ -158,6 +142,39 @@ public class PlayerMovement : MonoBehaviour
         {
             playerNewClimbSystem.isClimbing = false;
         }
+    }
+
+    /// <summary>
+    /// Si on appuie sur Z en climb, alors on grimpe
+    /// </summary>
+    private void ClimbUp()
+    {
+        if (directionInput.z >= 0.1 && playerNewClimbSystem.isClimbing && !playerNewClimbSystem.haveClimbed)
+        {
+            // Permet de faire s'exécuter l'action une unique fois
+            playerNewClimbSystem.haveClimbed = true;
+
+            animator.applyRootMotion = true;
+
+            animator.ResetTrigger("TrClimbUp");
+            animator.SetTrigger("TrClimbUp");
+
+            StartCoroutine("TimerClimbUp");
+        }
+    }
+
+    private IEnumerator TimerClimbUp()
+    {
+        // On patiente le temps de l'animation
+        yield return new WaitForSeconds(climbUpAnimation);
+
+        // On repasse en faux l'applyRootMotion
+        animator.applyRootMotion = false;
+
+        // Ajout d'une sécurité pour le trigger
+        animator.ResetTrigger("TrClimbUp");
+
+        playerNewClimbSystem.haveClimbed = false;
     }
     #endregion
 
@@ -212,8 +229,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (ySpeed <= stepGround)
             {
-                ySpeed = -.2f;
-                //ySpeed = cc.velocity.y;
+                ySpeed = -0.2f;
             }
 
             if (playerInput.CanJump)
@@ -394,8 +410,5 @@ public class PlayerMovement : MonoBehaviour
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(raycast.transform.position, raycast.transform.position + Vector3.up * rangeMaxStandUp);
         }
-
-        Debug.DrawRay(transform.position + transform.TransformDirection(new Vector3(0f, 1f, 0f)), transform.forward, Color.red);
-
     }
 }
