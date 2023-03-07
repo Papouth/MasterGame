@@ -58,5 +58,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+<<<<<<< HEAD
 ProjectSettings/PWBSettings.txt
 UserSettings/Layouts/default-2021.dwlt
+=======
+>>>>>>> parent of c573e03 (Merge branch 'main' into Mathis)

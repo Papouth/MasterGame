@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Models/Character/Pepo/Prefab_Pepo.prefab.meta
 guid: 9fa5a4d7e5c9fb54e886d3a7a262f2c9
 PrefabImporter:
+========
+guid: 3c430fa70dcc81948a0fa20ffaf3ec11
+VisualEffectImporter:
+>>>>>>>> parent of c573e03 (Merge branch 'main' into Mathis):Assets/Nico_AImport/Vfx/OsmoseTechnologique/UI_Deformation.vfx.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

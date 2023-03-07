@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Models/Character/Pepo.meta
 guid: 74097afbe4423404bb9f2a126cc7fe77
+========
+guid: 1e847d2f0381c5448804248ecc780480
+>>>>>>>> parent of c573e03 (Merge branch 'main' into Mathis):Assets/Nico_AImport/Vfx/OsmoseTechnologique.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Audio.meta
 guid: 7f3c626103d6aac43b2252efd8641ce6
+========
+guid: f22058db6619a40478b4452a9e19b3f1
+>>>>>>>> parent of c573e03 (Merge branch 'main' into Mathis):Assets/Nico_AImport/Prefabs.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
