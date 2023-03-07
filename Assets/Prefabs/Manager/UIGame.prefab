@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 250}
+  m_AnchoredPosition: {x: 0, y: 150}
+  m_SizeDelta: {x: -200, y: 250}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &4989908980706970426
 CanvasRenderer:
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
+  m_fontSize: 60
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
@@ -582,6 +582,7 @@ MonoBehaviour:
   docSettingsMenu: {fileID: 4096987795496007176}
   docCreditMenu: {fileID: 4168460932081520217}
   docPlayMenu: {fileID: 556297946189769144}
+  playerInput: {fileID: 0}
 --- !u!1 &7958574811045972529
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,9 +1,16 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/USS%20UXML/StyleSheet.uss?fileID=7433441132597879392&amp;guid=84247b6fcebb78a4da80a7e8dd63af02&amp;type=3#StyleSheet" />
     <ui:VisualElement name="Screen" class="BackGround" style="height: 100%; align-items: center; justify-content: flex-end; -unity-font: none; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); left: 0; top: 0; right: 0; bottom: 0; position: relative; opacity: 1; flex-direction: column; flex-grow: 1; flex-wrap: nowrap; padding-bottom: 0; margin-bottom: 0;">
-        <ui:VisualElement name="CenterBar" style="background-image: none; height: 100%; align-items: center; justify-content: space-between; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-top-left-radius: 23px; border-bottom-left-radius: 23px; border-top-right-radius: 23px; border-bottom-right-radius: 23px; border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; width: 100%; padding-left: 50px; padding-right: 50px; padding-top: 50px; padding-bottom: 50px; flex-grow: 1; background-color: rgba(85, 142, 194, 0); flex-direction: row;">
-            <ui:ScrollView touch-scroll-type="Clamped" elasticity="0.1" class="untiy-base-slider__dragger" style="flex-grow: 1; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/K2D-Regular%20SDF.asset?fileID=11400000&amp;guid=990df2fed332a6f4e88870caef0c307a&amp;type=2#K2D-Regular SDF&apos;); transition-duration: 0.1s; transition-delay: 0.1s; flex-direction: column; flex-wrap: nowrap; align-items: flex-start; justify-content: flex-start;">
+        <ui:VisualElement name="CenterBar" style="background-image: none; height: 100%; align-items: flex-start; justify-content: space-between; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 23px; border-bottom-left-radius: 23px; border-top-right-radius: 23px; border-bottom-right-radius: 23px; border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; width: 100%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; flex-grow: 1; background-color: rgba(85, 142, 194, 0); flex-direction: row;">
+            <ui:VisualElement name="LeftBar" style="flex-grow: 1; align-items: stretch; justify-content: space-around; display: none; flex-direction: column;" />
+            <ui:ScrollView touch-scroll-type="Clamped" elasticity="0.1" class="untiy-base-slider__dragger" style="flex-grow: 1; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/K2D-Regular%20SDF.asset?fileID=11400000&amp;guid=990df2fed332a6f4e88870caef0c307a&amp;type=2#K2D-Regular SDF&apos;); transition-duration: 0.1s; transition-delay: 0.1s; flex-direction: column; flex-wrap: nowrap; align-items: flex-start; justify-content: flex-start; height: 1077px;">
                 <ui:VisualElement name="MiddleBar" style="flex-grow: 1; align-items: stretch; justify-content: space-around;">
+                    <ui:VisualElement name="Vide1" style="flex-grow: 0; justify-content: space-around; align-items: center;">
+                        <ui:VisualElement name="Titre" style="flex-grow: 0; align-items: center; justify-content: space-around; flex-direction: row; flex-shrink: 1;">
+                            <ui:Label display-tooltip-when-elided="true" class="FontLabel" style="flex-grow: 0; flex-shrink: 0; font-size: 65px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="Poste" style="flex-grow: 1; justify-content: space-around; align-items: center;" />
+                    </ui:VisualElement>
                     <ui:VisualElement name="Isa" style="flex-grow: 0; justify-content: space-around; align-items: center;">
                         <ui:VisualElement name="Titre" style="flex-grow: 0; align-items: center; justify-content: space-around; flex-direction: row; flex-shrink: 1;">
                             <ui:Label text="Isabelle Robin" display-tooltip-when-elided="true" class="FontLabel" style="flex-grow: 0; flex-shrink: 0;" />
@@ -103,13 +110,18 @@
                             <ui:Label text="Rigger / Skinner" display-tooltip-when-elided="true" name="Poste3" class="FontLabel FontLabelPosteCredit" style="font-size: 40px;" />
                         </ui:VisualElement>
                     </ui:VisualElement>
+                    <ui:VisualElement name="Vide2" style="flex-grow: 0; justify-content: space-around; align-items: center; font-size: 65px;">
+                        <ui:VisualElement name="Titre" style="flex-grow: 0; align-items: center; justify-content: space-around; flex-direction: row; flex-shrink: 1;">
+                            <ui:Label display-tooltip-when-elided="true" class="FontLabel" style="flex-grow: 0; flex-shrink: 0; font-size: 65px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="Poste" style="flex-grow: 1; justify-content: space-around; align-items: center;" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
             </ui:ScrollView>
-            <ui:VisualElement name="LeftBar" style="flex-grow: 1; align-items: stretch; justify-content: space-around; display: none;" />
         </ui:VisualElement>
-        <ui:VisualElement name="Rightbar" style="flex-grow: 1; align-items: stretch; justify-content: space-around; display: none;" />
+        <ui:VisualElement name="Rightbar" style="flex-grow: 1; align-items: stretch; justify-content: space-around; display: none; flex-direction: column; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
         <ui:VisualElement name="BotBar" style="background-image: none; height: 10%; align-items: flex-start; justify-content: space-around; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-top-left-radius: 23px; border-bottom-left-radius: 23px; border-top-right-radius: 23px; border-bottom-right-radius: 23px; border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; width: 100%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; flex-grow: 1; background-color: rgba(85, 142, 194, 0); left: 30px; top: -25px;">
-            <ui:Button text="Quitter" display-tooltip-when-elided="true" name="Leave" class="BaseButton HoverButton ActiveButton FontLabel" style="flex-grow: 1; width: 20%; align-items: flex-start; flex-direction: column; margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; left: 0;" />
+            <ui:Button text="Retour " display-tooltip-when-elided="true" name="Leave" class="BaseButton HoverButton ActiveButton FontLabel" style="flex-grow: 1; width: 20%; align-items: flex-start; flex-direction: column; margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; left: 0;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
