@@ -2621,7 +2621,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 13.610899266010772
+    m_Start: 15.125
     m_ClipIn: 0
     m_Asset: {fileID: -8545537406592473925}
     m_Duration: 2.291666666666668
@@ -2654,7 +2654,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: persp2
   - m_Version: 1
-    m_Start: 32.61089926601077
+    m_Start: 34.125
     m_ClipIn: 0
     m_Asset: {fileID: 1910109387737966361}
     m_Duration: 1.7083333333333357
@@ -2687,7 +2687,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: persp7
   - m_Version: 1
-    m_Start: 22.485899266010765
+    m_Start: 24
     m_ClipIn: 0
     m_Asset: {fileID: -1061630464758209297}
     m_Duration: 0.9166666666666679
@@ -2695,7 +2695,7 @@ MonoBehaviour:
     m_ParentTrack: {fileID: -4059078734790787287}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 0
+    m_BlendInDuration: -1
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
@@ -2720,7 +2720,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: persp6
   - m_Version: 1
-    m_Start: 23.402565932677437
+    m_Start: 24.916666666666668
     m_ClipIn: 0
     m_Asset: {fileID: -7181909926513525822}
     m_Duration: 9.208333333333332
@@ -2753,7 +2753,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: persp5
   - m_Version: 1
-    m_Start: 34.319232599344105
+    m_Start: 35.833333333333336
     m_ClipIn: 0
     m_Asset: {fileID: 3384429040277735065}
     m_Duration: 3.2916666666666643
@@ -2822,7 +2822,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: FInAnimGrotte
   - m_Version: 1
-    m_Start: 9.36089926601077
+    m_Start: 10.875
     m_ClipIn: 0
     m_Asset: {fileID: 636444841280918947}
     m_Duration: 0.75
@@ -2873,7 +2873,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Cam1Chase
   - m_Version: 1
-    m_Start: 10.11089926601077
+    m_Start: 11.625
     m_ClipIn: 0
     m_Asset: {fileID: 2421989486206583342}
     m_Duration: 0.9166666666666661
@@ -2924,10 +2924,79 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Cam2Chase
   - m_Version: 1
-    m_Start: 11.027565932677437
+    m_Start: 12.541666666666666
     m_ClipIn: 0
     m_Asset: {fileID: 2569422424630587915}
     m_Duration: 1.208333333333334
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -4059078734790787287}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Cam3Chase
+  - m_Version: 1
+    m_Start: 13.75
+    m_ClipIn: 0
+    m_Asset: {fileID: 612734334382401629}
+    m_Duration: 1.375
     m_TimeScale: 1
     m_ParentTrack: {fileID: -4059078734790787287}
     m_EaseInDuration: 0
@@ -2973,12 +3042,12 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: Cam3Chase
+    m_DisplayName: CM vcam1
   - m_Version: 1
-    m_Start: 12.235899266010772
+    m_Start: 20.208333333333332
     m_ClipIn: 0
-    m_Asset: {fileID: 612734334382401629}
-    m_Duration: 1.375
+    m_Asset: {fileID: -3119904048335391681}
+    m_Duration: 3.791666666666668
     m_TimeScale: 1
     m_ParentTrack: {fileID: -4059078734790787287}
     m_EaseInDuration: 0
@@ -3006,42 +3075,9 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: CM vcam1
-  - m_Version: 1
-    m_Start: 18.694232599344108
-    m_ClipIn: 0
-    m_Asset: {fileID: -3119904048335391681}
-    m_Duration: 3.791666666666668
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -4059078734790787287}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
     m_DisplayName: persp2
   - m_Version: 1
-    m_Start: 15.90256593267744
+    m_Start: 17.416666666666668
     m_ClipIn: 0
     m_Asset: {fileID: 6459929858170576097}
     m_Duration: 2.7916666666666643
