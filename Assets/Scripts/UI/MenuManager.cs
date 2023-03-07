@@ -17,6 +17,8 @@ public class MenuManager : MonoBehaviour
     private UIDocument docSettingsMenu;
     private VisualElement rootSettingsMenu;
 
+    public AudioManager audioManager;
+
     [Header("Credits Menu")]
     [SerializeField]
     private UIDocument docCreditMenu;
@@ -59,9 +61,6 @@ public class MenuManager : MonoBehaviour
         docSettingsMenu.rootVisualElement.style.display = DisplayStyle.None;
         docCreditMenu.rootVisualElement.style.display = DisplayStyle.None;
         docPlayMenu.rootVisualElement.style.display = DisplayStyle.None;
-
-
-        SceneManager.LoadScene(mainMenuScene, LoadSceneMode.Additive);
     }
 
     private void Update()
@@ -119,6 +118,19 @@ public class MenuManager : MonoBehaviour
         clavierButton.clickable.clicked += () => { EnableVisualElement(clavierSetting); };
         exitButton.clickable.clicked += () => { EnableMenu(lastMenuCheck, docSettingsMenu); };
 
+
+        //Audio part :
+        Slider sliderMasterVolume = audioManager.allSlider[0] = rootSettingsMenu.Q<Slider>("TestSlider");
+        Slider sliderMusicVolume = audioManager.allSlider[1] = rootSettingsMenu.Q<Slider>("MusicVolume");
+        Slider sliderDialogueVolume = audioManager.allSlider[2] = rootSettingsMenu.Q<Slider>("DialogueVolume");
+        Slider sliderSFXVolume = audioManager.allSlider[3] = rootSettingsMenu.Q<Slider>("SFXVolume");
+
+
+        sliderMasterVolume.RegisterValueChangedCallback(audioManager.SetMasterLevel);
+
+
+        audioManager.LoadAllLevel();
+
         Debug.Log("Option menu Set");
     }
 
@@ -161,7 +173,7 @@ public class MenuManager : MonoBehaviour
     private void LauchGame()
     {
         Debug.Log("Game Lauch");
-        SceneManager.UnloadSceneAsync(mainMenuScene);
+        SceneManager.UnloadScene(mainMenuScene);
 
         EnableMenu(null, docMainMenu);
         Time.timeScale = 1;
