@@ -49,7 +49,7 @@ public class PlayerInteractor : MonoBehaviour
 
             if (interactable != null) //Sécurité au cas ou
             {
-                //Debug.Log("here" + interactable);
+                Debug.Log("here" + interactable);
                 interactable.Interact();
             }
         }

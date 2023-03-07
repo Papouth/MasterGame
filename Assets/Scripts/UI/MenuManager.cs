@@ -59,9 +59,6 @@ public class MenuManager : MonoBehaviour
         docSettingsMenu.rootVisualElement.style.display = DisplayStyle.None;
         docCreditMenu.rootVisualElement.style.display = DisplayStyle.None;
         docPlayMenu.rootVisualElement.style.display = DisplayStyle.None;
-
-
-        SceneManager.LoadScene(mainMenuScene, LoadSceneMode.Additive);
     }
 
     private void Update()
@@ -161,7 +158,7 @@ public class MenuManager : MonoBehaviour
     private void LauchGame()
     {
         Debug.Log("Game Lauch");
-        SceneManager.UnloadSceneAsync(mainMenuScene);
+        SceneManager.UnloadScene(mainMenuScene);
 
         EnableMenu(null, docMainMenu);
         Time.timeScale = 1;

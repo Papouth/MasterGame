@@ -15,14 +15,14 @@ TagManager:
   - Grounded
   - ClimbLayer
   - Interactable
-  - Pushable
-  - 
-  - 
+  - GreenCube
+  - BlackCube
+  - OrangeCube
   - TelekinesyObject
   - StaticProps
-  - Vide
   - 
-  - Plateforme
+  - 
+  - 
   - 
   - 
   - 

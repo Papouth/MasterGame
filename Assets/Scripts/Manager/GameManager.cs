@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager GM;
-    public bool havePass;
 
 
     private void Awake()

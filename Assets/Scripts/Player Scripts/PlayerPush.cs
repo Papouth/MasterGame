@@ -11,8 +11,6 @@ public class PlayerPush : MonoBehaviour
     public float rangeMaxPush = 0.4f;
     public LayerMask layersCanPush;
 
-    private Rigidbody hitGO;
-
     [Header("Player Component")]
     protected CharacterController cc;
     protected Animator animator;
@@ -42,9 +40,10 @@ public class PlayerPush : MonoBehaviour
     #region Push
     public virtual void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (!enabled) return;
+        if (!this.enabled) return;
 
         rbCol = hit.collider.attachedRigidbody;
+
 
         if (rbCol != null && !rbCol.isKinematic && CanPush())
         {
@@ -54,14 +53,14 @@ public class PlayerPush : MonoBehaviour
                 animator.SetBool("LowPush", true);
 
                 // On règle à la bonne vitesse
-                rbCol.velocity = new Vector3(hit.moveDirection.x * 2, 0, hit.moveDirection.z * 2);
+                rbCol.velocity = hit.moveDirection * 2;
             }
             else if (rbCol.mass >= 12 && rbCol.mass < 22)
             {
                 animator.SetBool("MediumPush", true);
 
                 // On règle à la bonne vitesse
-                rbCol.velocity = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+                rbCol.velocity = hit.moveDirection;
             }
         }
     }
@@ -85,7 +84,7 @@ public class PlayerPush : MonoBehaviour
 
     public virtual void PushAnimator()
     {
-        if (playerMovement.directionInput.magnitude == 0 || !CanPush())
+        if (playerMovement.directionInput.magnitude == 0 || CanPush())
         {
             animator.SetBool("LowPush", false);
             animator.SetBool("MediumPush", false);

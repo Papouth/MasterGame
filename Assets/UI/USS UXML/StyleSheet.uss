@@ -57,7 +57,7 @@ Bouton {
     -unity-slice-top: 0;
     -unity-text-outline-width: 0.5px;
     -unity-text-outline-color: rgb(72, 83, 94);
-    background-image: url('project://database/Assets/UI/Image/Bouton_Petit.png?fileID=2800000&guid=960db65424b4e9848a07f4e255f57a99&type=3#Bouton_Petit');
+    background-image: url('project://database/Assets/Nico_AImport/UI/Bouton_Petit.png?fileID=2800000&guid=960db65424b4e9848a07f4e255f57a99&type=3#Bouton_Petit');
 }
 
 .BaseButton.ActiveButton:active {
@@ -79,7 +79,7 @@ En tete {
 .BarUnderLogo {
     flex-grow: 0;
     left: -72px;
-    background-image: url('project://database/Assets/UI/Image/Trait.png?fileID=2800000&guid=6c9b6d2259f90124c891005be0f894c5&type=3#Trait');
+    background-image: url('project://database/Assets/Nico_AImport/UI/Trait.png?fileID=2800000&guid=6c9b6d2259f90124c891005be0f894c5&type=3#Trait');
     width: 712px;
     height: 4px;
 }
@@ -119,13 +119,13 @@ Other {
 }
 
 .BackGround {
-    background-image: url('project://database/Assets/UI/Image/fond_pause_ui.png?fileID=2800000&guid=8c1dc5efa748ca544adbc7ce919d2e7b&type=3#fond_pause_ui');
+    background-image: url('project://database/Assets/Nico_AImport/UI/fond_pause_ui.png?fileID=2800000&guid=8c1dc5efa748ca544adbc7ce919d2e7b&type=3#fond_pause_ui');
     width: 100%;
     height: 1080px;
 }
 
 .BackGroundMainMenu {
-    background-image: url('project://database/Assets/UI/Image/Fond_Menu_Principal.png?fileID=2800000&guid=182305b4ebd3db14c8c1ee7b3b77bd3e&type=3#Fond_Menu_Principal');
+    background-image: url('project://database/Assets/Nico_AImport/UI/Fond_Menu_Principal.png?fileID=2800000&guid=182305b4ebd3db14c8c1ee7b3b77bd3e&type=3#Fond_Menu_Principal');
     width: 40%;
     height: 1080px;
 }
@@ -137,13 +137,13 @@ Test {
     cursor: initial;
     visibility: visible;
     display: flex;
-    background-image: url('project://database/Assets/UI/Image/Case_non.png?fileID=2800000&guid=fd3221c55d7546e49a6fb37ca70bb7fc&type=3#Case_non');
+    background-image: url('project://database/Assets/Nico_AImport/UI/Case_non.png?fileID=2800000&guid=fd3221c55d7546e49a6fb37ca70bb7fc&type=3#Case_non');
     background-color: rgba(0, 0, 0, 0);
     border-left-color: rgba(0, 0, 0, 0);
     border-right-color: rgba(0, 0, 0, 0);
     border-top-color: rgba(0, 0, 0, 0);
     border-bottom-color: rgba(0, 0, 0, 0);
-    -unity-background-image-tint-color: rgb(255, 255, 255);
+    -unity-background-image-tint-color: rgba(255, 255, 255, 255);
 }
 
 #unity-dragger {
@@ -151,7 +151,7 @@ Test {
     border-right-color: rgba(255, 255, 255, 0);
     border-top-color: rgba(255, 255, 255, 0);
     border-bottom-color: rgba(255, 255, 255, 0);
-    background-image: url('project://database/Assets/UI/Image/Slider_Plein.png?fileID=2800000&guid=867f51d3328de3f47954af61c878fe92&type=3#Slider_Plein');
+    background-image: url('project://database/Assets/Nico_AImport/UI/Slider_Plein.png?fileID=2800000&guid=867f51d3328de3f47954af61c878fe92&type=3#Slider_Plein');
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
     border-top-right-radius: 6px;
@@ -159,7 +159,7 @@ Test {
 }
 
 #unity-tracker {
-    background-image: none;
+    background-image: url('project://database/Assets/Nico_AImport/UI/Slider_Vide.png?fileID=2800000&guid=9db3226be409fc84f867291d515b8d8d&type=3#Slider_Vide');
     border-left-width: 0;
     border-right-width: 0;
     border-top-width: 0;
@@ -172,12 +172,12 @@ Test {
     border-right-color: rgba(255, 255, 255, 0);
     border-top-color: rgba(255, 255, 255, 0);
     border-bottom-color: rgba(255, 255, 255, 0);
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgb(255, 255, 255);
     -unity-background-image-tint-color: rgb(255, 255, 255);
 }
 
 #unity-low-button {
-    background-image: none;
+    background-image: url('project://database/Assets/Nico_AImport/UI/Case_oui.png?fileID=2800000&guid=95dd7a744a8fbba42ac883a7811fcfcd&type=3#Case_oui');
     background-color: rgba(255, 255, 255, 0);
     border-left-color: rgba(0, 0, 0, 0);
     border-right-color: rgba(0, 0, 0, 0);
@@ -187,7 +187,7 @@ Test {
 }
 
 #unity-high-button {
-    background-image: none;
+    background-image: url('project://database/Assets/Nico_AImport/UI/Case_oui.png?fileID=2800000&guid=95dd7a744a8fbba42ac883a7811fcfcd&type=3#Case_oui');
     background-color: rgba(255, 255, 255, 0);
     border-left-color: rgba(0, 0, 0, 0);
     border-right-color: rgba(0, 0, 0, 0);
