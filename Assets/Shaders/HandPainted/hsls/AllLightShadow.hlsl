@@ -1,14 +1,6 @@
 #ifndef CUSTOM_LIGHTING_INCLUDED
 #define CUSTOM_LIGHTING_INCLUDED
 
-
-#pragma multi_compile _ _MAIN_LIGHT_SHADOWS
-#pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE
-#pragma multi_compile _ _SHADOWS_SOFT
-#pragma multi_compile _ _ADDITIONAL_LIGHTS
-#pragma multi_compile _ _ADDITIONAL_LIGHT_SHADOWS
-
-
 #ifndef SHADERGRAPH_PREVIEW
 #include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 #if (SHADERPASS != SHADERPASS_FORWARD)
@@ -50,7 +42,7 @@ float GetSmoothnessPower(float rawSmoothness) {
 #ifndef SHADERGRAPH_PREVIEW
 
 float3 CustomGlobalIllumination(CustomLightingData d){
-    float3 indirectDiffuse = /* d.albedo  * */ d.bakedGI * d.ambientOcclusion;
+    float3 indirectDiffuse = /*d.albedo * */d.bakedGI * d.ambientOcclusion;
 
 
     float3 reflectVector = reflect(-d.viewDirectionWS,d.normalWS);

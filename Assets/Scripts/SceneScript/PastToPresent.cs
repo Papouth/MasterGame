@@ -7,7 +7,6 @@ public class PastToPresent : MonoBehaviour
     #region Variables
     [Header("Component")]
     [SerializeField] private Rigidbody rb;
-    [HideInInspector]
     public bool canLift;
 
     [Tooltip("Le prefab du passé")]
@@ -20,11 +19,6 @@ public class PastToPresent : MonoBehaviour
     [Header("Scenes Infos")]
     [SerializeField] private bool isPresent;
     private bool prefabState;
-    [Tooltip("La scène dans laquelle la caisse se trouve")]
-    public string actualScene;
-    private Scene scene;
-    private bool alreadyCheck;
-
 
     [Header("Player Components")]
     private PlayerTemporel playerTemporel;
@@ -36,21 +30,24 @@ public class PastToPresent : MonoBehaviour
         playerTemporel = FindObjectOfType<PlayerTemporel>();
 
         rb = GetComponent<Rigidbody>();
-        if (rb == null) rb = GetComponentInChildren<Rigidbody>();
 
         // On commence dans le présent
         isPresent = true;
+
+        /*
+        if (prefabState)
+        {
+            // On désactive le prefab du passé
+            pastPrefab.SetActive(false);
+            prefabState = !prefabState;
+        }
+        */
     }
 
     private void Start()
     {
-        scene = SceneManager.GetSceneByName(actualScene);
-        alreadyCheck = false;
-
-        if (scene.isLoaded && isPresent)
+        if (isPresent)
         {
-            if (!gameObject.activeSelf) gameObject.SetActive(true);
-
             pastPrefab.SetActive(false);
             presentPrefab.SetActive(true);
         }
@@ -58,12 +55,6 @@ public class PastToPresent : MonoBehaviour
 
     private void Update()
     {
-        if (!scene.isLoaded && !alreadyCheck)
-        {
-            alreadyCheck = true;
-            gameObject.SetActive(false);
-        }
-
         SceneFinder();
 
         PushOnOff();

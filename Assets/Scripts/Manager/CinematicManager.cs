@@ -11,7 +11,7 @@ public class CinematicManager : MonoBehaviour
     public GameObject cam;
 
     public string startScene;
-    //public string menuScene;
+    public string menuScene;
 
     #endregion
     
